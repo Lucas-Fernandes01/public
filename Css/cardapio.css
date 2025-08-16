@@ -1,0 +1,97 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
+  margin: 0;
+}
+
+main {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+main h2, main h3, main h4 {
+  color: #6f42c1;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+label {
+  display: block;
+  margin: 8px 0 4px;
+  font-weight: 500;
+  color: #333;
+}
+
+select,
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  transition: border-color 0.2s;
+}
+
+select:focus,
+input:focus,
+textarea:focus {
+  border-color: #6f42c1;
+  outline: none;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  margin-right: 8px;
+}
+
+.complementos-gratis-copo,
+.complementos-gratis-marmita,
+.adicionais {
+  border: 1px solid #dee2e6;
+  padding: 15px;
+  border-radius: 5px;
+  background-color: #f8f9fa;
+  margin-bottom: 20px;
+}
+
+button {
+  background-color: #6f42c1;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 10px 5px 0 0;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #5a379f;
+}
+
+#carrinho {
+  border: 1px solid #ced4da;
+  padding: 15px;
+  border-radius: 5px;
+  background-color: #f8f9fa;
+  min-height: 50px;
+  margin-bottom: 20px;
+}
+
+#valorTotal {
+  font-weight: bold;
+  color: #6f42c1;
+}
+
+main h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 30px;
+}

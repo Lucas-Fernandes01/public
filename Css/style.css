@@ -1,0 +1,573 @@
+/*=============== GOOGLE FONTS ===============*/
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap");
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', system-ui;
+}
+
+/* FONTE PARA MOBILE */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css");
+
+header {
+  background: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 0px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo-container {
+  display: flex;
+  padding: 15px;
+  margin-left: 20px;
+  flex-direction: row;
+  align-items: center;
+  gap: 15px;
+}
+
+.logo {
+  height: 80px;
+  width: auto;
+  border-radius: 0px;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+.logo-text h1 {
+  font-size: 1.3rem;
+  margin: 0;
+  color: rgb(100, 0, 79);
+  font-weight: 600;
+}
+
+/* MENU */
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.nav-icon {
+  width: 20px;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.nav-icon:hover {
+  transform: scale(1.1);
+  transition: transform 0.2s ease;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  font-weight: 650;
+  font-size: 1.05rem;
+  position: relative;
+  padding: 1px 0;
+  transition: all 0.2s ease;
+}
+.nav-links a:hover {
+  color: rgb(72, 0, 131);
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: rgb(56, 0, 121);
+  transition: width 0.2s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+.login-btn {
+  background: linear-gradient(60deg, rgb(107, 4, 133), rgb(36, 1, 44));
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(74, 44, 130, 0.877);
+}
+
+.login-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(180, 156, 224, 0.63);
+}
+
+
+/* Responsividade Mobile */
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    padding: 15px;
+  }
+  .logo-container {
+    margin-bottom: 15px;
+  }
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  nav {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+
+
+.divider {
+  margin: 20px 0;
+  color: #430250;
+  font-weight: 500;
+}
+
+.social-login {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+
+
+/*------------------------*/
+/* HERO SECTION */
+
+
+
+/* Imagem de fundo do herói */
+.hero-image {
+  position: relative;
+  width: 100%;
+}
+
+.hero-image img {
+  width: 100%;
+  display: block;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 15px;
+  position: absolute;
+  bottom: 13%; /* Ajuste conforme quiser a posição dos botões */
+  left: 65%;
+  transform: translateX(50%);
+}
+
+.btn-primary {
+  background: #e60073;
+  padding: 10px 20px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: white;
+  top: -50%; /* Ajuste conforme quiser a posição do botão */
+  font-weight: 600;
+  transform: translateY(-20%);
+}
+.btn-primary:hover {
+  background: #b8005c;
+  box-shadow: 0 4px 15px rgba(230, 0, 115, 0.2);
+  transform: translateY(-2px);
+  transition: all 0.3s ease;
+}
+
+.btn-secondary {
+  background: #e60073;
+  padding: 10px 20px;
+  border-radius: 10px;
+  text-decoration: none;
+  right: 890px; /* Ajuste conforme quiser a posição do botão */
+  position: absolute;
+  position: relative;
+  top: -40px; /* Ajuste conforme quiser a posição do botão */
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.btn-secondary:hover {
+  background-color: #b8005c;
+  box-shadow: 0 4px 15px rgba(230, 0, 115, 0.2);
+  transform: translateY(-2px);
+  transition: all 0.3s ease;
+}
+
+/* PAGINA ATIVA */
+
+.nav-links a.active {
+  color: #5b028f; /* Cor destaque do link ativo */
+}
+
+.nav-links a.active::after {
+  width: 100%;
+}
+
+.hero-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0px;
+}
+/*------------------------*/
+/* FOOTER */
+/*------------------------*/
+.footer-dark {
+  background: #451761;
+  color: #ccc;
+  font-family: "Arial", sans-serif;
+}
+
+.footer-dark h5 {
+  color: #fff;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.footer-dark p {
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+
+.footer-dark ul {
+  padding: 0;
+  list-style: none;
+}
+
+.footer-dark li {
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.footer-dark i {
+  margin-right: 8px;
+  color: #c738ff;
+}
+
+.read-more {
+  color: #c738ff;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.read-more:hover {
+  text-decoration: underline;
+}
+
+.footer-map iframe {
+  border-radius: 6px;
+  filter: grayscale(100%) brightness(80%);
+  transition: filter 0.3s;
+}
+
+.footer-map iframe:hover {
+  filter: grayscale(0%) brightness(100%);
+}
+
+/* Social icons */
+.social-icons a {
+  display: inline-block;
+  color: #fff;
+  background: #180022;
+  width: 36px;
+  height: 36px;
+  line-height: 36px;
+  text-align: center;
+  margin-right: 10px;
+  border-radius: 50%;
+  transition: background 0.3s;
+  box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.767);
+}
+
+.social-icons a:hover {
+  background-color: #21012e;
+  transform: translate(-2px, -2px);
+}
+
+/* Footer bottom */
+.footer-bottom {
+  background: #39014b;
+  color: #e0e0e0;
+  font-size: 0.85rem;
+}
+
+/* DESTAQUES */
+.destaques {
+  padding: 40px 20px;
+  text-align: center;
+  background-color: #f5f5f5;
+}
+
+.destaques h2 {
+  margin-bottom: 30px;
+  color: #4b0055;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.cards :hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+
+.card {
+  background: rgb(210, 191, 221);
+  border-radius: 14px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.959);
+  max-width: 250px;
+  text-align: center;
+  padding: 10px;
+}
+
+.card img {
+  width: 100%;
+  border-radius: 14px;
+  margin-bottom: 10px;
+}
+
+.destaques-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+/* QUEM SOMOS */
+.quem-somos {
+  background: white;
+  color: black;
+  padding: 70px 20px;
+}
+
+.quem-somos-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.quem-somos-texto {
+  flex: 1 1 300px;
+}
+
+.quem-somos-texto h2 {
+  font-size: 2.5rem;
+  color: #eb008d;
+  margin-bottom: 20px;
+}
+
+.quem-somos-texto p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  font-family: sans-serif;
+}
+
+.quem-somos-imagem {
+  flex: 1 1 300px;
+  text-align: center;
+}
+
+.quem-somos-imagem img {
+  max-width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  opacity: 0.95;
+  transition: transform 0.3s ease;
+}
+
+.quem-somos-imagem img:hover {
+  transform: scale(1.05);
+}
+
+/* GALERIA */
+/* Seção geral com padding e cor suave */
+.secao-padrao {
+  padding: 60px 20px;
+  background-color: #f5eff9;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Títulos */
+.titulo-secao {
+  color: #6a1b9a;
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.subtitulo-secao {
+  color: #888;
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 1.1rem;
+}
+
+/* Grid de miniaturas */
+.galeria-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+}
+
+/* Item individual */
+.galeria-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.galeria-item img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+/* Efeito de hover */
+.galeria-item:hover img {
+  transform: scale(1.1);
+  opacity: 0.85;
+}
+
+.galeria-item::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(106, 27, 154, 0.5));
+  opacity: 0;
+  transition: opacity 0.3s;
+  border-radius: 12px;
+}
+
+.galeria-item:hover::after {
+  opacity: 1;
+}
+
+.feedbacks {
+  background-color: #4b014d;   /* um roxo mais escuro */
+  color: #fff;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.feedbacks h2 {
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  color: #ffd700; /* um amarelo/dourado que combina */
+}
+
+.feedback-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.feedback-card {
+  background-color: #6a0572;  /* um roxo mediano */
+  border-radius: 12px;
+  padding: 20px;
+  max-width: 300px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+  transition: transform 0.3s;
+}
+
+.feedback-card:hover {
+  transform: translateY(-5px);
+}
+
+.feedback-text {
+  font-size: 1.1rem;
+  line-height: 1.5;
+  margin-bottom: 15px;
+  width: 100%;
+  height: 100px; /* altura fixa para manter o layout consistente */
+  overflow: hidden; /* Esconde o texto que ultrapassa a altura */
+}
+
+.feedbacks {
+  background-color: #ffffff; /* fundo roxo escuro bonito */
+  color: #fff;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.feedbacks h2 {
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  color: #6a1b9a; /* um roxo mais claro */
+}
+
+.feedback-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.feedback-card {
+  background-color: #6a0572;  /* um roxo mais claro */
+  border-radius: 16px;
+  padding: 25px;
+  max-width: 280px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+  transition: transform 0.3s;
+}
+
+.feedback-card:hover {
+  transform: translateY(-6px);
+}
+
+.feedback-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+
+.feedback-author {
+  font-weight: bold;
+  color: #ffd700; /* um amarelo/dourado que combina */
+  font-size: 1.2rem;
+  margin-top: 10px;
+}
