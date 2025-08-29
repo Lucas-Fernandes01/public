@@ -39,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt2->bind_param("issss", $id_usuario, $bairro, $endereco, $numero, $referencia);
         $stmt2->execute();
 
-        echo "<script>alert('Cadastro realizado com sucesso!'); window.location='login.html';</script>";
+        echo "<script>alert('Cadastro realizado com sucesso!'); window.location='login_form.php';</script>";
     } else {
         echo "<script>alert('Erro ao cadastrar: " . $stmt->error . "'); history.back();</script>";
     }

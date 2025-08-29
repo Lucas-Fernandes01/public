@@ -8,7 +8,7 @@ if (isset($_SESSION['id_usuario'])) {
 }
 
 if(empty($_POST['email']) || empty($_POST['senha'])) {
-    header('Location: login.html');
+    header('Location: login_form.php');
     exit();
 }
 
