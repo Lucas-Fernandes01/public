@@ -1,3 +1,16 @@
+<?php
+session_start();
+if(isset($_SESSION['nao_autenticado'])):
+?>
+<div style="color:red; text-align:center; padding:10px; font-weight:bold;">
+    Usuário ou senha inválidos.
+</div>
+<?php
+unset($_SESSION['nao_autenticado']);
+endif;
+?>
+
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>

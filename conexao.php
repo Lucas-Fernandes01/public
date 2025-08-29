@@ -1,12 +1,9 @@
 <?php
-$host = "localhost";
-$user = "root";
-$pass = "";
-$db = "public";
+define('HOST', 'localhost');
+define('USER', 'root');
+define('PASS', '');
+define('DB', 'acai');
 
-$conn = new mysqli($host, $user, $pass, $db);
+$conn = mysqli_connect(HOST, USER, PASS, DB) or die ("Não foi possível conectar");
 
-if ($conn->connect_error) {
-    die("Erro na conexão: " . $conn->connect_error);
-}
 ?>

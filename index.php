@@ -1,5 +1,8 @@
+<?php
+session_start();
+?>
 
-
+<h2><a href="logout.php">Sair</a></h2>
 
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -34,13 +37,17 @@
 
       <nav>
         <div class="nav-links">
-          <a href="index.html" class="active">Início</a>
+          <a href="index.php" class="active">Início</a>
           <a href="cardapio.html">Cardápio</a>
           <a href="quem-somos.html">Quem Somos</a>
           <a href="contato.html">Contato</a>
         </div>
 
-        <a href="login.html" class="login-btn">Fazer Login</a>
+        <?php if (isset($_SESSION['id_usuario'])): ?>
+          <a href="perfil.php" class="login-btn">Olá, <?= htmlspecialchars($_SESSION['nome']) ?></a>
+        <?php else: ?>
+          <a href="login_form.php" class="login-btn">Fazer Login</a>
+        <?php endif; ?>
       </nav>
       
     </header>
