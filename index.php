@@ -43,11 +43,11 @@ session_start();
           <a href="contato.html">Contato</a>
         </div>
 
-        <?php if (isset($_SESSION['id_usuario'])): ?>
-          <a href="perfil.php" class="login-btn">Olá, <?= htmlspecialchars($_SESSION['nome']) ?></a>
-        <?php else: ?>
-          <a href="login_form.php" class="login-btn">Fazer Login</a>
-        <?php endif; ?>
+        <?php if (isset($_SESSION['id'])): ?>
+        <a href="perfil.php" class="login-btn">Meu Perfil</a>
+      <?php else: ?>
+        <a href="login_form.php" class="login-btn">Fazer Login</a>
+      <?php endif; ?>
       </nav>
       
     </header>

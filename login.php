@@ -1,35 +1,48 @@
 <?php
 session_start();
-include ('conexao.php');
+include 'conexao.php';
 
-if (isset($_SESSION['id_usuario'])) {
-    header('Location: index.php');
-    exit();
-}
-
-if(empty($_POST['email']) || empty($_POST['senha'])) {
+if (empty($_POST['email']) || empty($_POST['senha'])) {
     header('Location: login_form.php');
     exit();
 }
 
-$email = mysqli_real_escape_string($conn, $_POST['email']);
-$pass = mysqli_real_escape_string($conn, $_POST['senha']);
+$email = trim($_POST['email']);
+$senhaDigitada = $_POST['senha'];
 
-$query = "SELECT id, nome, email FROM cadastro_usuarios WHERE email = '{$email}' and senha = md5('{$pass}')";
+// Prepared statement para evitar injeção
+$stmt = $conn->prepare('SELECT id, nome, email, senha FROM cadastro_usuarios WHERE email = ? LIMIT 1');
+$stmt->bind_param('s', $email);
+$stmt->execute();
+$res = $stmt->get_result();
 
-$result = mysqli_query($conn, $query);
+if ($res && $res->num_rows === 1) {
+    $usuario = $res->fetch_assoc();
 
-$row = mysqli_num_rows($result);
+    if (password_verify($senhaDigitada, $usuario['senha'])) {
+        // previne session fixation
+        session_regenerate_id(true);
 
-if($row == 1) {
-    $usuario = mysqli_fetch_assoc($result);
-    $_SESSION['id'] = $usuario['id'];
-    $_SESSION['nome'] = $usuario['nome'];
-    $_SESSION['email'] = $usuario['email'];
-    header('Location: index.php');
-    exit();
+        $_SESSION['id'] = $usuario['id'];
+        $_SESSION['nome'] = $usuario['nome'];
+        $_SESSION['email'] = $usuario['email'];
+
+        $stmt->close();
+        $conn->close();
+
+        header('Location: index.php');
+        exit();
+    } else {
+        $_SESSION['nao_autenticado'] = true;
+        $stmt->close();
+        $conn->close();
+        header('Location: login_form.php');
+        exit();
+    }
 } else {
     $_SESSION['nao_autenticado'] = true;
+    $stmt->close();
+    $conn->close();
     header('Location: login_form.php');
     exit();
 }
