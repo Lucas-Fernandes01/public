@@ -4,28 +4,44 @@ main.quem-somos {
   padding: 30px 20px;
   background-color: #fff;
   border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(31, 7, 31, 0.452);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.05);
   font-family: "Montserrat", sans-serif;
 }
 
 /* Introdução */
 .intro {
-  text-align: center;
+  display: flex;          
+  align-items: center;
+  gap: 30px;              
   margin-bottom: 50px;
+  padding-left: 20px;
 }
 
 .intro h1 {
-  font-size: 2.8rem;
+  font-size: 3rem;
   color: #6a1b9a;
   margin-bottom: 10px;
 }
 
+.intro img.Decoração {
+  display: block;
+  margin: 10px auto;
+  max-width: 300px;
+  height: auto;
+}
+
 .intro p {
   font-size: 1.1rem;
-  max-width: 700px;
-  margin: 0 auto;
+  max-width: 400px; 
+  margin: 0;
   color: #555;
   line-height: 1.6;
+}
+
+.intro img.imagem-principal {
+  width: 60%;       
+  max-width: 400px;
+  border-radius: 12px;
 }
 
 /* História */
@@ -76,14 +92,14 @@ main.quem-somos {
   border: 1px solid #e5d0f5;
   border-radius: 12px;
   padding: 30px 20px;
-  box-shadow: 0 4px 12px rgba(105, 27, 154, 0.123);
+  box-shadow: 0 4px 12px rgba(106, 27, 154, 0.1);
   transition: transform 0.3s, box-shadow 0.3s;
   text-align: center;
 }
 
 .mvv-cards .card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 24px rgba(105, 27, 154, 0.493);
+  box-shadow: 0 8px 24px rgba(106, 27, 154, 0.15);
 }
 
 .mvv-cards .card i {
@@ -130,11 +146,11 @@ main.quem-somos {
 /* CTA */
 .cta {
   text-align: center;
-  background: linear-gradient(135deg, #520e72, #b745ce);
+  background: linear-gradient(135deg, #6a1b9a, #8e24aa);
   color: #fff;
   padding: 50px 30px;
   border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(135, 21, 150, 0.164);
+  box-shadow: 0 8px 24px rgba(106, 27, 154, 0.3);
 }
 
 .cta h2 {
@@ -152,7 +168,7 @@ main.quem-somos {
   display: inline-block;
   padding: 12px 30px;
   background-color: #fff;
-  color: #6a1b9a;
+  color: #5b0285;
   border-radius: 50px;
   text-decoration: none;
   font-weight: 600;
@@ -161,7 +177,7 @@ main.quem-somos {
 
 .cta .btn:hover {
   background-color: #f3e5f5;
-  color: #4a148c;
+  color: #eca840;
 }
 
 /* Responsive adjustments */
@@ -174,36 +190,4 @@ main.quem-somos {
   .intro h1, .historia h2, .missao-visao-valores h2, .equipe h2, .cta h2 {
     font-size: 1.8rem;
   }
-}
-/* Footer com localização */
-.footer-location {
-  background-color: #faf5ff;
-  padding: 15px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(106, 27, 154, 0.1);
-  text-align: center;
-  margin-bottom: 20px;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.footer-location:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(106, 27, 154, 0.15);
-}
-
-.footer-location h5 {
-  font-size: 1.2rem;
-  color: #6a1b9a;
-  margin-bottom: 12px;
-  font-weight: 600;
-}
-
-.footer-map iframe {
-  border: 0;
-  border-radius: 8px;
-  transition: transform 0.3s;
-}
-
-.footer-map iframe:hover {
-  transform: scale(1.02);
 }
