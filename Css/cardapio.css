@@ -5,16 +5,16 @@ body {
 }
 
 main {
-  max-width: 800px;
-  margin: 40px auto;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 25px 20px;
+  background-color: #faf5ff;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(106,27,154,0.1);
 }
 
 main h2, main h3, main h4 {
-  color: #6f42c1;
+  color: #6a1b9a;
   margin-top: 20px;
   margin-bottom: 10px;
 }

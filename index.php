@@ -54,7 +54,7 @@ session_start();
 
     <main>
       <div class="hero-image">
-        <img src="Img/HEADER2.jpg" alt="Marmita Açaí da Suíça" />
+        <img src="img/HEADER3.jpg"E alt="Marmita Açaí da Suíça" />
 
         <div class="hero-buttons">
           <a href="contato.html" class="btn-primary">Entre em contato</a>

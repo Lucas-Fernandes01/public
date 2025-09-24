@@ -4,7 +4,7 @@ main.quem-somos {
   padding: 30px 20px;
   background-color: #fff;
   border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+  box-shadow: 0 8px 24px rgba(31, 7, 31, 0.452);
   font-family: "Montserrat", sans-serif;
 }
 
@@ -76,14 +76,14 @@ main.quem-somos {
   border: 1px solid #e5d0f5;
   border-radius: 12px;
   padding: 30px 20px;
-  box-shadow: 0 4px 12px rgba(106, 27, 154, 0.1);
+  box-shadow: 0 4px 12px rgba(105, 27, 154, 0.123);
   transition: transform 0.3s, box-shadow 0.3s;
   text-align: center;
 }
 
 .mvv-cards .card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 24px rgba(106, 27, 154, 0.15);
+  box-shadow: 0 8px 24px rgba(105, 27, 154, 0.493);
 }
 
 .mvv-cards .card i {
@@ -130,11 +130,11 @@ main.quem-somos {
 /* CTA */
 .cta {
   text-align: center;
-  background: linear-gradient(135deg, #6a1b9a, #8e24aa);
+  background: linear-gradient(135deg, #520e72, #b745ce);
   color: #fff;
   padding: 50px 30px;
   border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(106, 27, 154, 0.3);
+  box-shadow: 0 8px 24px rgba(135, 21, 150, 0.164);
 }
 
 .cta h2 {
@@ -174,4 +174,36 @@ main.quem-somos {
   .intro h1, .historia h2, .missao-visao-valores h2, .equipe h2, .cta h2 {
     font-size: 1.8rem;
   }
+}
+/* Footer com localização */
+.footer-location {
+  background-color: #faf5ff;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(106, 27, 154, 0.1);
+  text-align: center;
+  margin-bottom: 20px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.footer-location:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(106, 27, 154, 0.15);
+}
+
+.footer-location h5 {
+  font-size: 1.2rem;
+  color: #6a1b9a;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.footer-map iframe {
+  border: 0;
+  border-radius: 8px;
+  transition: transform 0.3s;
+}
+
+.footer-map iframe:hover {
+  transform: scale(1.02);
 }
