@@ -238,11 +238,15 @@ nav {
 /*------------------------*/
 /* FOOTER */
 /*------------------------*/
+
+
+
 .footer-dark {
   background: #451761;
   color: #ccc;
   font-family: "Arial", sans-serif;
 }
+
 
 .footer-dark h5 {
   color: #fff;

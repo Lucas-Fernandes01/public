@@ -1,10 +1,5 @@
 main.quem-somos {
-  max-width: 1100px;
-  margin: 50px auto;
-  padding: 30px 20px;
   background-color: #fff;
-  border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.05);
   font-family: "Montserrat", sans-serif;
 }
 
@@ -67,58 +62,74 @@ main.quem-somos {
 }
 
 /* Missão Visão Valores */
-.missao-visao-valores {
-  margin-bottom: 50px;
-  text-align: center;
+
+.missao-onda {
+  background: url('../img/bg-onda-amarela.png') repeat-x;
 }
 
+.missao-ondaY {
+  background: url('../img/bg-onda-amarela.png') repeat-x;
+  transform: rotate(180deg);
+  margin-top: -5px; /* Ajuste para sobrepor ligeiramente */
+}
+
+.missao-visao-valores {
+  background-color: #fcb434; /* amarelo */
+  width: 100%;
+  text-align: center;
+  padding: 50px 0; /* espaço acima e abaixo */
+  box-sizing: border-box;
+}
+
+
 .missao-visao-valores h2 {
-  color: #6a1b9a;
-  font-size: 2rem;
+  color: #4b3403;
+  font-size: 3rem;
   margin-bottom: 30px;
+  font-family: 'Times New Roman', Times, serif;
 }
 
 /* Cards */
 .mvv-cards {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
-  gap: 25px;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 
-.mvv-cards .card {
-  flex: 1 1 280px;
-  background-color: #ffffff;
-  border: 1px solid #e5d0f5;
-  border-radius: 12px;
-  padding: 30px 20px;
-  box-shadow: 0 4px 12px rgba(106, 27, 154, 0.1);
-  transition: transform 0.3s, box-shadow 0.3s;
+.card {
+  background-color: #fff;
+  color: #333;
+  flex: 1;
+  min-width: 250px;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.mvv-cards .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 24px rgba(106, 27, 154, 0.15);
-}
-
-.mvv-cards .card i {
-  font-size: 2.5rem;
-  color: #8e24aa;
+.card i {
+  font-size: 40px;
+  color: #f4b400; /* cor amarela/dourada */
   margin-bottom: 15px;
 }
 
-.mvv-cards .card h3 {
-  color: #6a1b9a;
-  margin-bottom: 12px;
-  font-size: 1.5rem;
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
 }
 
-.mvv-cards .card p {
-  color: #666;
-  font-size: 1rem;
-  line-height: 1.6;
+.card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
 }
+
+.card p {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
 
 /* Equipe */
 .equipe {

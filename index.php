@@ -241,8 +241,8 @@ session_start();
   </div>
 </section>
 
-<img src="Img/icon/curva-footer.svg" alt="" style="width:100%; display:block; margin-top: 0px;">
     </main>
+    
 
     <footer class="footer-dark">
       <div class="container py-5">
