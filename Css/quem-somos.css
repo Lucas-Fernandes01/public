@@ -1,67 +1,77 @@
 main.quem-somos {
-  background-color: #fff;
+  background-image: url('../img/fundo.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
   font-family: "Montserrat", sans-serif;
 }
 
 /* Introdução */
 .intro {
-  display: flex;          
+  display: flex;
+  flex-wrap: wrap; /* Permite quebra para mobile */
   align-items: center;
-  gap: 30px;              
+  justify-content: center;
+  gap: 40px;
   margin-bottom: 50px;
-  padding-left: 20px;
+  padding: 60px 20px;
+}
+
+/* Texto */
+.intro .texto {
+  flex: 1 1 400px;
+  max-width: 600px;
+  color: #ffffff;
 }
 
 .intro h1 {
   font-size: 3rem;
-  color: #6a1b9a;
-  margin-bottom: 10px;
+  color: #ffffff;
+  position: relative;
+  display: inline-block;
+  margin-bottom: 30px;
+  font-weight: bold;
 }
 
-.intro img.Decoração {
-  display: block;
-  margin: 10px auto;
-  max-width: 300px;
-  height: auto;
+.intro h1::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  height: 4px;
+  width: 50%;
+  background-color: #FFD700;
+  border-radius: 2px;
 }
 
 .intro p {
   font-size: 1.1rem;
-  max-width: 400px; 
-  margin: 0;
-  color: #555;
+  color: #ffffff;
   line-height: 1.6;
-}
-
-.intro img.imagem-principal {
-  width: 60%;       
-  max-width: 400px;
-  border-radius: 12px;
-}
-
-/* História */
-.historia {
-  margin-bottom: 50px;
-  background-color: #faf5ff;
-  padding: 30px 20px;
-  border-radius: 10px;
-}
-
-.historia h2 {
-  color: #6a1b9a;
   margin-bottom: 15px;
-  font-size: 2rem;
-  text-align: center;
 }
 
-.historia p {
-  line-height: 1.7;
-  color: #555;
-  font-size: 1rem;
-  text-align: justify;
+/* Imagem */
+.intro img.imagem-principal {
+  flex: 1 1 300px;
+  max-width: 400px;
+  width: 150%;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+/* Responsividade */
+@media (max-width: 768px) {
+  .intro {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .intro , 
+  .intro img.imagem-principal {
+    max-width: 100%;
+  }
 }
 
-/* Missão Visão Valores */
 
 .missao-onda {
   background: url('../img/bg-onda-amarela.png') repeat-x;
@@ -134,7 +144,7 @@ main.quem-somos {
 /* Equipe */
 .equipe {
   margin-bottom: 50px;
-  background-color: #faf5ff;
+  background-color: #faf5ff80;
   padding: 30px 20px;
   border-radius: 10px;
   text-align: center;
@@ -153,6 +163,7 @@ main.quem-somos {
   line-height: 1.7;
   font-size: 1rem;
 }
+
 
 /* CTA */
 .cta {

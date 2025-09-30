@@ -184,7 +184,7 @@ nav {
 }
 
 .btn-primary {
-  background: #e60073;
+  background: #8913adb7;
   padding: 10px 20px;
   border-radius: 10px;
   text-decoration: none;
@@ -194,14 +194,14 @@ nav {
   transform: translateY(-20%);
 }
 .btn-primary:hover {
-  background: #b8005c;
+  background: #8913adb7;
   box-shadow: 0 4px 15px rgba(230, 0, 115, 0.2);
   transform: translateY(-2px);
   transition: all 0.3s ease;
 }
 
 .btn-secondary {
-  background: #e60073;
+  background: #8913adb7;
   padding: 10px 20px;
   border-radius: 10px;
   text-decoration: none;
@@ -214,7 +214,7 @@ nav {
 }
 
 .btn-secondary:hover {
-  background-color: #b8005c;
+  background-color: #8913adb7;
   box-shadow: 0 4px 15px rgba(230, 0, 115, 0.2);
   transform: translateY(-2px);
   transition: all 0.3s ease;

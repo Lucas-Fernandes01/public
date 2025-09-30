@@ -28,12 +28,13 @@ session_start();
 
   <body>
      <header>
-      <div class="logo-container">
-        <img src="Img/Logo.png" alt="Açaí da Suíça Logo" class="logo" />
-        <div class="logo-text">
-          <h1>Sabor que conquista</h1>
-        </div>
+         <div class="logo-container">
+      <img src="img/Logo.jpg" alt="Açaí da Suíça Logo" class="logo"/>
+      <div class="logo-text">
+        <h1>Sabor que conquista</h1>
       </div>
+    </div>
+
 
       <nav>
         <div class="nav-links">
