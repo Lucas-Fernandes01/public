@@ -21,10 +21,10 @@ session_start();
 
     <script>
       // Esta variável JavaScript nos dirá se o usuário está logado ou não.
-      // O PHP irá escrever 'true' ou 'false' aqui, dependendo da sessão.
       const isLoggedIn = <?php echo isset($_SESSION['id']) ? 'true' : 'false'; ?>;
     </script>
-    <script src="Js/script.js"></script>
+    <!-- script principal separado -->
+    <script src="Js/script.js" defer></script>
     <link rel="stylesheet" href="css/cardapio.css">
 </head>
 <body>
@@ -58,9 +58,9 @@ session_start();
 
     <div id="copoSection" style="display:none;">
       <h3>Escolha o tamanho (Copo):</h3>
-      <label><input type="radio" name="tamanho" value="Copo 300ml - R$ 15,00"> 300 ml - R$ 15,00</label><br>
-      <label><input type="radio" name="tamanho" value="Copo 400ml - R$ 18,00"> 400 ml - R$ 18,00</label><br>
-      <label><input type="radio" name="tamanho" value="Copo 500ml - R$ 21,00"> 500 ml - R$ 21,00</label><br><br>
+      <label><input type="radio" name="tamanho" value="Copo 300ml - R$ 15,00" data-price="15.00"> 300 ml - R$ 15,00</label><br>
+      <label><input type="radio" name="tamanho" value="Copo 400ml - R$ 18,00" data-price="18.00"> 400 ml - R$ 18,00</label><br>
+      <label><input type="radio" name="tamanho" value="Copo 500ml - R$ 21,00" data-price="21.00"> 500 ml - R$ 21,00</label><br><br>
 
       <h4>Escolha até 4 complementos grátis:</h4>
       <div class="complementos-gratis-copo">
@@ -84,8 +84,8 @@ session_start();
 
     <div id="marmitaSection" style="display:none;">
       <h3>Escolha o tamanho (Marmita):</h3>
-      <label><input type="radio" name="tamanho" value="500 ml - R$ 22,00"> 500 ml - R$ 22,00</label><br>
-      <label><input type="radio" name="tamanho" value="770 ml - R$ 35,00"> 770 ml - R$ 35,00</label><br><br>
+      <label><input type="radio" name="tamanho" value="500 ml - R$ 22,00" data-price="22.00"> 500 ml - R$ 22,00</label><br>
+      <label><input type="radio" name="tamanho" value="770 ml - R$ 35,00" data-price="35.00"> 770 ml - R$ 35,00</label><br><br>
 
       <h4>Escolha até 5 complementos grátis:</h4>
       <div class="complementos-gratis-marmita">
@@ -109,18 +109,18 @@ session_start();
 
     <h3>Adicionais pagos:</h3>
     <div class="adicionais">
-      <label><input type="checkbox" name="adicionais" value="Bis - R$ 2,00"> Bis - R$ 2,00</label><br>
-      <label><input type="checkbox" name="adicionais" value="Ovomaltine - R$ 3,00"> Ovomaltine - R$ 3,00</label><br>
-      <label><input type="checkbox" name="adicionais" value="Sucrilhos - R$ 3,00"> Sucrilhos - R$ 3,00</label><br>
-      <label><input type="checkbox" name="adicionais" value="Morango - R$ 3,00"> Morango - R$ 3,00</label><br>
-      <label><input type="checkbox" name="adicionais" value="Uva - R$ 3,00"> Uva - R$ 3,00</label><br>
-      <label><input type="checkbox" name="adicionais" value="Manga - R$ 3,00"> Manga - R$ 3,00</label><br>
-      <label><input type="checkbox" name="adicionais" value="Creme de ninho - R$ 3,50"> Creme de ninho - R$ 3,50</label><br>
-      <label><input type="checkbox" name="adicionais" value="Creme de avelã - R$ 3,00"> Creme de avelã - R$ 3,00</label><br>
-      <label><input type="checkbox" name="adicionais" value="Creme de morango - R$ 4,00"> Creme de morango - R$ 4,00</label><br>
-      <label><input type="checkbox" name="adicionais" value="Creme de amendoim - R$ 3,00"> Creme de amendoim - R$ 3,00</label><br>
-      <label><input type="checkbox" name="adicionais" value="Creme de bombom - R$ 3,00"> Creme de bombom - R$ 3,00</label><br>
-      <label><input type="checkbox" name="adicionais" value="Jujuba - R$ 3,00"> Jujuba - R$ 3,00</label><br>
+      <label><input type="checkbox" name="adicionais" value="Bis - R$ 2,00" data-price="2.00"> Bis - R$ 2,00</label><br>
+      <label><input type="checkbox" name="adicionais" value="Ovomaltine - R$ 3,00" data-price="3.00"> Ovomaltine - R$ 3,00</label><br>
+      <label><input type="checkbox" name="adicionais" value="Sucrilhos - R$ 3,00" data-price="3.00"> Sucrilhos - R$ 3,00</label><br>
+      <label><input type="checkbox" name="adicionais" value="Morango - R$ 3,00" data-price="3.00"> Morango - R$ 3,00</label><br>
+      <label><input type="checkbox" name="adicionais" value="Uva - R$ 3,00" data-price="3.00"> Uva - R$ 3,00</label><br>
+      <label><input type="checkbox" name="adicionais" value="Manga - R$ 3,00" data-price="3.00"> Manga - R$ 3,00</label><br>
+      <label><input type="checkbox" name="adicionais" value="Creme de ninho - R$ 3,50" data-price="3.50"> Creme de ninho - R$ 3,50</label><br>
+      <label><input type="checkbox" name="adicionais" value="Creme de avelã - R$ 3,00" data-price="3.00"> Creme de avelã - R$ 3,00</label><br>
+      <label><input type="checkbox" name="adicionais" value="Creme de morango - R$ 4,00" data-price="4.00"> Creme de morango - R$ 4,00</label><br>
+      <label><input type="checkbox" name="adicionais" value="Creme de amendoim - R$ 3,00" data-price="3.00"> Creme de amendoim - R$ 3,00</label><br>
+      <label><input type="checkbox" name="adicionais" value="Creme de bombom - R$ 3,00" data-price="3.00"> Creme de bombom - R$ 3,00</label><br>
+      <label><input type="checkbox" name="adicionais" value="Jujuba - R$ 3,00" data-price="3.00"> Jujuba - R$ 3,00</label><br>
     </div><br>
 
           <h3>Tipo de entrega:</h3>
@@ -137,7 +137,9 @@ session_start();
           
         
 
-          <h3>Total do pedido: R$ <span id="valorTotal">0.00</span></h3><br>
+          <h3>Total do pedido: R$ <span id="valorTotal">0.00</span></h3>
+          <h3>Total a pagar: R$ <span id="valorTotalPagar">0.00</span></h3>
+
     <button type="button" onclick="finalizarPedidos()">Finalizar Pedido</button>
     <button type="button" onclick="adicionarPedido()">Adicionar Pedido</button>
 

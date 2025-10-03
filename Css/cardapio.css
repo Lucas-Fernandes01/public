@@ -92,6 +92,12 @@ button:hover {
   color: #6f42c1;
 }
 
+#valorTotalPagar {
+  font-weight: bold;
+  color: #6f42c1;
+}
+
+
 main h2 {
   text-align: center;
   font-size: 2rem;
