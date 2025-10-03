@@ -58,7 +58,7 @@ session_start();
     unset($_SESSION['mensagem_sucesso']);
     endif;
     ?>
-    <svg class="login__blob" viewBox="0 0 566 840" xmlns="http://www.w.org/2000/svg">
+    <svg class="login__blob" viewBox="0 0 566 840" xmlns="http://www.w3.org/2000/svg">
     <mask id="mask0" mask-type="alpha">
       <path d="M342.407 73.6315C388.53 56.4007 394.378 17.3643 391.538 
       0H566V840H0C14.5385 834.991 100.266 804.436 77.2046 707.263C49.6393 
@@ -82,6 +82,12 @@ session_start();
       
       <div class="login__area">
         <form action="login.php" method="post" class="login__form">
+          
+          <?php
+            $redirect_url = isset($_GET['redirect_url']) ? htmlspecialchars($_GET['redirect_url']) : '';
+          ?>
+          <input type="hidden" name="redirect_url" value="<?php echo $redirect_url; ?>">
+
           <div class="login__content grid">
             <div class="login__box">
               <input type="email" id="login_email" name="email" required placeholder=" " class="login__input">

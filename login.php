@@ -20,7 +20,7 @@ if ($res && $res->num_rows === 1) {
     $usuario = $res->fetch_assoc();
 
     if (password_verify($senhaDigitada, $usuario['senha'])) {
-        // previne session fixation
+        // Previne session fixation
         session_regenerate_id(true);
 
         $_SESSION['id'] = $usuario['id'];
@@ -30,8 +30,20 @@ if ($res && $res->num_rows === 1) {
         $stmt->close();
         $conn->close();
 
-        header('Location: index.php');
-        exit();
+        // --- LÓGICA DE REDIRECIONAMENTO CORRIGIDA ---
+
+        // Pega o URL de redirecionamento do formulário. Se não existir, fica vazio.
+        $redirect_url = $_POST['redirect_url'] ?? '';
+
+        // Se a variável $redirect_url não estiver vazia, redireciona para lá.
+        if (!empty($redirect_url)) {
+            header('Location: ' . $redirect_url);
+        } else {
+            // Caso contrário, o comportamento padrão é ir para a página inicial.
+            header('Location: index.php');
+        }
+        exit(); // Garante que o script para após o redirecionamento.
+
     } else {
         $_SESSION['nao_autenticado'] = true;
         $stmt->close();

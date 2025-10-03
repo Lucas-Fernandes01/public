@@ -172,6 +172,14 @@ function finalizarPedidos() {
     return;
   }
 
+  if (!isLoggedIn) {
+    alert("É necessário fazer login para finalizar o seu pedido.");
+    // MUDANÇA AQUI: Adicionamos o "?redirect_url=cardapio.php"
+    window.location.href = 'login_form.php?redirect_url=cardapio.php'; 
+    return;
+  }
+
+  // O código abaixo só será executado se o usuário estiver logado
   let mensagem = `🍨 *Meu pedido Açaí da Suíça*\n\n`;
   carrinho.forEach((pedido, index) => {
     mensagem += `*Pedido ${index + 1}*\n`;
@@ -187,12 +195,9 @@ function finalizarPedidos() {
     mensagem += `Observações: ${pedido.observacao || "Nenhuma"}\n\n`;
   });
 
-  const numeroWhatsApp = "5519982370199"; // atualize com o número real
+  const numeroWhatsApp = "5519982370199";
   const link = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(
     mensagem
   )}`;
   window.open(link, "_blank");
 }
-
-
-// FIREBASE

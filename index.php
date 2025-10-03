@@ -39,7 +39,7 @@ session_start();
       <nav>
         <div class="nav-links">
           <a href="index.php" class="active">Início</a>
-          <a href="cardapio.html">Cardápio</a>
+          <a href="cardapio.php">Cardápio</a>
           <a href="quem-somos.html">Quem Somos</a>
           <a href="contato.html">Contato</a>
         </div>
@@ -59,7 +59,7 @@ session_start();
 
         <div class="hero-buttons">
           <a href="contato.html" class="btn-primary">Entre em contato</a>
-          <a href="cardapio.html" class="btn-secondary">Ver cardápio</a>
+          <a href="cardapio.php" class="btn-secondary">Ver cardápio</a>
         </div>
       </div>
 
