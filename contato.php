@@ -1,3 +1,7 @@
+<?php
+// Apenas iniciamos a sessão para verificar o status de login mais tarde
+session_start(); 
+?>
 
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -38,9 +42,16 @@
     <div class="nav-links">
       <a href="index.php">Início</a>
       <a href="cardapio.php">Cardápio</a>
-      <a href="quem-somos.html">Quem Somos</a>
-      <a href="contato.html" class="active">Contato</a>
+      <a href="quem-somos.php">Quem Somos</a>
+      <a href="contato.php" class="active">Contato</a>
     </div>
+
+      <?php if (isset($_SESSION['id'])): ?>
+        <a href="perfil.php" class="login-btn">Meu Perfil</a>
+      <?php else: ?>
+        <a href="login_form.php" class="login-btn">Fazer Login</a>
+      <?php endif; ?>
+
   </nav>
   </header>
 

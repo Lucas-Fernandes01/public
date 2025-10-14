@@ -2,8 +2,6 @@
 session_start();
 ?>
 
-<h2><a href="logout.php">Sair</a></h2>
-
 <!DOCTYPE html>
 <html lang="pt-BR">
   <head>
@@ -40,15 +38,16 @@ session_start();
         <div class="nav-links">
           <a href="index.php" class="active">Início</a>
           <a href="cardapio.php">Cardápio</a>
-          <a href="quem-somos.html">Quem Somos</a>
-          <a href="contato.html">Contato</a>
+          <a href="quem-somos.php">Quem Somos</a>
+          <a href="contato.php">Contato</a>
         </div>
 
-        <?php if (isset($_SESSION['id'])): ?>
+      <?php if (isset($_SESSION['id'])): ?>
         <a href="perfil.php" class="login-btn">Meu Perfil</a>
       <?php else: ?>
         <a href="login_form.php" class="login-btn">Fazer Login</a>
       <?php endif; ?>
+
       </nav>
       
     </header>
@@ -58,7 +57,7 @@ session_start();
         <img src="Img/HEADER2.jpg" alt="Marmita Açaí da Suíça" />
 
         <div class="hero-buttons">
-          <a href="contato.html" class="btn-primary">Entre em contato</a>
+          <a href="contato.php" class="btn-primary">Entre em contato</a>
           <a href="cardapio.php" class="btn-secondary">Ver cardápio</a>
         </div>
       </div>

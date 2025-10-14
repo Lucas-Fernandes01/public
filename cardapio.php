@@ -40,9 +40,16 @@ session_start();
     <div class="nav-links">
       <a href="index.php">Início</a>
       <a href="cardapio.php" class="active">Cardápio</a>
-      <a href="quem-somos.html">Quem Somos</a>
-      <a href="contato.html">Contato</a>
+      <a href="quem-somos.php">Quem Somos</a>
+      <a href="contato.php">Contato</a>
     </div>
+
+      <?php if (isset($_SESSION['id'])): ?>
+        <a href="perfil.php" class="login-btn">Meu Perfil</a>
+      <?php else: ?>
+        <a href="login_form.php" class="login-btn">Fazer Login</a>
+      <?php endif; ?>
+
   </nav>
   </header>
   
@@ -135,8 +142,6 @@ session_start();
           <h3>Resumo do pedido:</h3><br>
           <div id="carrinho"></div>
           
-        
-
           <h3>Total do pedido: R$ <span id="valorTotal">0.00</span></h3>
           <h3>Total a pagar: R$ <span id="valorTotalPagar">0.00</span></h3>
 
