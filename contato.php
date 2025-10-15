@@ -32,7 +32,7 @@ session_start();
 
 
     <div class="logo-container">
-      <img src="Img/Logo.png" alt="Açaí da Suíça Logo" class="logo">
+       <img src="Img/logo2.jpeg" alt="Açaí da Suíça Logo" class="logo">
       <div class="logo-text">
         <h1>Sabor que conquista</h1>
       </div>
@@ -101,7 +101,8 @@ session_start();
     <section class="contato-mapa">
       <h2>Nos Encontre</h2>
       <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3675.7772572043214!2d-47.64897158496181!3d-22.727867837502437!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c63252e80f97ab%3A0xb7f62b4e4c70d868!2sPiracicaba%2C%20SP!5e0!3m2!1spt-BR!2sbr!4v1717695846880!5m2!1spt-BR!2sbr"
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3679.5749843614562!2d-47.69305532574842!3d-22.744033432072634!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c637fa6843c5bf%3A0x78c6c3677d48448a!2zQcOnYWkgZGEgU3Vpw6dh!5e0!3m2!1spt-BR!2sbr!4v1751499566388!5m2!1spt-BR!2sbr"
+    width="100%"
         width="100%"
         height="300"
         style="border:0;"

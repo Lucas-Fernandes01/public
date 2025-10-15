@@ -27,7 +27,7 @@ session_start();
   <body>
      <header>
          <div class="logo-container">
-      <img src="img/Logo.jpg" alt="Açaí da Suíça Logo" class="logo"/>
+       <img src="Img/logo2.jpeg" alt="Açaí da Suíça Logo" class="logo">
       <div class="logo-text">
         <h1>Sabor que conquista</h1>
       </div>
@@ -181,46 +181,31 @@ session_start();
 
   
   <!-- Galeria de Fotos-->
-
- <section id="galeria-produtos" class="secao-padrao">
+<section id="galeria-produtos" class="secao-padrao">
   <div class="container">
     <h2 class="titulo-secao">Nossos Produtos</h2>
     <p class="subtitulo-secao">Confira um pouco do nosso cardápio!</p>
 
     <div class="galeria-grid">
       <div class="galeria-item">
-        <img src="Img/clientes/feedback_clientes1.jpg" alt="Açaí no copo">
+        <img src="Img/cardapio/galeria-1.jpg" alt="Açaí com morango">
       </div>
       <div class="galeria-item">
-        <img src="Img/clientes/feedback_clientes2.jpg" alt="Açaí na marmita">
+        <img src="Img/cardapio/galeria-2.jpg" alt="Açaí com leite condensado">
       </div>
       <div class="galeria-item">
-        <img src="Img/clientes/feedback_clientes3.jpg" alt="Sorvete">
+        <img src="Img/cardapio/galeria-3.jpg" alt="Açaí com granola">
       </div>
       <div class="galeria-item">
-        <img src="Img/clientes/feedback_clientes4.jpg" alt="Fondue">
-    
+        <img src="Img/cardapio/galeria-4.jpg" alt="Açaí com creme de avelã">
       </div>
       <div class="galeria-item">
-        <img src="Img/clientes/feedback_clientes5.jpg" alt="Açaí com frutas">
+        <img src="Img/cardapio/galeria-5.jpg" alt="Açaí com creme de ninho">
       </div>
-      <div class="galeria-item">
-        <img src="Img/clientes/feedback_clientes6.jpg" alt="Açaí com granola">
     </div>
-    <div class="galeria-item">
-        <img src="Img/clientes/feedback_clientes7.jpg" alt="Açaí com leite condensado">
-      </div>
-      <div class="galeria-item">
-        <img src="Img/clientes/feedback_clientes8.jpg" alt="Açaí com chocolate">
-      </div>
-      <div class="galeria-item">
-        <img src="Img/clientes/feedback_clientesFondue.jpg" alt="Açaí com morango">
   </div>
-    <div class="galeria-item">
-        <img src="Img/clientes/feedback_clientesBOLO.jpg" alt="Açaí com leite em pó">
-      </div>
-
 </section>
+
 
 
 <section class="feedbacks">
