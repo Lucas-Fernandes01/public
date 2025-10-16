@@ -135,26 +135,69 @@
 
     if (!isLoggedIn) {
       alert("É necessário fazer login para finalizar o seu pedido.");
-      window.location.href = 'login_form.php?redirect_url=cardapio.php';
+      // Redireciona para o login, passando a página atual para voltar depois
+      window.location.href = 'login_form.php?redirect_url=' + window.location.pathname.split('/').pop();
       return;
     }
 
-    let mensagem = `🍨 *Meu pedido Açaí da Suíça*\n\n`;
-    carrinho.forEach((pedido, index) => {
-      mensagem += `*Pedido ${index + 1}*\n`;
-      mensagem += `Tipo: ${pedido.tipo}\n`;
-      mensagem += `Tamanho: ${pedido.tamanho}\n`;
-      mensagem += `Complementos: ${pedido.complementos.length ? pedido.complementos.join(", ") : "Nenhum"}\n`;
-      mensagem += `Adicionais: ${pedido.adicionais.length ? pedido.adicionais.join(", ") : "Nenhum"}\n`;
-      mensagem += `Entrega: ${pedido.entrega}\n`;
-      mensagem += `Observações: ${pedido.observacao || "Nenhuma"}\n`;
-      mensagem += `Valor: R$ ${pedido.valor.toFixed(2)}\n\n`;
-    });
+    // 1. TENTA SALVAR O PEDIDO NO BANCO DE DADOS
+    fetch('salvar_pedido.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(carrinho) // Envia o carrinho como JSON
+    })
+    .then(response => {
+        // A resposta.json() também retorna uma promessa, então encadeamos outro .then
+        return response.json().then(data => {
+            if (!response.ok) {
+                // Se o servidor retornou um erro (ex: 401, 500), lança um erro com a mensagem do PHP
+                throw new Error(data.mensagem || 'Erro desconhecido do servidor.');
+            }
+            return data; // Retorna os dados de sucesso para o próximo .then
+        });
+    })
+    .then(data => {
+        // 2. SE O PEDIDO FOI SALVO COM SUCESSO, MONTA A MENSAGEM E ABRE O WHATSAPP
+        console.log(data.mensagem); // "Pedido salvo com sucesso!"
+        
+        let mensagem = `🍨 *Meu pedido Açaí da Suíça*\n\n`;
+        carrinho.forEach((pedido, index) => {
+            mensagem += `*Item ${index + 1}*\n`;
+            mensagem += `- Tipo: ${pedido.tipo}\n`;
+            mensagem += `- Tamanho: ${pedido.tamanho}\n`;
+            if (pedido.complementos.length > 0) {
+                mensagem += `- Complementos: ${pedido.complementos.join(", ")}\n`;
+            }
+            if (pedido.adicionais.length > 0) {
+                mensagem += `- Adicionais: ${pedido.adicionais.join(", ")}\n`;
+            }
+            mensagem += `- Entrega: ${pedido.entrega}\n`;
+            if (pedido.observacao) {
+                mensagem += `- Observações: ${pedido.observacao}\n`;
+            }
+            mensagem += `*Subtotal: R$ ${pedido.valor.toFixed(2)}*\n\n`;
+        });
+        
+        const totalPagar = carrinho.reduce((acc, pedido) => acc + pedido.valor, 0);
+        mensagem += `*TOTAL GERAL: R$ ${totalPagar.toFixed(2)}*`;
 
-    const numeroWhatsApp = "5519982370199";
-    const link = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
-    window.open(link, "_blank");
+        const numeroWhatsApp = "5519999510173"; // Use seu número
+        const link = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
+        
+        // Abre o WhatsApp e limpa o carrinho no site
+        window.open(link, "_blank");
+        carrinho = []; // Limpa o carrinho
+        atualizarCarrinhoUI(); // Atualiza a interface
+    })
+    .catch(error => {
+        // 3. SE FALHOU EM SALVAR, MOSTRA UM ALERTA PARA O USUÁRIO
+        console.error('Erro ao finalizar o pedido:', error);
+        alert('Falha ao salvar o pedido no nosso sistema. Por favor, tente novamente.\n\nDetalhe: ' + error.message);
+    });
   }
+
 
   // eventos iniciais
   document.addEventListener("DOMContentLoaded", () => {
