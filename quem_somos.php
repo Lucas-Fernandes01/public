@@ -44,7 +44,7 @@ session_start();
     <div class="nav-links">
       <a href="index.php">Início</a>
       <a href="cardapio.php">Cardápio</a>
-      <a href="quem-somos.php" class="active">Quem Somos</a>
+      <a href="quem_somos.php" class="active">Quem Somos</a>
       <a href="contato.php">Contato</a>
     </div>
 

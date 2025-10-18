@@ -40,7 +40,7 @@ session_start();
     <div class="nav-links">
       <a href="index.php">Início</a>
       <a href="cardapio.php" class="active">Cardápio</a>
-      <a href="quem-somos.php">Quem Somos</a>
+      <a href="quem_somos.php">Quem Somos</a>
       <a href="contato.php">Contato</a>
     </div>
 
@@ -158,7 +158,7 @@ session_start();
           <div class="col-md-3">
             <h5>Açaí da Suíça</h5>
             <p>Mais que sabor, uma experiência. Feito com carinho para conquistar você do seu jeito.</p>
-            <a href="#" class="read-more">saiba mais →</a>
+            <a href="quem_somos.php" class="read-more">saiba mais → </a>
           </div>
     
           <div class="col-md-3">
