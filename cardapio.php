@@ -1,6 +1,35 @@
 <?php
-// Apenas iniciamos a sessão para verificar o status de login mais tarde
+// 1. INICIAMOS A SESSÃO E CONECTAMOS AO BANCO
 session_start(); 
+include 'conexao.php';
+
+// 2. BUSCAMOS TODAS AS OPÇÕES DISPONÍVEIS NO BANCO
+$sql = "SELECT nome, preco, tipo FROM ingredientes WHERE em_estoque = TRUE ORDER BY nome ASC";
+$resultado = $conn->query($sql);
+
+// 3. SEPARAMOS OS INGREDIENTES EM ARRAYS PARA FACILITAR
+$tamanhos_copo = [];
+$tamanhos_marmita = [];
+$complementos = [];
+$adicionais = [];
+
+while ($item = $resultado->fetch_assoc()) {
+    switch ($item['tipo']) {
+        case 'tamanho_copo':
+            $tamanhos_copo[] = $item;
+            break;
+        case 'tamanho_marmita':
+            $tamanhos_marmita[] = $item;
+            break;
+        case 'complemento_gratis':
+            $complementos[] = $item;
+            break;
+        case 'adicional_pago':
+            $adicionais[] = $item;
+            break;
+    }
+}
+$conn->close();
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -23,7 +52,6 @@ session_start();
       // Esta variável JavaScript nos dirá se o usuário está logado ou não.
       const isLoggedIn = <?php echo isset($_SESSION['id']) ? 'true' : 'false'; ?>;
     </script>
-    <!-- script principal separado -->
     <script src="Js/script.js" defer></script>
     <link rel="stylesheet" href="css/cardapio.css">
 </head>
@@ -65,69 +93,46 @@ session_start();
 
     <div id="copoSection" style="display:none;">
       <h3>Escolha o tamanho (Copo):</h3>
-      <label><input type="radio" name="tamanho" value="Copo 300ml - R$ 15,00" data-price="15.00"> 300 ml - R$ 15,00</label><br>
-      <label><input type="radio" name="tamanho" value="Copo 400ml - R$ 18,00" data-price="18.00"> 400 ml - R$ 18,00</label><br>
-      <label><input type="radio" name="tamanho" value="Copo 500ml - R$ 21,00" data-price="21.00"> 500 ml - R$ 21,00</label><br><br>
-
+      <?php foreach ($tamanhos_copo as $tamanho): ?>
+        <label>
+            <input type="radio" name="tamanho" value="<?php echo htmlspecialchars($tamanho['nome']); ?> (Copo)" data-price="<?php echo $tamanho['preco']; ?>">
+            <?php echo htmlspecialchars($tamanho['nome']); ?> - R$ <?php echo number_format($tamanho['preco'], 2, ',', '.'); ?>
+        </label><br>
+      <?php endforeach; ?>
+      <br>
       <h4>Escolha até 4 complementos grátis:</h4>
       <div class="complementos-gratis-copo">
-        <label><input type="checkbox" name="complementos" value="Paçoca"> Paçoca</label><br>
-        <label><input type="checkbox" name="complementos" value="Leite em pó"> Leite em pó</label><br>
-        <label><input type="checkbox" name="complementos" value="Confete"> Confete</label><br>
-        <label><input type="checkbox" name="complementos" value="Granola"> Granola</label><br>
-        <label><input type="checkbox" name="complementos" value="Granulado"> Granulado</label><br>
-        <label><input type="checkbox" name="complementos" value="Banana"> Banana</label><br>
-        <label><input type="checkbox" name="complementos" value="Chocoball"> Chocoball</label><br>
-        <label><input type="checkbox" name="complementos" value="Gotas de chocolate"> Gotas de chocolate</label><br>
-        <label><input type="checkbox" name="complementos" value="Mel"> Mel</label><br>
-        <label><input type="checkbox" name="complementos" value="Leite condensado"> Leite condensado</label><br>
-        <label><input type="checkbox" name="complementos" value="Amendoim torrado"> Amendoim torrado</label><br>
-        <label><input type="checkbox" name="complementos" value="Cobertura de morango"> Cobertura de morango</label><br>
-        <label><input type="checkbox" name="complementos" value="Cobertura de chocolate"> Cobertura de chocolate</label><br>
-        <label><input type="checkbox" name="complementos" value="Cobertura de uva"> Cobertura de uva</label><br>
-        <label><input type="checkbox" name="complementos" value="Cobertura de caramelo"> Cobertura de caramelo</label><br>
+        <?php foreach ($complementos as $item): ?>
+            <label><input type="checkbox" name="complementos" value="<?php echo htmlspecialchars($item['nome']); ?>"> <?php echo htmlspecialchars($item['nome']); ?></label><br>
+        <?php endforeach; ?>
       </div>
     </div>
 
     <div id="marmitaSection" style="display:none;">
       <h3>Escolha o tamanho (Marmita):</h3>
-      <label><input type="radio" name="tamanho" value="500 ml - R$ 22,00" data-price="22.00"> 500 ml - R$ 22,00</label><br>
-      <label><input type="radio" name="tamanho" value="770 ml - R$ 35,00" data-price="35.00"> 770 ml - R$ 35,00</label><br><br>
-
+      <?php foreach ($tamanhos_marmita as $tamanho): ?>
+        <label>
+            <input type="radio" name="tamanho" value="<?php echo htmlspecialchars($tamanho['nome']); ?> (Marmita)" data-price="<?php echo $tamanho['preco']; ?>">
+            <?php echo htmlspecialchars($tamanho['nome']); ?> - R$ <?php echo number_format($tamanho['preco'], 2, ',', '.'); ?>
+        </label><br>
+      <?php endforeach; ?>
+      <br>
       <h4>Escolha até 5 complementos grátis:</h4>
       <div class="complementos-gratis-marmita">
-        <label><input type="checkbox" name="complementos" value="Paçoca"> Paçoca</label><br>
-        <label><input type="checkbox" name="complementos" value="Leite em pó"> Leite em pó</label><br>
-        <label><input type="checkbox" name="complementos" value="Confete"> Confete</label><br>
-        <label><input type="checkbox" name="complementos" value="Granola"> Granola</label><br>
-        <label><input type="checkbox" name="complementos" value="Granulado"> Granulado</label><br>
-        <label><input type="checkbox" name="complementos" value="Banana"> Banana</label><br>
-        <label><input type="checkbox" name="complementos" value="Chocoball"> Chocoball</label><br>
-        <label><input type="checkbox" name="complementos" value="Gotas de chocolate"> Gotas de chocolate</label><br>
-        <label><input type="checkbox" name="complementos" value="Mel"> Mel</label><br>
-        <label><input type="checkbox" name="complementos" value="Leite condensado"> Leite condensado</label><br>
-        <label><input type="checkbox" name="complementos" value="Amendoim torrado"> Amendoim torrado</label><br>
-        <label><input type="checkbox" name="complementos" value="Cobertura de morango"> Cobertura de morango</label><br>
-        <label><input type="checkbox" name="complementos" value="Cobertura de chocolate"> Cobertura de chocolate</label><br>
-        <label><input type="checkbox" name="complementos" value="Cobertura de uva"> Cobertura de uva</label><br>
-        <label><input type="checkbox" name="complementos" value="Cobertura de caramelo"> Cobertura de caramelo</label><br>
+        <?php foreach ($complementos as $item): ?>
+            <label><input type="checkbox" name="complementos" value="<?php echo htmlspecialchars($item['nome']); ?>"> <?php echo htmlspecialchars($item['nome']); ?></label><br>
+        <?php endforeach; ?>
       </div>
     </div>
 
     <h3>Adicionais pagos:</h3>
     <div class="adicionais">
-      <label><input type="checkbox" name="adicionais" value="Bis - R$ 2,00" data-price="2.00"> Bis - R$ 2,00</label><br>
-      <label><input type="checkbox" name="adicionais" value="Ovomaltine - R$ 3,00" data-price="3.00"> Ovomaltine - R$ 3,00</label><br>
-      <label><input type="checkbox" name="adicionais" value="Sucrilhos - R$ 3,00" data-price="3.00"> Sucrilhos - R$ 3,00</label><br>
-      <label><input type="checkbox" name="adicionais" value="Morango - R$ 3,00" data-price="3.00"> Morango - R$ 3,00</label><br>
-      <label><input type="checkbox" name="adicionais" value="Uva - R$ 3,00" data-price="3.00"> Uva - R$ 3,00</label><br>
-      <label><input type="checkbox" name="adicionais" value="Manga - R$ 3,00" data-price="3.00"> Manga - R$ 3,00</label><br>
-      <label><input type="checkbox" name="adicionais" value="Creme de ninho - R$ 3,50" data-price="3.50"> Creme de ninho - R$ 3,50</label><br>
-      <label><input type="checkbox" name="adicionais" value="Creme de avelã - R$ 3,00" data-price="3.00"> Creme de avelã - R$ 3,00</label><br>
-      <label><input type="checkbox" name="adicionais" value="Creme de morango - R$ 4,00" data-price="4.00"> Creme de morango - R$ 4,00</label><br>
-      <label><input type="checkbox" name="adicionais" value="Creme de amendoim - R$ 3,00" data-price="3.00"> Creme de amendoim - R$ 3,00</label><br>
-      <label><input type="checkbox" name="adicionais" value="Creme de bombom - R$ 3,00" data-price="3.00"> Creme de bombom - R$ 3,00</label><br>
-      <label><input type="checkbox" name="adicionais" value="Jujuba - R$ 3,00" data-price="3.00"> Jujuba - R$ 3,00</label><br>
+        <?php foreach ($adicionais as $item): ?>
+            <label>
+                <input type="checkbox" name="adicionais" value="<?php echo htmlspecialchars($item['nome']); ?>" data-price="<?php echo $item['preco']; ?>">
+                <?php echo htmlspecialchars($item['nome']); ?> - R$ <?php echo number_format($item['preco'], 2, ',', '.'); ?>
+            </label><br>
+        <?php endforeach; ?>
     </div><br>
 
           <h3>Tipo de entrega:</h3>
@@ -148,7 +153,6 @@ session_start();
     <button type="button" onclick="finalizarPedidos()">Finalizar Pedido</button>
     <button type="button" onclick="adicionarPedido()">Adicionar Pedido</button>
 
-    </form>
   </main>
 
   <footer class="footer-dark">
