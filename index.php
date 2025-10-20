@@ -64,7 +64,29 @@ session_start();
 
       <img src="Img/icon/grunge-divider-3.png" alt="" style="width:100%; display:block; margin-top: 0px;">
 
-      <!--VALORES-->
+
+<!-- QUEM SOMOS -->
+<section class="quem-somos">
+  <div class="quem-somos-container">
+    <div class="quem-somos-texto">
+      <h2>Quem é Açaí da Suíça?</h2>
+      <p>
+O Açaí da Suíça nasceu em 27 de maio de 2023 com um propósito simples: levar sabor, qualidade e praticidade ao dia a dia. Desde o início, nossa missão tem sido proporcionar experiências únicas por meio de produtos feitos com carinho e ingredientes selecionados com cuidado.
+
+O sonho de nossa fundadora de empreender com propósito transformou-se em um espaço para quem valoriza o verdadeiro sabor do açaí. Hoje, oferecemos diversas opções para todos os gostos: açaí no copo, marmitas, sorvetes e fondue, sempre buscando inovar e encantar em cada atendimento.
+
+Para nós, o açaí vai além de um alimento: é uma experiência que transmite energia, frescor e alegria. E é com esse espírito que seguimos crescendo, aprimorando cada detalhe e mantendo nosso compromisso com todos que fazem parte da nossa história.
+      </p>
+    </div>
+    <div class="quem-somos-imagem">
+      <img src="Img/Logo.jpg" alt="Açaí da Suíça">
+  
+    </div>
+  </div>
+  
+</section>
+
+ <!--VALORES-->
 
       <section id="valores">
   <h2 style=" padding: 30px; text-align:center; color:#4B0055;" data-aos="fade-up">NOSSOS VALORES</h2>
@@ -98,27 +120,6 @@ session_start();
   </div>
 </section>
 
-<!-- QUEM SOMOS -->
-<section class="quem-somos">
-  <div class="quem-somos-container">
-    <div class="quem-somos-texto">
-      <h2>Quem é Açaí da Suíça?</h2>
-      <p>
-        O Açaí da Suíça nasceu em 27 de maio de 2023 com o propósito de levar sabor, qualidade e praticidade para o dia a dia de nossos clientes. Desde o início, nossa missão sempre foi oferecer produtos diferenciados, feitos com carinho e ingredientes selecionados.
-
-        Nossa fundadora transformou uma paixão por empreender em um negócio dedicado a atender quem valoriza o verdadeiro sabor do açaí. Hoje, trabalhamos com diversas opções para todos os gostos, como açaí no copo, marmitas, sorvetes e fondue, sempre buscando inovar e atender às necessidades dos nossos clientes com qualidade e bom atendimento.
-        
-        Acreditamos que o açaí é mais que um alimento: é uma experiência que une sabor, energia e alegria. Por isso, seguimos crescendo e nos aperfeiçoando, mantendo nosso compromisso com quem nos escolhe todos os dias.
-      </p>
-    </div>
-    <div class="quem-somos-imagem">
-      <img src="Img/Logo.jpg" alt="Açaí da Suíça">
-  
-    </div>
-  </div>
-  
-</section>
-
       
 
        <!-- DESTAQUES -->
@@ -148,8 +149,8 @@ session_start();
         </div>
 
 
-    <h2>Combos Especiais</h2>
-    <div class="cards">
+      <h2>Combos Especiais</h2>
+       <div class="cards">
       <div class="card" data-aos="zoom-in-up" data-aos-delay="100">
       
         <img src="Img/card/card1.jpg" alt="Combo 1">

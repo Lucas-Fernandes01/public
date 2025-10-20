@@ -68,25 +68,35 @@ session_start();
 
     <?php if (isset($_SESSION['id']) && isset($_SESSION['nome'])): // SÓ MOSTRA O FORMULÁRIO SE O USUÁRIO ESTIVER LOGADO ?>
     
-    <section class="contato-form">
-      <h2>Envie uma Mensagem</h2>
-      <form action="enviar.php" method="post" class="form-box" enctype="multipart/form-data">
-        
-        <label for="nome">Seu Nome:</label>
-        <input type="text" id="nome" name="nome" value="<?php echo htmlspecialchars($_SESSION['nome']); ?>" readonly required>
+   section id="valores" class="secao-padrao">
+  <h2 class="titulo-secao" data-aos="fade-up">Nossos Valores</h2>
 
-        <label for="assunto">Assunto:</label>
-        <input type="text" id="assunto" name="assunto" required>
+  <div class="valores-container">
+    <div class="valor-card" data-aos="fade-right" data-aos-delay="100">
+      <img src="https://img.icons8.com/color/96/000000/checked--v1.png" alt="Qualidade">
+      <h3>Qualidade</h3>
+      <p>Produtos com alto padrão de qualidade para satisfazer nossos clientes.</p>
+    </div>
 
-        <label for="mensagem">Mensagem:</label>
-        <textarea id="mensagem" name="mensagem" rows="4" required></textarea>
+    <div class="valor-card" data-aos="fade-right" data-aos-delay="200">
+      <img src="https://img.icons8.com/color/96/000000/handshake--v1.png" alt="Compromisso">
+      <h3>Compromisso</h3>
+      <p>Atendimento ágil, transparente e comprometido com nossos parceiros.</p>
+    </div>
 
-        <label for="anexo">Anexo (opcional):</label>
-        <input type="file" id="anexo" name="anexo">
+    <div class="valor-card" data-aos="fade-right" data-aos-delay="300">
+      <img src="https://img.icons8.com/color/96/000000/leaf.png" alt="Sustentabilidade">
+      <h3>Sustentabilidade</h3>
+      <p>Práticas que respeitam o meio ambiente e a comunidade local.</p>
+    </div>
 
-        <button type="submit">Enviar Mensagem</button>
-      </form>
-    </section>
+    <div class="valor-card" data-aos="fade-right" data-aos-delay="400">
+      <img src="https://img.icons8.com/color/96/000000/idea.png" alt="Inovação">
+      <h3>Inovação</h3>
+      <p>Pesquisa constante para oferecer os melhores sabores e experiências.</p>
+    </div>
+  </div>
+</section>
 
     <?php else: // SE NÃO ESTIVER LOGADO, MOSTRA ESTA MENSAGEM ?>
 

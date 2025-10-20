@@ -1,19 +1,23 @@
+/* ======== CONTAINER PRINCIPAL ======== */
 .contato-page {
   max-width: 1000px;
-  margin: 30px auto;
-  padding: 20px;
+  margin: 25px auto;
+  padding: 30px;
   background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  border-radius: 30px;
+  border: 20px solid;
+  border-image: linear-gradient(45deg, #73076a, #b83ebdc9) 1;
+  box-shadow: 0 4px 12px rgba(51, 1, 38, 0.678);
 }
 
+/* ======== CABEÇALHO ======== */
 .contato-header {
   text-align: center;
   margin-bottom: 30px;
 }
 
 .contato-header h1 {
-  color: #6f42c1;
+  color: #73076a;
   font-size: 2rem;
 }
 
@@ -22,6 +26,7 @@
   font-size: 1.1rem;
 }
 
+/* ======== INFORMAÇÕES DE CONTATO ======== */
 .contato-info {
   display: flex;
   flex-wrap: wrap;
@@ -39,16 +44,17 @@
 }
 
 .info-item h3 {
-  color: #6f42c1;
+  color: #73076a;
   margin-bottom: 8px;
 }
 
+/* ======== FORMULÁRIO ======== */
 .contato-form {
   margin-bottom: 30px;
 }
 
 .contato-form h2 {
-  color: #6f42c1;
+  color: #73076a;
   margin-bottom: 15px;
 }
 
@@ -72,7 +78,7 @@
 }
 
 .form-box button {
-  background-color: #6f42c1;
+  background-color: #73076a;
   color: white;
   padding: 12px;
   border: none;
@@ -83,24 +89,26 @@
 }
 
 .form-box button:hover {
-  background-color: #5a379f;
+  background-color: #5a0456;
 }
 
+/* ======== MAPA ======== */
 .contato-mapa {
   margin-bottom: 30px;
 }
 
 .contato-mapa h2 {
-  color: #6f42c1;
+  color: #73076a;
   margin-bottom: 15px;
 }
 
+/* ======== REDES SOCIAIS ======== */
 .contato-redes {
   text-align: center;
 }
 
 .contato-redes h2 {
-  color: #6f42c1;
+  color: #73076a;
   margin-bottom: 15px;
 }
 
@@ -113,14 +121,59 @@
 
 .redes-links a {
   text-decoration: none;
-  color: #6f42c1;
-  border: 1px solid #6f42c1;
+  color: #73076a;
+  border: 1px solid #73076a;
   padding: 8px 16px;
   border-radius: 25px;
   transition: background-color 0.3s, color 0.3s;
 }
 
 .redes-links a:hover {
-  background-color: #6f42c1;
+  background-color: #73076a;
   color: #fff;
+}
+
+/* ======== BLOCO DE LOGIN ======== */
+.login-necessario {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 40px 0;
+}
+
+.login-card {
+  background: #fff;
+  padding: 40px 60px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 400px;
+}
+
+.login-card h2 {
+  font-size: 1.8rem;
+  color: #73076a;
+  margin-bottom: 15px;
+}
+
+.login-card p {
+  font-size: 1rem;
+  color: #444;
+  margin-bottom: 20px;
+}
+
+.btn-login {
+  display: inline-block;
+  background: linear-gradient(90deg, #73076a, #b83ebdc9);
+  color: white;
+  padding: 12px 25px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.btn-login:hover {
+  transform: scale(1.05);
+  background: linear-gradient(90deg, #b83ebdc9, #73076a);
 }

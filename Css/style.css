@@ -156,8 +156,6 @@ nav {
   gap: 12px;
 }
 
-
-
 /*------------------------*/
 /* HERO SECTION */
 
@@ -321,8 +319,8 @@ nav {
   font-size: 0.85rem;
 }
 
-/* DESTAQUES */
-.destaques {
+/* ======== BLOCO DE DESTAQUES ======== */
+  .destaques {
   padding: 40px 20px;
   text-align: center;
   background-color: #f5f5f5;
@@ -389,7 +387,7 @@ nav {
 
 .quem-somos-texto h2 {
   font-size: 2.5rem;
-  color: #eb008d;
+  color: #73076a;
   margin-bottom: 20px;
 }
 
