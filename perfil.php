@@ -29,7 +29,7 @@ if (!isset($_SESSION['id'])) {
     }
 
     main {
-      max-width: 1000px;
+      max-width: 1200px;
       margin: 60px auto;
       padding: 40px;
       background: rgba(255, 255, 255, 0.9);
@@ -56,8 +56,14 @@ if (!isset($_SESSION['id'])) {
       -webkit-text-fill-color: transparent;
     }
 
+      /* Remove o gradiente do emoji */
+.emoji {
+  -webkit-text-fill-color: initial; /* volta à cor padrão do sistema */
+  background: none;
+  }
+
     .perfil-header p {
-      color: #666;
+      color: #333;
       font-size: 1.1rem;
     }
 
@@ -159,7 +165,7 @@ if (!isset($_SESSION['id'])) {
 
   <main>
     <div class="perfil-header">
-      <h1>Olá, <?php echo htmlspecialchars($_SESSION['nome']); ?> 👋</h1>
+      <h1>Olá, <?php echo htmlspecialchars($_SESSION['nome']); ?> <span class="emoji">👋</span></h1>
       <p>Gerencie suas informações e pedidos abaixo.</p>
     </div>
 
@@ -177,12 +183,6 @@ if (!isset($_SESSION['id'])) {
         <a href="editar_perfil.php">Editar Dados</a>
       </div>
 
-      <div class="card-item">
-        <i class="fa-solid fa-location-dot"></i>
-        <h3>Meus Endereços</h3>
-        <p>Adicione ou edite seus endereços de entrega.</p>
-        <a href="enderecos.php">Gerenciar Endereços</a>
-      </div>
 
       <div class="card-item">
         <i class="fa-solid fa-receipt"></i>
