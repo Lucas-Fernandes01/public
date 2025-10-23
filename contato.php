@@ -68,7 +68,7 @@ session_start();
 
     <?php if (isset($_SESSION['id']) && isset($_SESSION['nome'])): // SÓ MOSTRA O FORMULÁRIO SE O USUÁRIO ESTIVER LOGADO ?>
     
-   section id="valores" class="secao-padrao">
+   <section id="valores" class="secao-padrao">
   <h2 class="titulo-secao" data-aos="fade-up">Nossos Valores</h2>
 
   <div class="valores-container">

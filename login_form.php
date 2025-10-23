@@ -26,6 +26,9 @@ session_start();
 </head>
 <body>
 
+
+
+
 <main>
     <?php
     // Mensagem de erro para login (do seu código original)
