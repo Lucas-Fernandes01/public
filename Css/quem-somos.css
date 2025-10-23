@@ -4,212 +4,215 @@ main.quem-somos {
   background-position: center;
   background-attachment: fixed;
   font-family: "Montserrat", sans-serif;
+  color: #fff; /* define cor padrão de texto */
 }
 
 /* Introdução */
 .intro {
   display: flex;
-  flex-wrap: wrap; /* Permite quebra para mobile */
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 40px;
-  margin-bottom: 50px;
-  padding: 60px 20px;
+  gap: 50px; /* aumenta espaçamento para melhor respiro */
+  margin-bottom: 60px;
+  padding: 80px 20px;
+  background: rgba(0,0,0,0.4); /* leve overlay para destacar o texto sobre a imagem */
+  border-radius: 15px;
 }
 
 /* Texto */
 .intro .texto {
   flex: 1 1 400px;
   max-width: 600px;
-  color: #ffffff;
 }
 
 .intro h1 {
   font-size: 3rem;
-  color: #ffffff;
+  font-weight: 700;
+  margin-bottom: 25px;
   position: relative;
   display: inline-block;
-  margin-bottom: 30px;
-  font-weight: bold;
 }
 
 .intro h1::after {
   content: "";
   position: absolute;
   left: 0;
-  bottom: -10px;
-  height: 4px;
-  width: 50%;
-  background-color: #FFD700;
-  border-radius: 2px;
+  bottom: -8px;
+  height: 5px;
+  width: 60%;
+  background: linear-gradient(90deg, #e9cb24e5, #FFA500); /* efeito gradiente no underline */
+  border-radius: 3px;
 }
 
 .intro p {
-  font-size: 1.1rem;
-  color: #ffffff;
-  line-height: 1.6;
-  margin-bottom: 15px;
+  font-size: 1.15rem;
+  line-height: 1.8;
+  margin-bottom: 20px;
+  color: #f1f1f1; /* contraste suave com background */
 }
 
 /* Imagem */
 .intro img.imagem-principal {
   flex: 1 1 300px;
-  max-width: 400px;
-  width: 150%;
-  border-radius: 15px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  max-width: 450px;
+  width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4); /* sombra mais elegante */
+  transition: transform 0.4s ease;
 }
+
+.intro img.imagem-principal:hover {
+  transform: scale(1.05); /* leve zoom ao passar o mouse */
+}
+
 /* Responsividade */
 @media (max-width: 768px) {
   .intro {
     flex-direction: column;
     text-align: center;
+    padding: 50px 20px;
   }
 
-  .intro , 
   .intro img.imagem-principal {
-    max-width: 100%;
+    max-width: 80%;
+  }
+
+  .intro h1 {
+    font-size: 2rem;
   }
 }
 
-
-.missao-onda {
-  background: url('../img/bg-onda-amarela.png') repeat-x;
-}
-
-.missao-ondaY {
-  background: url('../img/bg-onda-amarela.png') repeat-x;
-  transform: rotate(180deg);
-  margin-top: -5px; /* Ajuste para sobrepor ligeiramente */
-}
+/* Missão, Visão e Valores */
 
 .missao-visao-valores {
-  background-color: #fcb434; /* amarelo */
-  width: 100%;
+ background: rgba(0,0,0,0.4); /* leve overlay para destacar o texto */
+  padding: 60px 20px;
   text-align: center;
-  padding: 50px 0; /* espaço acima e abaixo */
-  box-sizing: border-box;
 }
 
-
 .missao-visao-valores h2 {
-  color: #4b3403;
-  font-size: 3rem;
-  margin-bottom: 30px;
-  font-family: 'Times New Roman', Times, serif;
+  color: #fff;
+  font-size: 2.8rem;
+  margin-bottom: 40px;
+  font-family: 'Georgia', serif;
 }
 
 /* Cards */
 .mvv-cards {
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 25px;
   flex-wrap: wrap;
 }
 
 .card {
-  background-color: #fff;
+  background: #fff;
   color: #333;
   flex: 1;
   min-width: 250px;
-  padding: 20px;
-  border-radius: 15px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
   text-align: center;
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
 }
 
 .card i {
-  font-size: 40px;
-  color: #f4b400; /* cor amarela/dourada */
+  font-size: 45px;
+  color: #f4b400;
   margin-bottom: 15px;
 }
 
 .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  transform: translateY(-7px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+  background: #fffbe6; /* leve destaque no hover */
 }
 
 .card h3 {
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   margin-bottom: 10px;
 }
 
 .card p {
-  font-size: 1rem;
-  line-height: 1.5;
+  font-size: 1.05rem;
+  line-height: 1.6;
 }
-
 
 /* Equipe */
 .equipe {
-  margin-bottom: 50px;
-  background-color: #faf5ff80;
-  padding: 30px 20px;
-  border-radius: 10px;
+  background-color: rgba(235, 235, 235, 0);
+  padding: 80px; 
+  border-radius: 15px;
   text-align: center;
+  margin-top: 50px;
+  margin-bottom: 60px;
 }
 
 .equipe h2 {
-  color: #6a1b9a;
-  font-size: 2rem;
-  margin-bottom: 15px;
+  color: #73076a;
+  font-size: 2.2rem;
+  margin-bottom: 20px;
 }
 
 .equipe p {
   max-width: 800px;
   margin: 0 auto;
-  color: #555;
-  line-height: 1.7;
-  font-size: 1rem;
+  color: #000000;
+  line-height: 1.8;
+  font-size: 1.05rem;
 }
-
 
 /* CTA */
 .cta {
   text-align: center;
-  background: linear-gradient(135deg, #6a1b9a, #8e24aa);
+  background: linear-gradient(135deg, #6a1b9a, #9c27b0);
   color: #fff;
-  padding: 50px 30px;
-  border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(106, 27, 154, 0.3);
+  padding: 60px 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(106,27,154,0.3);
 }
 
 .cta h2 {
-  font-size: 2rem;
+  font-size: 2.2rem;
   margin-bottom: 1rem;
 }
 
 .cta p {
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   max-width: 700px;
-  margin: 0 auto 20px;
+  margin: 0 auto 25px;
 }
 
 .cta .btn {
   display: inline-block;
-  padding: 12px 30px;
+  padding: 14px 35px;
   background-color: #fff;
   color: #5b0285;
   border-radius: 50px;
-  text-decoration: none;
   font-weight: 600;
-  transition: background-color 0.3s, color 0.3s;
+  text-decoration: none;
+  transition: background-color 0.3s, color 0.3s, transform 0.3s;
 }
 
 .cta .btn:hover {
   background-color: #f3e5f5;
   color: #eca840;
+  transform: scale(1.05);
 }
 
-/* Responsive adjustments */
+/* Responsividade geral */
 @media (max-width: 768px) {
   .mvv-cards {
     flex-direction: column;
     align-items: center;
   }
 
-  .intro h1, .historia h2, .missao-visao-valores h2, .equipe h2, .cta h2 {
+  .intro h1, 
+  .missao-visao-valores h2, 
+  .equipe h2, 
+  .cta h2 {
     font-size: 1.8rem;
   }
 }

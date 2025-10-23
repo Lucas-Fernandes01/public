@@ -70,10 +70,7 @@ Acreditamos que o açaí vai além de um alimento. Para nós, é uma experiênci
   <img src="img/açai-marmita.png" alt="Açaí" class="imagem-principal" />
 </section>
 
-<div class="missao-onda">
-<img src="img/bg-onda-amarela.png" alt="Onda decorativa" class="onda-decorativa" />
-      </div>
-  
+
       <section class="missao-visao-valores">
       
   <h2>Missão, Visão e Valores</h2>
@@ -95,10 +92,6 @@ Acreditamos que o açaí vai além de um alimento. Para nós, é uma experiênci
     </div>
   </div>
 </section>
-<div class="missao-ondaY">
-<img src="img/bg-onda-amarela.png" alt="Onda decorativa" class="onda-decorativa" />
-      </div>
-
 
     <section class="equipe">
       <h2>Nossa Equipe</h2>

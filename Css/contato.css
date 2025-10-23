@@ -1,14 +1,93 @@
+/* ======== ESTILO GERAL ======== */
+body {
+  font-family: 'Montserrat', system-ui, sans-serif;
+  background: linear-gradient(180deg, #ffffff, #d6b0dbc0);
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
 /* ======== CONTAINER PRINCIPAL ======== */
-.contato-page {
-  max-width: 1800px;
+ .contato-page {
+  max-width: 1100px;
   margin: 40px auto;
   padding: 40px;
   background: rgba(255, 255, 255, 0.9);
   border-radius: 20px;
   border: 2px solid transparent;
+  background-clip: padding-box;
   box-shadow: 0 8px 24px rgba(115, 7, 106, 0.25);
   backdrop-filter: blur(8px);
   animation: fadeIn 0.8s ease;
+}
+
+/* ======== SEÇÃO VALORES ======== */
+#valores {
+  text-align: left;
+  padding: 80px 20px;
+  background: linear-gradient(180deg, #e0b6e665 0%, #ffffff 100%);
+}
+
+.titulo-secao {
+  font-size: 2.2rem;
+  color: #73076a;
+  margin-bottom: 50px;
+  font-weight: 700;
+  position: relative;
+}
+
+.titulo-secao::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #73076a, #b83ebdc9);
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+.valores-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+  justify-items: center;
+}
+
+.valor-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 30px 20px;
+  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  max-width: 280px;
+}
+
+.valor-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(116, 3, 106, 0.349);
+}
+
+.valor-card img {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 15px;
+  transition: transform 0.3s ease;
+}
+
+.valor-card:hover img {
+  transform: scale(1.1);
+}
+
+.valor-card h3 {
+  color: #73076a;
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+}
+
+.valor-card p {
+  color: #555;
+  font-size: 0.95rem;
+  line-height: 1.5;
 }
 
 /* ======== CABEÇALHO ======== */
@@ -24,6 +103,7 @@
   margin-bottom: 10px;
   background: linear-gradient(90deg, #73076a, #b83ebdc9);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
@@ -36,34 +116,34 @@
 .contato-info {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 20px;
+  gap: 25px;
   margin-bottom: 40px;
 }
 
 .info-item {
   background: #fff;
-  border-radius: 12px;
-  padding: 20px;
+  border-radius: 15px;
+  padding: 25px;
   text-align: center;
   border: 1px solid #eee;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 6px 18px rgba(115, 7, 106, 0.1);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .info-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 20px rgba(115, 7, 106, 0.15);
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(115, 7, 106, 0.2);
 }
 
 .info-item h3 {
   color: #73076a;
-  font-size: 1.2rem;
-  margin-bottom: 6px;
+  font-size: 1.3rem;
+  margin-bottom: 8px;
 }
 
 .info-item p {
   color: #555;
-  font-size: 0.95rem;
+  font-size: 0.98rem;
 }
 
 /* ======== FORMULÁRIO ======== */
@@ -94,7 +174,7 @@
   border-radius: 8px;
   font-size: 1rem;
   background: #f9f9f9;
-  transition: all 0.2s;
+  transition: all 0.2s ease;
 }
 
 .form-box input:focus,
@@ -119,12 +199,12 @@
   font-weight: 600;
   font-size: 1rem;
   cursor: pointer;
-  transition: 0.3s;
+  transition: transform 0.3s ease, background 0.3s ease;
   box-shadow: 0 4px 10px rgba(115, 7, 106, 0.2);
 }
 
 .form-box button:hover {
-  transform: scale(1.03);
+  transform: scale(1.05);
   background: linear-gradient(90deg, #b83ebdc9, #73076a);
 }
 
@@ -170,7 +250,7 @@
   padding: 10px 18px;
   border-radius: 30px;
   font-weight: 600;
-  transition: 0.3s;
+  transition: all 0.3s ease;
 }
 
 .redes-links a:hover {
@@ -194,7 +274,7 @@
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   text-align: center;
   max-width: 420px;
-  transition: 0.3s;
+  transition: 0.3s ease;
 }
 
 .login-card:hover {
@@ -222,7 +302,7 @@
   border-radius: 10px;
   text-decoration: none;
   font-weight: 600;
-  transition: 0.3s;
+  transition: transform 0.3s ease, background 0.3s ease;
 }
 
 .btn-login:hover {
@@ -230,7 +310,7 @@
   background: linear-gradient(90deg, #b83ebdc9, #73076a);
 }
 
-/* ======== ANIMAÇÕES ======== */
+/* ======== ANIMAÇÃO ======== */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
@@ -248,7 +328,7 @@
   }
 
   .info-item {
-    padding: 15px;
+    padding: 18px;
   }
 
   .login-card {

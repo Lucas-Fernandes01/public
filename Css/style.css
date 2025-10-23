@@ -442,21 +442,23 @@ nav {
 }
 
 /* Grid de miniaturas */
+
 .galeria-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* aumenta largura mínima */
   gap: 20px;
+  padding: 20px;
 }
 
 /* Item individual */
-.galeria-item {
-  position: relative;
-  overflow: hidden;
-  border-radius: 12px;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s;
+.galeria-item img {
+  width: 100%;
+  height: 220px; /* aumenta altura */
+  object-fit: cover;
+  border-radius: 16px;
+  transition: transform 0.4s, opacity 0.4s;
 }
+
 
 .galeria-item img {
   width: 100%;

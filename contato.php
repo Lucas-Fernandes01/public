@@ -68,35 +68,36 @@ session_start();
 
     <?php if (isset($_SESSION['id']) && isset($_SESSION['nome'])): // SÓ MOSTRA O FORMULÁRIO SE O USUÁRIO ESTIVER LOGADO ?>
     
-   <section id="valores" class="secao-padrao">
+<section id="valores" class="secao-padrao">
   <h2 class="titulo-secao" data-aos="fade-up">Nossos Valores</h2>
 
   <div class="valores-container">
-    <div class="valor-card" data-aos="fade-right" data-aos-delay="100">
-      <img src="https://img.icons8.com/color/96/000000/checked--v1.png" alt="Qualidade">
+    <div class="valor-card" data-aos="zoom-in" data-aos-delay="100">
+      <img src="https://img.icons8.com/color/96/checked--v1.png" alt="Qualidade">
       <h3>Qualidade</h3>
       <p>Produtos com alto padrão de qualidade para satisfazer nossos clientes.</p>
     </div>
 
-    <div class="valor-card" data-aos="fade-right" data-aos-delay="200">
-      <img src="https://img.icons8.com/color/96/000000/handshake--v1.png" alt="Compromisso">
+    <div class="valor-card" data-aos="zoom-in" data-aos-delay="200">
+      <img src="https://img.icons8.com/color/96/handshake--v1.png" alt="Compromisso">
       <h3>Compromisso</h3>
       <p>Atendimento ágil, transparente e comprometido com nossos parceiros.</p>
     </div>
 
-    <div class="valor-card" data-aos="fade-right" data-aos-delay="300">
-      <img src="https://img.icons8.com/color/96/000000/leaf.png" alt="Sustentabilidade">
+    <div class="valor-card" data-aos="zoom-in" data-aos-delay="300">
+      <img src="https://img.icons8.com/color/96/leaf.png" alt="Sustentabilidade">
       <h3>Sustentabilidade</h3>
       <p>Práticas que respeitam o meio ambiente e a comunidade local.</p>
     </div>
 
-    <div class="valor-card" data-aos="fade-right" data-aos-delay="400">
-      <img src="https://img.icons8.com/color/96/000000/idea.png" alt="Inovação">
+    <div class="valor-card" data-aos="zoom-in" data-aos-delay="400">
+      <img src="https://img.icons8.com/color/96/idea.png" alt="Inovação">
       <h3>Inovação</h3>
       <p>Pesquisa constante para oferecer os melhores sabores e experiências.</p>
     </div>
   </div>
 </section>
+
 
     <?php else: // SE NÃO ESTIVER LOGADO, MOSTRA ESTA MENSAGEM ?>
 
