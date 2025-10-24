@@ -17,15 +17,13 @@ $resultado = $conn->query($sql);
     
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
     
     <style>
-        /* Estilos específicos para o painel de admin, para não conflitar com style.css */
         body { background-color: #f4f0f7; }
         .admin-container { max-width: 1000px; margin: 40px auto; padding: 30px; background-color: #fff; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
-        .admin-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; border-bottom: 1px solid #dee2e6; padding-bottom: 15px; }
-        .admin-header h2 { color: #4b0055; font-weight: 600; }
+        .admin-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; border-bottom: 1px solid #dee2e6; padding-bottom: 15px; flex-wrap: wrap; gap: 10px; }
+        .admin-header h2 { color: #4b0055; font-weight: 600; margin: 0; }
         .btn-add { background-color: #6f42c1; color: white; padding: 8px 15px; text-decoration: none; border-radius: 6px; font-weight: 500; transition: background-color 0.3s; }
         .btn-add:hover { background-color: #5a379f; color: white; }
         .table th { background-color: #451761; color: #fff; }
@@ -54,7 +52,10 @@ $resultado = $conn->query($sql);
     <main class="admin-container">
         <div class="admin-header">
             <h2>Gerenciamento de Opções</h2>
-            <a href="editar_item.php" class="btn-add">Adicionar Nova Opção</a>
+            <div>
+                <a href="pedidos_admin.php" class="btn-add" style="background-color: #0d6efd;">Ver Pedidos</a>
+                <a href="editar_item.php" class="btn-add">Adicionar Opção</a>
+            </div>
         </div>
 
         <div class="table-responsive">
@@ -82,13 +83,13 @@ $resultado = $conn->query($sql);
                             </td>
                             <td class="action-links">
                                 <a href="editar_item.php?id=<?php echo $item['id']; ?>" class="edit">Editar</a>
-                                <a href="excluir_item.php?id=<?php echo $item['id']; ?>" class="delete" onclick="return confirm('Tem certeza que deseja excluir? Esta ação não pode ser desfeita.');">Excluir</a>
+                                <a href="excluir_item.php?id=<?php echo $item['id']; ?>" class="delete" onclick="return confirm('Tem certeza que deseja excluir?');">Excluir</a>
                             </td>
                         </tr>
                         <?php endwhile; ?>
                     <?php else: ?>
                         <tr>
-                            <td colspan="5" class="text-center">Nenhuma opção cadastrada. Clique em "Adicionar Nova Opção" para começar.</td>
+                            <td colspan="5" class="text-center">Nenhuma opção cadastrada.</td>
                         </tr>
                     <?php endif; $conn->close(); ?>
                 </tbody>

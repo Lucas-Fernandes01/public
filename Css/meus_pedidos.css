@@ -1,0 +1,152 @@
+/* Estilo para a página Meus Pedidos */
+body {
+    background-color: #f4f0f7;
+}
+
+.pedidos-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.pedidos-header h2 {
+    color: #4b0055;
+    font-weight: 600;
+}
+
+#container-pedidos {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.card-pedido {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    margin-bottom: 25px;
+    overflow: hidden;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.card-pedido-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.card-pedido-header h4 {
+    margin: 0;
+    color: #4b0055;
+}
+
+.card-pedido-header span {
+    font-size: 0.9em;
+    color: #6c757d;
+}
+
+.card-pedido-body {
+    padding: 20px;
+}
+
+.item-do-pedido {
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    border-bottom: 1px dashed #eee;
+}
+
+.item-do-pedido:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.item-titulo {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.item-do-pedido p {
+    margin-bottom: 4px;
+    font-size: 0.95em;
+}
+
+.item-subtotal {
+    font-weight: 500;
+    color: #555;
+}
+
+.card-pedido-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #f8f9fa;
+    border-top: 1px solid #dee2e6;
+}
+
+.card-pedido-footer strong {
+    color: #6f42c1;
+    font-size: 1.1em;
+}
+
+/* --- ESTILO DA LIXEIRA E DOS STATUS --- */
+.btn-cancelar {
+    font-size: 1.3rem; /* Tamanho do ícone */
+    color: #dc3545;   /* Vermelho para o ícone ativo */
+    text-decoration: none;
+    transition: color 0.3s, transform 0.2s;
+    padding: 5px; /* Aumenta a área de clique */
+}
+
+.btn-cancelar:hover {
+    color: #a71d2a; /* Vermelho mais escuro no hover */
+    transform: scale(1.15);
+}
+
+.btn-cancelar.disabled {
+    color: #adb5bd; /* Cinza para o ícone desabilitado */
+    cursor: not-allowed;
+    pointer-events: none; /* Impede o clique */
+}
+
+.btn-cancelar.disabled:hover {
+    transform: none; /* Remove o efeito de zoom quando desabilitado */
+}
+
+.status {
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.8em;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Laranja para "Em preparação" */
+.status-preparacao {
+    background-color: #fd7e14;
+}
+
+/* Azul para "A caminho" */
+.status-caminho {
+    background-color: #0d6efd;
+}
+
+/* Verde para "Entregue" */
+.status-entregue {
+    background-color: #198754;
+}
+
+/* Vermelho para "Cancelado" */
+.status-cancelado {
+    background-color: #dc3545;
+}
