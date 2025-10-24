@@ -65,8 +65,6 @@ session_start();
         unset($_SESSION['mensagem_contato_tipo']);
     }
     ?>
-
-    <?php if (isset($_SESSION['id']) && isset($_SESSION['nome'])): // SÓ MOSTRA O FORMULÁRIO SE O USUÁRIO ESTIVER LOGADO ?>
     
 <section id="valores" class="secao-padrao">
   <h2 class="titulo-secao" data-aos="fade-up">Nossos Valores</h2>
@@ -97,6 +95,38 @@ session_start();
     </div>
   </div>
 </section>
+
+      <?php
+    // Bloco que mostra a mensagem de sucesso ou erro vinda do 'enviar.php'
+    if (isset($_SESSION['mensagem_contato'])) {
+        $tipo_mensagem = $_SESSION['mensagem_contato_tipo'] ?? 'erro';
+        echo '<div class="mensagem-status ' . htmlspecialchars($tipo_mensagem) . '">' . htmlspecialchars($_SESSION['mensagem_contato']) . '</div>';
+        unset($_SESSION['mensagem_contato']);
+        unset($_SESSION['mensagem_contato_tipo']);
+    }
+    ?>
+
+    <?php if (isset($_SESSION['id']) && isset($_SESSION['nome'])): // SÓ MOSTRA O FORMULÁRIO SE O USUÁRIO ESTIVER LOGADO ?>
+    
+    <section class="contato-form">
+      <h2>Envie uma Mensagem</h2>
+      <form action="enviar.php" method="post" class="form-box" enctype="multipart/form-data">
+        
+        <label for="nome">Seu Nome:</label>
+        <input type="text" id="nome" name="nome" value="<?php echo htmlspecialchars($_SESSION['nome']); ?>" readonly required>
+
+        <label for="assunto">Assunto:</label>
+        <input type="text" id="assunto" name="assunto" required>
+
+        <label for="mensagem">Mensagem:</label>
+        <textarea id="mensagem" name="mensagem" rows="4" required></textarea>
+
+        <label for="anexo">Anexo (opcional):</label>
+        <input type="file" id="anexo" name="anexo">
+
+        <button type="submit">Enviar Mensagem</button>
+      </form>
+    </section>
 
 
     <?php else: // SE NÃO ESTIVER LOGADO, MOSTRA ESTA MENSAGEM ?>
@@ -135,7 +165,7 @@ session_start();
   <footer class="footer-dark">
       <div class="container py-5">
         <div class="row">
-          <div class="col-md-3"><h5>Açaí da Suíça</h5><p>Mais que sabor, uma experiência...</p><a href="quem_somos.php" class="read-more">saiba mais →</a></div>
+          <div class="col-md-3"><h5>Açaí da Suíça</h5><p>Mais que sabor, uma experiência. Feito com carinho para conquistar você do seu jeito.</p><a href="quem_somos.php" class="read-more">saiba mais →</a></div>
           <div class="col-md-3"><h5>Contato</h5><ul class="list-unstyled"><li><i class="fas fa-map-marker-alt"></i> Nova Suiça, Piracicaba - SP</li><li><i class="fas fa-phone"></i> (19) 99951-0173</li><li><i class="fas fa-envelope"></i> contato@acaidasuica.com.br</li></ul></div>
           <div class="col-md-3"><h5>Funcionamento</h5><ul class="list-unstyled"><li>Seg a Sex: 17h - 22h</li><li>Domingo: 14h - 22h</li></ul></div>
           <div class="col-md-3"><h5>Encontre-nos</h5><div class="footer-map"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3679.5749843614562!2d-47.69305532574842!3d-22.744033432072634!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c637fa6843c5bf%3A0x78c6c3677d48448a!2zQcOnYWkgZGEgU3Vpw6dh!5e0!3m2!1spt-BR!2sbr!4v1751499566388!5m2!1spt-BR!2sbr" width="100%" height="180" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div></div>
