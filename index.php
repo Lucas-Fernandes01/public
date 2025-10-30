@@ -56,11 +56,7 @@ session_start();
       <div class="hero-image">
         <img src="Img/HEADER2.jpg" alt="Marmita Açaí da Suíça" />
 
-        <div class="hero-buttons">
-          <a href="contato.php" class="btn-primary">Entre em contato</a>
-          <a href="cardapio.php" class="btn-secondary">Ver cardápio</a>
-        </div>
-      </div>
+        
 
       <img src="Img/icon/grunge-divider-3.png" alt="" style="width:100%; display:block; margin-top: 0px;">
 
@@ -123,36 +119,39 @@ Para nós, o açaí vai além de um alimento: é uma experiência que transmite 
       
 
        <!-- DESTAQUES -->
-  <section class="destaques">
-    <div class="destaques-container">
-      <h2>Cardápios</h2>
-      <div class="destaques-cards">
-        <div class="card" data-aos="zoom-in-up" data-aos-delay="100">
-          <img src="Img/cardapio/copo.jpg" alt="Açaí no Copo">
-          <h3>Açaí no Copo</h3>
-          <p>Delicioso açaí servido no copo, perfeito para qualquer hora.</p>
-        </div>
-        <div class="card" data-aos="fade-up" data-aos-delay="200">
-          <img src="Img/cardapio/marmita.jpg" alt="Açaí na Marmita">
-          <h3>Açaí na Marmita</h3>
-          <p>Praticidade e sabor em uma marmita recheada de açaí.</p>
-        </div>
-        <div class="card" data-aos="fade-up" data-aos-delay="300">
-          <img src="Img/cardapio/combos.jpg" alt="Combos de Açaí">
-          <h3>Combos de Açaí</h3>
-          <p>Experimente nossos combos especiais com açaí.</p>
-        </div>
-        <div class="card" data-aos="fade-up" data-aos-delay="400">
-          <img src="Img/cardapio/fondue.jpg" alt="Fondue de Açaí">
-          <h3>Fondue de Açaí</h3>
-          <p>Uma experiência única com nosso fondue de açaí.</p>
-        </div>
+ <section class="destaques">
+  <div class="destaques-container">
+    <h2>Cardápios</h2>
 
-
-      <h2>Combos Especiais</h2>
-       <div class="cards">
-      <div class="card" data-aos="zoom-in-up" data-aos-delay="100">
+    <div class="destaques-cards">
       
+      <div class="card" data-aos="zoom-in-up" data-aos-delay="100">
+        <img src="Img/cardapio/copo.jpg" alt="Açaí no Copo">
+        <h3>Açaí no Copo</h3>
+        <p>Delicioso açaí servido no copo, perfeito para qualquer hora.</p>
+      </div>
+      <div class="card" data-aos="fade-up" data-aos-delay="200">
+        <img src="Img/cardapio/marmita.jpg" alt="Açaí na Marmita">
+        <h3>Açaí na Marmita</h3>
+        <p>Praticidade e sabor em uma marmita recheada de açaí.</p>
+      </div>
+      <div class="card" data-aos="fade-up" data-aos-delay="300">
+        <img src="Img/cardapio/combos.jpg" alt="Combos de Açaí">
+        <h3>Combos de Açaí</h3>
+        <p>Experimente nossos combos especiais com açaí.</p>
+      </div>
+      <div class="card" data-aos="fade-up" data-aos-delay="400">
+        <img src="Img/cardapio/fondue.jpg" alt="Fondue de Açaí">
+        <h3>Fondue de Açaí</h3>
+        <p>Uma experiência única com nosso fondue de açaí.</p>
+      </div>
+    </div>
+
+    <br></br>
+
+    <h2>Combos Especiais</h2>
+
+    <div class="destaques-cards"> <div class="card" data-aos="zoom-in-up" data-aos-delay="100">
         <img src="Img/card/card1.jpg" alt="Combo 1">
         <h3>Combo Trufado</h3>
         <p>2 copos de 300ml com açai, leite condensado, leite em pó, creme de avelã e ovolmaltine</p>
@@ -178,7 +177,8 @@ Para nós, o açaí vai além de um alimento: é uma experiência que transmite 
         <p>2 copos de 300ml com açai, leite condensado, leite em pó, bis e granola.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
   
   <!-- Galeria de Fotos-->
