@@ -15,7 +15,7 @@ O sistema permite que clientes montem seus açaís, finalizem pedidos que são s
 -   **Banco de Dados:** MySQL / MariaDB
 -   **Servidor Local:** XAMPP ou Laragon
 -   **Gerenciador de Dependências:** Composer
--   **Gerenciador de Migrations:** Phinx
+-   **Gerenciador de Banco de Dados:** Phinx (para Migrations e Seeders)
 
 ---
 
@@ -52,38 +52,34 @@ cd C:\xampp\htdocs
 
 # Para usuários Laragon
 cd C:\laragon\www
-
 Agora, clone o repositório:
 
-Bash (Terminal)
-git clone [URL_DO_SEU_REPOSITORIO_GIT] public
+Bash
 
+git clone [URL_DO_SEU_REPOSITORIO_GIT] public
 2. Acessar a Pasta do Projeto
 Todos os comandos a seguir devem ser executados de dentro da pasta public.
 
-Bash (Terminal)
+Bash
 
 # Para usuários XAMPP
 cd C:\xampp\htdocs\public
 
 # Para usuários Laragon
 cd C:\laragon\www\public
-
 O seu terminal deve indicar que você está neste diretório.
 
 3. Configurar o Banco de Dados
-O banco de dados é gerenciado pelo Phinx, então você não precisa importar nenhum arquivo .sql manualmente.
-
-a. Crie o Banco de Dados:
+a. Crie o Banco de Dados Vazio:
 
 Abra seu gerenciador de banco de dados (phpMyAdmin) e crie um novo banco de dados vazio chamado acai.
 
-SQL:
+SQL
+
 CREATE DATABASE acai CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+b. Verifique a Conexão no phinx.php:
 
-b. Verifique a Conexão:
-
-Abra o arquivo phinx.php na raiz do projeto e garanta que as credenciais na seção development correspondem às do seu ambiente local (geralmente root e senha em branco).
+Abra o arquivo phinx.php e garanta que as credenciais na seção development correspondem às do seu ambiente local (geralmente root e senha em branco).
 
 PHP
 
@@ -97,46 +93,33 @@ PHP
     'port'    => '3306',
     'charset' => 'utf8',
 ]
-
-4. Instalar as Dependências
+4. Instalar as Dependências do Projeto
 Com o Composer instalado e o terminal na pasta public, execute:
 
-Bash (Terminal):
-composer install
+Bash
 
+composer install
 Este comando irá ler o arquivo composer.json e instalará todas as dependências necessárias (como o Phinx) na pasta vendor/.
 
-5. Executar as Migrations
-Agora, vamos criar a estrutura do banco de dados. O Phinx fará isso automaticamente. Ainda no terminal, execute:
+5. Construir a Estrutura do Banco (Migrations)
+Agora, vamos criar as tabelas e colunas. O Phinx fará isso automaticamente. Ainda no terminal, execute:
 
-Bash (Terminal):
+Bash
+
 vendor/bin/phinx migrate
+Este comando irá ler a pasta db/migrations e construir o "esqueleto" do seu banco de dados acai.
 
-Este comando irá ler os arquivos na pasta db/migrations e criará todas as tabelas e colunas necessárias no seu banco de dados acai.
+6. Popular o Banco com Dados Iniciais (Seeders)
+Com a estrutura pronta, vamos inserir os dados iniciais, como os usuários padrão e a lista de ingredientes.
 
-6. Iniciar o Projeto
+Bash
+
+vendor/bin/phinx seed:run
+Este comando executa os arquivos da pasta db/seeds para popular as tabelas.
+
+7. Iniciar o Projeto
 Com tudo configurado, basta acessar o endereço correspondente no seu navegador:
 
 http://localhost/public/
 
-O site deverá estar funcionando corretamente.
-
-🗃️ Estrutura do Banco de Dados com Phinx
-As alterações na estrutura do banco de dados são gerenciadas como código PHP através do Phinx.
-
-Local dos Arquivos: db/migrations/
-
-Para aplicar novas alterações (de outros desenvolvedores):
-
-Bash (Terminal):
-vendor/bin/phinx migrate
-
-Para criar uma nova alteração:
-
-Bash (Terminal):
-vendor/bin/phinx create NomeDaAlteracaoEmPascalCase
-
-Para desfazer a última alteração:
-
-Bash (Terminal):
-vendor/bin/phinx rollback
+O site deverá estar funcionando corretamente com os dados iniciais carregados.
