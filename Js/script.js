@@ -73,6 +73,19 @@
     const entrega = document.querySelector('select[name="entrega"]').value;
     const observacao = document.querySelector('textarea[name="observacao"]').value;
 
+    let enderecoCompleto = null;
+    let cep = null; // <-- MUDANÇA AQUI: Variável para guardar o CEP
+    if (entrega === 'Delivery') {
+        const enderecoElem = document.querySelector('input[name="endereco_id"]:checked');
+        if (enderecoElem) {
+            enderecoCompleto = enderecoElem.parentElement.innerText.trim();
+            cep = enderecoElem.dataset.cep; // <-- MUDANÇA AQUI: Captura o CEP do data-attribute
+        } else {
+            alert("Por favor, selecione um endereço para a entrega!");
+            return;
+        }
+    }
+
     let valorPedido = parseFloat(tamanhoElem.dataset.price || extrairPreco(tamanhoElem.value));
     adicionaisElems.forEach(a => {
       valorPedido += parseFloat(a.dataset.price || extrairPreco(a.value));
@@ -84,13 +97,15 @@
       complementos,
       adicionais: adicionaisElems.map(a => a.value),
       entrega,
+      enderecoCompleto: enderecoCompleto,
+      cep: cep, // <-- MUDANÇA AQUI: Salva o CEP no objeto do pedido
       observacao,
       valor: Number(valorPedido.toFixed(2))
     };
 
     carrinho.push(pedido);
     atualizarCarrinhoUI();
-    limparFormulario(); // limpa o preview e inputs para novo pedido (não zera valorTotalPagar)
+    limparFormulario();
   }
 
   function atualizarCarrinhoUI() {
@@ -135,34 +150,30 @@
 
     if (!isLoggedIn) {
       alert("É necessário fazer login para finalizar o seu pedido.");
-      // Redireciona para o login, passando a página atual para voltar depois
       window.location.href = 'login_form.php?redirect_url=' + window.location.pathname.split('/').pop();
       return;
     }
 
-    // 1. TENTA SALVAR O PEDIDO NO BANCO DE DADOS
     fetch('salvar_pedido.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify(carrinho) // Envia o carrinho como JSON
+        body: JSON.stringify(carrinho)
     })
     .then(response => {
-        // A resposta.json() também retorna uma promessa, então encadeamos outro .then
         return response.json().then(data => {
             if (!response.ok) {
-                // Se o servidor retornou um erro (ex: 401, 500), lança um erro com a mensagem do PHP
                 throw new Error(data.mensagem || 'Erro desconhecido do servidor.');
             }
-            return data; // Retorna os dados de sucesso para o próximo .then
+            return data;
         });
     })
     .then(data => {
-        // 2. SE O PEDIDO FOI SALVO COM SUCESSO, MONTA A MENSAGEM E ABRE O WHATSAPP
-        console.log(data.mensagem); // "Pedido salvo com sucesso!"
+        console.log(data.mensagem);
         
         let mensagem = `🍨 *Meu pedido Açaí da Suíça*\n\n`;
+
         carrinho.forEach((pedido, index) => {
             mensagem += `*Item ${index + 1}*\n`;
             mensagem += `- Tipo: ${pedido.tipo}\n`;
@@ -173,7 +184,14 @@
             if (pedido.adicionais.length > 0) {
                 mensagem += `- Adicionais: ${pedido.adicionais.join(", ")}\n`;
             }
-            mensagem += `- Entrega: ${pedido.entrega}\n`;
+            
+            // <-- MUDANÇA AQUI: Lógica para formatar a linha de entrega -->
+            if (pedido.entrega === 'Delivery' && pedido.enderecoCompleto) {
+                mensagem += `- Entrega: *Endereço de Entrega:*\n${pedido.enderecoCompleto} - ${pedido.cep || ''}\n`;
+            } else {
+                mensagem += `- Entrega: Retirar na loja\n`;
+            }
+
             if (pedido.observacao) {
                 mensagem += `- Observações: ${pedido.observacao}\n`;
             }
@@ -183,21 +201,18 @@
         const totalPagar = carrinho.reduce((acc, pedido) => acc + pedido.valor, 0);
         mensagem += `*TOTAL GERAL: R$ ${totalPagar.toFixed(2)}*`;
 
-        const numeroWhatsApp = "5519999510173"; // Use seu número
+        const numeroWhatsApp = "5519999510173";
         const link = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
         
-        // Abre o WhatsApp e limpa o carrinho no site
         window.open(link, "_blank");
-        carrinho = []; // Limpa o carrinho
-        atualizarCarrinhoUI(); // Atualiza a interface
+        carrinho = [];
+        atualizarCarrinhoUI();
     })
     .catch(error => {
-        // 3. SE FALHOU EM SALVAR, MOSTRA UM ALERTA PARA O USUÁRIO
         console.error('Erro ao finalizar o pedido:', error);
         alert('Falha ao salvar o pedido no nosso sistema. Por favor, tente novamente.\n\nDetalhe: ' + error.message);
     });
   }
-
 
   // eventos iniciais
   document.addEventListener("DOMContentLoaded", () => {

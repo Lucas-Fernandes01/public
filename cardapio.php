@@ -29,6 +29,27 @@ while ($item = $resultado->fetch_assoc()) {
             break;
     }
 }
+
+// --- NOVO CÓDIGO COMEÇA AQUI ---
+// 4. BUSCAMOS OS ENDEREÇOS DO USUÁRIO LOGADO
+$enderecos = [];
+if (isset($_SESSION['id'])) {
+    $usuario_id = $_SESSION['id'];
+    
+    // Usando prepared statements para evitar injeção de SQL
+    // Linha 40 (aproximadamente)
+    $stmt = $conn->prepare("SELECT id, endereco, numero, bairro, cep FROM enderecos WHERE usuario_id = ?");
+    $stmt->bind_param("i", $usuario_id);
+    $stmt->execute();
+    $resultado_enderecos = $stmt->get_result();
+    
+    while ($endereco = $resultado_enderecos->fetch_assoc()) {
+        $enderecos[] = $endereco;
+    }
+    $stmt->close();
+}
+// --- NOVO CÓDIGO TERMINA AQUI ---
+
 $conn->close();
 ?>
 <!DOCTYPE html>
@@ -136,11 +157,36 @@ $conn->close();
     </div><br>
 
           <h3>Tipo de entrega:</h3>
-          <select name="entrega" required>
+          <select name="entrega" id="tipoEntrega" onchange="toggleEntrega()" required>
             <option value="Retirar no local">Retirar no local</option>
             <option value="Delivery">Delivery</option>
           </select><br><br>
 
+          <div id="enderecoSection" style="display:none;">
+            <?php if (isset($_SESSION['id'])): // Verifica se o usuário está logado ?>
+                
+                <?php if (!empty($enderecos)): // Verifica se ele tem endereços cadastrados ?>
+                    <h4>Escolha o endereço de entrega:</h4>
+                    <?php foreach ($enderecos as $endereco): ?>
+                        <label>
+                            <input type="radio" name="endereco_id" value="<?php echo $endereco['id']; ?>" data-cep="<?php echo htmlspecialchars($endereco['cep']); ?>" required>
+                            <?php 
+                                echo htmlspecialchars($endereco['endereco']) . ', ' . htmlspecialchars($endereco['numero']) . ' - ' . htmlspecialchars($endereco['bairro']);
+                            ?>
+                        </label><br>
+                    <?php endforeach; ?>
+                    <br>
+                    <a href="editar_perfil.php">Gerenciar ou adicionar novo endereço</a>
+
+                <?php else: // Se não tiver endereços ?>
+                    <p style="color: red; font-weight: bold;">Você não possui um endereço de entrega cadastrado.</p>
+                    <p><a href="perfil.php">Clique aqui para adicionar um endereço</a> em seu perfil antes de finalizar o pedido.</p>
+                <?php endif; ?>
+
+            <?php else: // Se o usuário não estiver logado ?>
+                <p style="color: red; font-weight: bold;">Você precisa <a href="login_form.php">fazer login</a> para selecionar a entrega em domicílio.</p>
+            <?php endif; ?>
+          </div>
           <label for="observacao">Observações:</label><br>
           <textarea name="observacao" rows="3" placeholder="Ex: Sem açúcar, mais gelado..."></textarea><br><br>
 
@@ -217,5 +263,25 @@ $conn->close();
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
 
-</body>
+    <script>
+        function toggleEntrega() {
+            const tipoEntregaSelect = document.getElementById('tipoEntrega');
+            const enderecoSectionDiv = document.getElementById('enderecoSection');
+
+            // Se o valor selecionado for 'Delivery', mostra a seção de endereços.
+            // Caso contrário, esconde.
+            if (tipoEntregaSelect.value === 'Delivery') {
+                enderecoSectionDiv.style.display = 'block';
+            } else {
+                enderecoSectionDiv.style.display = 'none';
+            }
+        }
+
+        // Adiciona um listener para garantir que a função seja chamada assim que a página carregar.
+        // Isso é útil caso a página seja recarregada e a opção "Delivery" já esteja selecionada.
+        document.addEventListener('DOMContentLoaded', function() {
+            toggleEntrega(); 
+        });
+    </script>
+    </body>
 </html>
