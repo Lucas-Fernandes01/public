@@ -2,17 +2,15 @@
 session_start();
 include 'conexao.php';
 
-// Proteção: se não estiver logado, não faz nada.
 if (!isset($_SESSION['id'])) {
     header('Location: login_form.php');
     exit();
 }
 
 $id_usuario = $_SESSION['id'];
-$action = $_REQUEST['action'] ?? null; // Pega 'action' tanto de POST quanto de GET
+$action = $_REQUEST['action'] ?? null;
 
 try {
-    // --- LÓGICA PARA ATUALIZAR E-MAIL ---
     if ($action === 'update_email' && $_SERVER['REQUEST_METHOD'] === 'POST') {
         $novo_email = trim($_POST['email']);
         
@@ -37,7 +35,6 @@ try {
         $_SESSION['mensagem_sucesso'] = "E-mail atualizado com sucesso!";
     }
 
-    // --- LÓGICA PARA ATUALIZAR SENHA ---
     elseif ($action === 'update_password' && $_SERVER['REQUEST_METHOD'] === 'POST') {
         $senha_atual = $_POST['senha_atual'];
         $nova_senha = $_POST['nova_senha'];
@@ -49,6 +46,12 @@ try {
         if ($nova_senha !== $confirma_senha) {
             throw new Exception("A nova senha e a confirmação não correspondem.");
         }
+        
+        // --- ADIÇÃO DA VALIDAÇÃO DE 6 CARACTERES ---
+        if (strlen($nova_senha) < 6) {
+            throw new Exception("A nova senha deve ter pelo menos 6 caracteres.");
+        }
+        // --- FIM DA ADIÇÃO ---
 
         $stmt = $conn->prepare("SELECT senha FROM cadastro_usuarios WHERE id = ?");
         $stmt->bind_param("i", $id_usuario);
@@ -72,7 +75,6 @@ try {
         $_SESSION['mensagem_sucesso'] = "Senha atualizada com sucesso!";
     }
 
-    // --- LÓGICA PARA ADICIONAR ENDEREÇO ---
     elseif ($action === 'add_address' && $_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt = $conn->prepare("SELECT COUNT(*) as total FROM enderecos WHERE usuario_id = ?");
         $stmt->bind_param("i", $id_usuario);
@@ -102,7 +104,6 @@ try {
         $_SESSION['mensagem_sucesso'] = "Endereço adicionado com sucesso!";
     }
     
-    // --- LÓGICA PARA EDITAR ENDEREÇO ---
     elseif ($action === 'edit_address' && $_SERVER['REQUEST_METHOD'] === 'POST') {
         $endereco_id = $_POST['endereco_id'];
         $cep = trim($_POST['cep']);
@@ -123,7 +124,6 @@ try {
         $_SESSION['mensagem_sucesso'] = "Endereço atualizado com sucesso!";
     }
     
-    // --- LÓGICA PARA DELETAR ENDEREÇO ---
     elseif ($action === 'delete_address' && $_SERVER['REQUEST_METHOD'] === 'GET') {
         $endereco_id = $_GET['id'];
         

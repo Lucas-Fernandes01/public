@@ -105,7 +105,7 @@ session_start();
             </div>
           </div>
     
-          <a href="#" class="login__forgot">Esqueci minha senha</a>
+          <a href="solicitar_reset.php" class="login__forgot">Esqueci minha senha</a>
     
           <button type="submit" class="login__button">Entrar</button>
         </form>

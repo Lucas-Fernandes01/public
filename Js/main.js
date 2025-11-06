@@ -13,7 +13,8 @@ const passwordAccess = (loginPass, loginEye) =>{
       iconEye.classList.toggle('ri-eye-off-fill')
    })
 }
-passwordAccess('password','loginPassword')
+// CORREÇÃO AQUI: Usando 'login_senha' (o ID do seu HTML)
+passwordAccess('login_senha','loginPassword')
 
 /*=============== SHOW HIDE PASSWORD CREATE ACCOUNT ===============*/
 const passwordRegister = (loginPass, loginEye) =>{
@@ -30,7 +31,8 @@ const passwordRegister = (loginPass, loginEye) =>{
       iconEye.classList.toggle('ri-eye-off-fill')
    })
 }
-passwordRegister('passwordCreate','loginPasswordCreate')
+// CORREÇÃO AQUI: Usando 'cadastro_senha' (o ID do seu HTML)
+passwordRegister('cadastro_senha','loginPasswordCreate')
 
 /*=============== SHOW HIDE LOGIN & CREATE ACCOUNT ===============*/
 const loginAcessRegister = document.getElementById('loginAccessRegister'),

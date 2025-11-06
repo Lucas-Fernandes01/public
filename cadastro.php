@@ -19,6 +19,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit;
     }
 
+    // --- ADIÇÃO DA VALIDAÇÃO DE 6 CARACTERES ---
+    if (strlen($senha) < 6) {
+        $_SESSION['mensagem_erro'] = 'A senha deve ter pelo menos 6 caracteres.';
+        header('Location: login_form.php');
+        exit;
+    }
+    // --- FIM DA ADIÇÃO ---
+
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $_SESSION['mensagem_erro'] = 'O formato do e-mail é inválido.';
         header('Location: login_form.php');

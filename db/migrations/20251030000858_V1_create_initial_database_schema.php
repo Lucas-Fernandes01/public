@@ -2,7 +2,7 @@
 
 use Phinx\Migration\AbstractMigration;
 
-class CreateInitialDatabaseSchema extends AbstractMigration
+class V1CreateInitialDatabaseSchema extends AbstractMigration
 {
     public function up(): void
     {
