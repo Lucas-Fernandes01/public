@@ -62,6 +62,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             <i class="fas fa-trash-alt"></i>
                         </a>`;
 
+                    // --- MUDANÇA AQUI: Adicionamos o 'detalhe-local' ---
                     const pedidoHTML = `
                         <div class="card-pedido">
                             <div class="card-pedido-header">
@@ -71,13 +72,19 @@ document.addEventListener('DOMContentLoaded', function() {
                                 </div>
                                 <div class="status ${statusClass}">${pedido.status}</div>
                             </div>
-                            <div class="card-pedido-body">${itensHTML}</div>
+                            <div class="card-pedido-body">
+                                <div class="detalhe-local">
+                                    <strong>Local:</strong> ${pedido.endereco_entrega}
+                                </div>
+                                ${itensHTML}
+                            </div>
                             <div class="card-pedido-footer">
                                 <strong>VALOR TOTAL: ${valorFormatado}</strong>
                                 ${pedido.status.toLowerCase() === 'em preparação' ? lixeiraAtivaHTML : lixeiraDesativadaHTML}
                             </div>
                         </div>
                     `;
+                    // --- FIM DA MUDANÇA ---
 
                     containerPedidos.innerHTML += pedidoHTML;
                 });

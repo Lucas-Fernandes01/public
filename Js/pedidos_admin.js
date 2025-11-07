@@ -30,10 +30,10 @@ document.addEventListener('DOMContentLoaded', function() {
                         .map(s => `<option value="${s}" ${s === pedido.status ? 'selected' : ''}>${s}</option>`)
                         .join('');
 
-                    // --- LÓGICA ADICIONADA AQUI ---
-                    // Verifica se o status é 'Cancelado' para desabilitar o select
                     const isDisabled = pedido.status.toLowerCase() === 'cancelado' ? 'disabled' : '';
 
+                    // --- MUDANÇA AQUI ---
+                    // Trocamos a linha do endereço para usar a nova variável 'pedido.endereco_entrega'
                     const pedidoHTML = `
                         <div class="card-pedido-admin">
                             <div class="card-pedido-header">
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             <div class="card-pedido-body">
                                 <div class="info-cliente">
                                     <p><strong>Cliente:</strong> ${pedido.nome_cliente}</p>
-                                    <p><strong>Endereço:</strong> ${pedido.endereco}, ${pedido.numero} - ${pedido.bairro}</p>
+                                    <p><strong>Local:</strong> ${pedido.endereco_entrega}</p>
                                 </div>
                                 ${itensHTML}
                             </div>
@@ -58,6 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             </div>
                         </div>
                     `;
+                    // --- FIM DA MUDANÇA ---
                     containerPedidos.innerHTML += pedidoHTML;
                 });
                 
@@ -90,8 +91,6 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(data => {
             if (data.sucesso) {
                 console.log(data.mensagem); // Mensagem de sucesso no console
-                // Opcional: recarregar tudo para ter certeza
-                // carregarPedidosAdmin(); 
             } else {
                 alert('Erro: ' + data.mensagem);
             }

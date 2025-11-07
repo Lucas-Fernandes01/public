@@ -6,14 +6,18 @@ header('Content-Type: application/json');
 
 $pedidos_finais = [];
 
-// SQL que junta 'pedidos' com 'cadastro_usuarios' para pegar o nome do cliente
+// --- MUDANÇA AQUI ---
+// Removemos u.endereco, u.bairro, u.numero
+// Adicionamos p.endereco_entrega (o "snapshot" que salvamos)
 $sql_pedidos = "
     SELECT 
         p.id, p.valor_total, p.tipo_entrega, p.status, p.data_pedido,
-        u.nome as nome_cliente, u.endereco, u.bairro, u.numero
+        p.endereco_entrega, 
+        u.nome as nome_cliente
     FROM pedidos p
     JOIN cadastro_usuarios u ON p.usuario_id = u.id
     ORDER BY p.data_pedido DESC";
+// --- FIM DA MUDANÇA ---
 
 $resultado_pedidos = $conn->query($sql_pedidos);
 

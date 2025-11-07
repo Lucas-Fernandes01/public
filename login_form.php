@@ -163,16 +163,21 @@ session_start();
               <label for="cadastro_senha" class="login__label">Senha</label>
               <i class="ri-eye-off-fill login__icon login__password" id="loginPasswordCreate"></i>
             </div>
-
+            
+            <div class="login__box">
+                <input type="text" id="cadastro_cep" name="cep" required placeholder=" " class="login__input" maxlength="9">
+                <label for="cadastro_cep" class="login__label">CEP</label>
+                <i class="ri-id-card-fill login__icon"></i>
+            </div>
             <div class="login__group grid">
               <div class="login__box">
-                <input type="text" id="cadastro_bairro" name="bairro" required placeholder=" " class="login__input">
+                <input type="text" id="cadastro_bairro" name="bairro" required placeholder=" " class="login__input" readonly>
                 <label for="cadastro_bairro" class="login__label">Bairro</label>
                 <i class="ri-map-pin-2-fill login__icon"></i>
               </div>
 
               <div class="login__box">
-                <input type="text" id="cadastro_endereco" name="endereco" required placeholder=" " class="login__input">
+                <input type="text" id="cadastro_endereco" name="endereco" required placeholder=" " class="login__input" readonly>
                 <label for="cadastro_endereco" class="login__label">Endereço</label>
                 <i class="ri-home-4-fill login__icon"></i>
               </div>
@@ -237,7 +242,7 @@ session_start();
       <div class="col-md-3">
         <h5>Encontre-nos</h5>
         <div class="footer-map">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3679.5749843614562!2d-47.69305532574842!3d-22.744033432072634!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c637fa6843c5bf%3A0x78c6c3677d48448a!2zQcOnYWkgZGEgU3Vpw6dh!5e0!3m2!1spt-BR!2sbr!4v1751499566388!5m2!1spt-BR!2sbr"
+          <iframe src="http://googleusercontent.com/maps/google.com/0"
           width="100%"
           height="180"
           style="border:0;"

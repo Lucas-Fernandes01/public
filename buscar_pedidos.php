@@ -14,8 +14,8 @@ if (!isset($_SESSION['id'])) {
 $id_do_usuario_logado = $_SESSION['id'];
 $pedidos_finais = [];
 
-// 1. QUERY CORRIGIDA: Agora seleciona o campo 'status'
-$sql_pedidos = "SELECT id, valor_total, tipo_entrega, status, data_pedido FROM pedidos WHERE usuario_id = ? ORDER BY data_pedido DESC";
+// --- MUDANÇA AQUI: Adicionamos 'endereco_entrega' ---
+$sql_pedidos = "SELECT id, valor_total, tipo_entrega, status, data_pedido, endereco_entrega FROM pedidos WHERE usuario_id = ? ORDER BY data_pedido DESC";
 $stmt_pedidos = $conn->prepare($sql_pedidos);
 $stmt_pedidos->bind_param("i", $id_do_usuario_logado);
 $stmt_pedidos->execute();

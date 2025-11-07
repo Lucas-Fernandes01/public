@@ -150,3 +150,15 @@ body {
 .status-cancelado {
     background-color: #dc3545;
 }
+
+.detalhe-local {
+    background-color: #f8f9fa;
+    padding: 8px 12px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    font-size: 0.95em;
+    border: 1px solid #eee;
+}
+.detalhe-local strong {
+    color: #4b0055;
+}

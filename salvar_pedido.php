@@ -24,18 +24,31 @@ if (empty($carrinho)) {
 // 1. INSERIR O PEDIDO MESTRE
 $id_usuario = $_SESSION['id'];
 $valor_total_pedido = 0;
-// Pega a entrega do primeiro item (geralmente é a mesma para todos)
-$tipo_entrega = $carrinho[0]['entrega'] ?? 'Não especificado'; 
+$primeiro_item = $carrinho[0]; // Pega o primeiro item para dados gerais
+$tipo_entrega = $primeiro_item['entrega'] ?? 'Não especificado'; 
+
+// --- MUDANÇA AQUI: Captura o snapshot do endereço ---
+$endereco_snapshot = 'Retirar na loja'; // Define um padrão
+if ($tipo_entrega === 'Delivery' && isset($primeiro_item['enderecoCompleto'])) {
+    $endereco_str = $primeiro_item['enderecoCompleto'] ?? 'Endereço não informado';
+    $cep_str = $primeiro_item['cep'] ?? '';
+    // Formata o snapshot
+    $endereco_snapshot = $endereco_str . " - " . $cep_str;
+}
+// --- FIM DA MUDANÇA ---
 
 // Calcula o valor total do pedido somando o valor de cada item
 foreach ($carrinho as $item) {
     $valor_total_pedido += $item['valor'];
 }
 
-// Insere na tabela principal 'pedidos'
-$sql_pedido_mestre = "INSERT INTO pedidos (usuario_id, valor_total, tipo_entrega) VALUES (?, ?, ?)";
+// --- MUDANÇA AQUI: Adiciona 'endereco_entrega' na query ---
+// (Sua migration já deve ter criado esta coluna)
+$sql_pedido_mestre = "INSERT INTO pedidos (usuario_id, valor_total, tipo_entrega, endereco_entrega) VALUES (?, ?, ?, ?)";
 $stmt_mestre = $conn->prepare($sql_pedido_mestre);
-$stmt_mestre->bind_param("ids", $id_usuario, $valor_total_pedido, $tipo_entrega);
+
+// --- MUDANÇA AQUI: Adiciona "s" (string) para o novo campo $endereco_snapshot ---
+$stmt_mestre->bind_param("idss", $id_usuario, $valor_total_pedido, $tipo_entrega, $endereco_snapshot);
 
 if ($stmt_mestre->execute()) {
     // Pega o ID do pedido que acabamos de criar. Isso é CRUCIAL!
