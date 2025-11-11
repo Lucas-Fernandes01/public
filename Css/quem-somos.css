@@ -140,79 +140,111 @@ main.quem-somos {
   line-height: 1.6;
 }
 
-/* Equipe */
-.equipe {
-  background-color: rgba(235, 235, 235, 0);
-  padding: 80px; 
-  border-radius: 15px;
-  text-align: center;
-  margin-top: 50px;
-  margin-bottom: 60px;
-}
 
-.equipe h2 {
-  color: #73076a;
-  font-size: 2.2rem;
-  margin-bottom: 20px;
+
+
+/* ==================================================================== */
+/* SEÇÃO EQUIPE */
+/* ==================================================================== */
+
+.equipe {
+    text-align: center;
+    padding: 60px 40px;
+    background-color: var(--cor-fundo); /* Fundo sutilmente diferente */
 }
 
 .equipe p {
-  max-width: 800px;
-  margin: 0 auto;
-  color: #000000;
-  line-height: 1.8;
-  font-size: 1.05rem;
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    line-height: 1.7;
 }
 
-/* CTA */
+/* ==================================================================== */
+/* SEÇÃO CTA (CHAMADA PARA AÇÃO) */
+/* ==================================================================== */
+
 .cta {
-  text-align: center;
-  background: linear-gradient(135deg, #6a1b9a, #9c27b0);
-  color: #fff;
-  padding: 60px 30px;
-  border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(106,27,154,0.3);
+    text-align: center;
+    background: linear-gradient(45deg, var(--cor-secundaria), #4CAF50); /* Gradiente Verde */
+    color: var(--cor-texto-claro);
+    padding: 80px 30px;
+    box-shadow: 0 10px 30px rgba(40, 167, 69, 0.4);
 }
 
 .cta h2 {
-  font-size: 2.2rem;
-  margin-bottom: 1rem;
+    color: var(--cor-texto-claro);
+    font-size: 3rem;
+}
+
+.cta h2::after {
+    background-color: var(--cor-principal); /* Linha roxa no CTA verde */
 }
 
 .cta p {
-  font-size: 1.15rem;
-  max-width: 700px;
-  margin: 0 auto 25px;
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto 30px;
 }
 
 .cta .btn {
-  display: inline-block;
-  padding: 14px 35px;
-  background-color: #fff;
-  color: #5b0285;
-  border-radius: 50px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: background-color 0.3s, color 0.3s, transform 0.3s;
+    display: inline-block;
+    padding: 15px 40px;
+    background-color: var(--cor-principal);
+    color: var(--cor-texto-claro);
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.3s, transform 0.3s;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .cta .btn:hover {
-  background-color: #f3e5f5;
-  color: #eca840;
-  transform: scale(1.05);
+    background-color: #8a4dcf;
+    transform: scale(1.05);
 }
 
-/* Responsividade geral */
-@media (max-width: 768px) {
-  .mvv-cards {
-    flex-direction: column;
-    align-items: center;
-  }
+/* ==================================================================== */
+/* RESPONSIVIDADE */
+/* ==================================================================== */
 
-  .intro h1, 
-  .missao-visao-valores h2, 
-  .equipe h2, 
-  .cta h2 {
-    font-size: 1.8rem;
-  }
+@media (max-width: 992px) {
+    .intro {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .intro img.imagem-principal {
+        margin-top: 30px;
+    }
+
+    .intro h1 {
+        font-size: 2.5rem;
+        border-left: none;
+        padding-left: 0;
+    }
+
+    .mvv-cards {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .mvv-cards .card {
+        min-width: 90%;
+    }
 }
+
+@media (max-width: 576px) {
+    main.quem-somos h2 {
+        font-size: 2rem;
+    }
+
+    .intro h1 {
+        font-size: 2rem;
+    }
+
+    .cta h2 {
+        font-size: 2.5rem;
+    }
+}
+
