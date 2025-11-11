@@ -130,7 +130,7 @@ $conn->close();
         <?php foreach ($complementos as $item): ?>
             <div class="complemento-card" data-nome="<?php echo htmlspecialchars($item['nome']); ?>" data-preco="0.00">
                 <div class="complemento-card-content">
-                    <img src="img/complementos/<?php echo urlencode($item['nome']); ?>.png" alt="<?php echo htmlspecialchars($item['nome']); ?>">
+                    <img src="img/complementos/<?php echo htmlspecialchars($item['nome']); ?>.png" alt="<?php echo htmlspecialchars($item['nome']); ?>">
                     <h4><?php echo htmlspecialchars($item['nome']); ?></h4>
                     <p>Grátis</p>
                 </div>
@@ -160,7 +160,7 @@ $conn->close();
         <?php foreach ($complementos as $item): ?>
             <div class="complemento-card" data-nome="<?php echo htmlspecialchars($item['nome']); ?>" data-preco="0.00">
                 <div class="complemento-card-content">
-                    <img src="img/complementos/<?php echo urlencode($item['nome']); ?>.png" alt="<?php echo htmlspecialchars($item['nome']); ?>">
+                    <img src="img/complementos/<?php echo htmlspecialchars($item['nome']); ?>.png" alt="<?php echo htmlspecialchars($item['nome']); ?>">
                     <h4><?php echo htmlspecialchars($item['nome']); ?></h4>
                     <p>Grátis</p>
                 </div>
@@ -175,7 +175,7 @@ $conn->close();
         <?php foreach ($adicionais as $item): ?>
             <div class="complemento-card" data-nome="<?php echo htmlspecialchars($item['nome']); ?>" data-preco="<?php echo $item['preco']; ?>">
                 <div class="complemento-card-content">
-                    <img src="img/complementos/<?php echo urlencode($item['nome']); ?>.png" alt="<?php echo htmlspecialchars($item['nome']); ?>">
+                    <img src="img/complementos/<?php echo htmlspecialchars($item['nome']); ?>.png" alt="<?php echo htmlspecialchars($item['nome']); ?>">
                     <h4><?php echo htmlspecialchars($item['nome']); ?></h4>
                     <p>+ R$ <?php echo number_format($item['preco'], 2, ',', '.'); ?></p>
                 </div>
