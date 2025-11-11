@@ -259,7 +259,7 @@ Para nós, o açaí vai além de um alimento: é uma experiência que transmite 
               <li>Domingo: 14h - 22h</li>
             </ul>
           </div>
-    
+    <!-- ========================== -->
           <!-- Mapa  e Social -->
 <div class="col-md-3">
   <h5>Encontre-nos</h5>

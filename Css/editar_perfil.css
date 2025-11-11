@@ -138,6 +138,8 @@ main.container.my-5 {
   box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
 }
 
+/* ======= Cabeçalho do Modal ======= */
+
 .modal-header {
   background: linear-gradient(90deg, #5a189a, #9d4edd);
   color: #fff;

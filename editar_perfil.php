@@ -143,7 +143,7 @@ $conn->close();
         </div>
     </div>
 </div>
-           
+           <!-- Fim dos Cards -->
     </main>
 
     <div class="modal fade" id="modalEndereco" tabindex="-1" aria-labelledby="modalEnderecoLabel" aria-hidden="true">
