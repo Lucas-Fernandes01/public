@@ -83,65 +83,67 @@ main.quem-somos {
   }
 }
 
-/* Missão, Visão e Valores */
+
+/* ==================================================================== */
+/* SEÇÃO MISSÃO, VISÃO E VALORES */
+/* ==================================================================== */
 
 .missao-visao-valores {
- background: rgba(0,0,0,0.4); /* leve overlay para destacar o texto */
-  padding: 60px 20px;
-  text-align: center;
+    padding: 60px 20px;
+    text-align: center;
 }
 
-.missao-visao-valores h2 {
-  color: #fff;
-  font-size: 2.8rem;
-  margin-bottom: 40px;
-  font-family: 'Georgia', serif;
-}
-
-/* Cards */
 .mvv-cards {
-  display: flex;
-  justify-content: center;
-  gap: 25px;
-  flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
 }
 
-.card {
-  background: #fff;
-  color: #333;
-  flex: 1;
-  min-width: 250px;
-  padding: 25px;
-  border-radius: 20px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-  text-align: center;
-  transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+.mvv-cards .card {
+    flex: 1;
+    min-width: 280px;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    border-bottom: 5px solid var(--cor-principal);
 }
 
-.card i {
-  font-size: 45px;
-  color: #f4b400;
-  margin-bottom: 15px;
+.mvv-cards .card:nth-child(2) {
+    border-bottom-color: var(--cor-secundaria);
 }
 
-.card:hover {
-  transform: translateY(-7px);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.2);
-  background: #fffbe6; /* leve destaque no hover */
+.mvv-cards .card:nth-child(3) {
+    border-bottom-color: #ffc107; /* Amarelo/Laranja */
 }
 
-.card h3 {
-  font-size: 1.5rem;
-  margin-bottom: 10px;
+.mvv-cards .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
 }
 
-.card p {
-  font-size: 1.05rem;
-  line-height: 1.6;
+.mvv-cards .card i {
+    font-size: 3.5rem;
+    color: var(--cor-principal);
+    margin-bottom: 15px;
+    transition: color 0.3s;
 }
 
+.mvv-cards .card:hover i {
+    color: var(--cor-secundaria);
+}
 
-/*
+.mvv-cards .card h3 {
+    font-size: 1.8rem;
+    color: var(--cor-texto);
+    margin-bottom: 10px;
+}
+
+.mvv-cards .card p {
+    font-size: 1rem;
+    line-height: 1.6;
+}
 
 /* ==================================================================== */
 /* SEÇÃO EQUIPE */
@@ -166,10 +168,10 @@ main.quem-somos {
 
 .cta {
     text-align: center;
-    background: linear-gradient(45deg, var(--cor-secundaria), #4CAF50); /* Gradiente Verde */
+    background: linear-gradient(45deg, var(--cor-secundaria), #3d013a); /* Gradiente Verde */
     color: var(--cor-texto-claro);
     padding: 80px 30px;
-    box-shadow: 0 10px 30px rgba(40, 167, 69, 0.4);
+    box-shadow: 0 10px 30px rgba(175, 5, 56, 0.4);
 }
 
 .cta h2 {
@@ -248,3 +250,12 @@ main.quem-somos {
     }
 }
 
+
+/* Variáveis de Cores (para facilitar a manutenção) */
+:root {
+    --cor-principal: #6f42c1; /* Roxo */
+    --cor-secundaria: #560258; /* Verde */
+    --cor-fundo: #06061a;
+    --cor-texto: #333333;
+    --cor-texto-claro: #ffffff;
+}

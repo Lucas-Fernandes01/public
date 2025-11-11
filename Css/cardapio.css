@@ -2,6 +2,22 @@
 /* ESTILOS COMPLEMENTARES (Tamanho, Observação, Delivery, Resumo)       */
 /* ==================================================================== */
 
+h2 {
+    color: #6f42c1; /* Cor roxa principal */
+    margin-bottom: 20px;
+    text-align: center;
+    padding-top: 40px;
+    font: bold;
+}
+
+h3 {
+    color: #6f42c1;
+    margin-bottom: 20px;
+    text-align: left;
+    padding-top: 40px;
+    font: bold;
+}
+
 /* Estilo para o SELECT de Tipo de Pedido */
 #tipoPedido {
     width: 100%;
@@ -95,7 +111,7 @@ textarea[name="observacao"]:focus {
     border: 1px dashed #6f42c1;
     border-radius: 10px;
     margin-bottom: 20px;
-    background-color: #fff;
+    background-color: #ad65dd81;
 }
 
 #enderecoSection h4 {
@@ -112,7 +128,7 @@ textarea[name="observacao"]:focus {
 }
 
 #enderecoSection label:hover {
-    background-color: #f5f5f5;
+    background-color: #96548b;
 }
 
 #enderecoSection input[type="radio"] {
@@ -190,8 +206,8 @@ main h3 {
 .complementos-gratis-marmita,
 .adicionais {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Aumentei o min-width para 200px */
-    gap: 20px; /* Aumentei o gap para melhor espaçamento */
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Aumentei o min-width para 200px */
+    gap: 10px; /* Aumentei o gap para melhor espaçamento */
     margin-bottom: 30px;
     padding: 10px;
 }
@@ -234,30 +250,30 @@ main h3 {
     object-fit: cover;
     margin-bottom: 10px;
     border-radius: 50%;
-    border: 3px solid #f0f0f0; /* Adiciona um anel suave */
+    border: 3px solid #636262; /* Adiciona um anel suave */
 }
 
 .complemento-card h4 {
     margin: 0 0 5px 0;
     font-size: 1.1rem;
-    color: #333;
+    color: #000000;
 }
 
 .complemento-card p {
     margin: 0;
-    font-size: 0.9rem;
-    color: #6c757d;
+    font-size: 1.0rem;
+    color: #06ad22;
     font-weight: bold; /* Para destacar o preço */
 }
 
 /* Botão de Adição (o "+") */
 .btn-adicionar {
     background-color: #28a745; /* Cor verde para ação de adicionar */
-    color: #fff;
+    color: #ffffff;
     border: none;
     border-radius: 50%; /* Transforma em círculo */
-    width: 40px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
     font-size: 1.5rem;
     line-height: 1;
     cursor: pointer;
