@@ -1,4 +1,8 @@
 (function () {
+  // =================================================================================
+  // FUNÇÕES DE UTILIDADE
+  // =================================================================================
+
   // fallback para casos sem data-price (mantive por segurança)
   function extrairPreco(text) {
     if (!text) return 0;
@@ -13,92 +17,164 @@
     return parseFloat(num) || 0;
   }
 
-  // atualiza preview do pedido atual (valorTotal)
+  // =================================================================================
+  // LÓGICA DO PEDIDO ATUAL (NOVA E INTEGRADA)
+  // =================================================================================
+
+  // Variável para armazenar o tipo de pedido selecionado (copo ou marmita)
+  let tipoPedidoSelecionado = ''; 
+
+  // Array para armazenar os itens do pedido atual (tamanho + complementos/adicionais)
+  let pedidoAtual = []; 
+
+  // Objeto para rastrear a contagem de complementos grátis por tipo (copo/marmita)
+  let contagemComplementosGratis = {
+      copo: 0,
+      marmita: 0
+  };
+
+  // Função para atualizar o valor total do pedido atual (preview)
   function atualizarValor() {
     let total = 0;
+    
+    // 1. Adiciona o preço do tamanho selecionado
     const tamanhoElem = document.querySelector('input[name="tamanho"]:checked');
     if (tamanhoElem) {
       total += parseFloat(tamanhoElem.dataset.price || extrairPreco(tamanhoElem.value));
     }
 
-    document.querySelectorAll('input[name="adicionais"]:checked').forEach((adElem) => {
-      total += parseFloat(adElem.dataset.price || extrairPreco(adElem.value));
+    // 2. Adiciona o preço dos adicionais/complementos pagos no pedidoAtual
+    pedidoAtual.forEach(item => {
+        total += item.preco;
     });
 
     const span = document.getElementById("valorTotal");
-    if (span) span.innerText = total.toFixed(2);
+    if (span) span.innerText = total.toFixed(2).replace('.', ',');
   }
 
-  // limita complementos grátis (4 copo / 5 marmita)
-  function limitarComplementos(e) {
-    const tipoSelect = document.getElementById("tipoPedido").value;
-    const tipo = tipoSelect || (document.getElementById("copoSection").style.display === "block" ? "copo" : "marmita");
-    const limite = tipo === "marmita" ? 5 : 4;
-    const selector = tipo === "marmita" ? "#marmitaSection input[name='complementos']:checked" : "#copoSection input[name='complementos']:checked";
-    const selecionados = document.querySelectorAll(selector);
+  // Função principal chamada pelo botão '+'
+  function adicionarComplemento(nome, preco, tipo) {
+      // Encontra o card HTML que contém o botão clicado
+      const card = event.target.closest('.complemento-card');
+      
+      // Cria um identificador único para o item (nome + tipo)
+      const itemId = nome + '_' + tipo;
+      
+      // Verifica se o item já está no pedidoAtual
+      const index = pedidoAtual.findIndex(item => item.id === itemId);
 
-    if (selecionados.length > limite) {
-      if (e && e.target) e.target.checked = false;
-      else this.checked = false;
-      alert(`Você pode escolher no máximo ${limite} complementos grátis para ${tipo}.`);
-    }
+      if (index !== -1) {
+          // SE JÁ ESTIVER NO PEDIDO (REMOVER)
+          pedidoAtual.splice(index, 1);
+          card.classList.remove('selecionado');
+          
+          if (tipo === 'complemento_gratis') {
+              contagemComplementosGratis[tipoPedidoSelecionado]--;
+          }
+          
+      } else {
+          // SE NÃO ESTIVER NO PEDIDO (ADICIONAR)
+          
+          // 1. Regra de limite para complementos grátis
+          if (tipo === 'complemento_gratis') {
+              const limite = (tipoPedidoSelecionado === 'copo') ? 4 : 5;
+              
+              if (contagemComplementosGratis[tipoPedidoSelecionado] >= limite) {
+                  alert(`Você atingiu o limite de ${limite} complementos grátis para o seu ${tipoPedidoSelecionado}.`);
+                  return; // Impede a adição
+              }
+              contagemComplementosGratis[tipoPedidoSelecionado]++;
+          }
+          
+          // 2. Adiciona o item
+          pedidoAtual.push({
+              id: itemId,
+              nome: nome,
+              preco: parseFloat(preco),
+              tipo: tipo
+          });
+          
+          // 3. Altera o estilo do card
+          card.classList.add('selecionado');
+      }
+      
+      // Atualiza o valor total do preview
+      atualizarValor();
   }
 
-  // mostra/esconde seções e limpa seleções visíveis (não zera o total acumulado)
+  // =================================================================================
+  // FUNÇÕES DE CONTROLE DE SEÇÃO (REVISADAS)
+  // =================================================================================
+
+  // mostra/esconde seções e limpa seleções visíveis
   function toggleTipo() {
     const tipo = document.getElementById("tipoPedido").value;
     document.getElementById("copoSection").style.display = tipo === "copo" ? "block" : "none";
     document.getElementById("marmitaSection").style.display = tipo === "marmita" ? "block" : "none";
+    
+    tipoPedidoSelecionado = tipo; // Atualiza a variável global
 
-    // limpar seleções (tamanhos, complementos, adicionais) ao trocar tipo
-    document.querySelectorAll('#copoSection input[name="complementos"], #marmitaSection input[name="complementos"], input[name="tamanho"], input[name="adicionais"]').forEach(i => i.checked = false);
+    // Limpa o pedido atual e a contagem de complementos grátis
+    pedidoAtual = [];
+    contagemComplementosGratis = { copo: 0, marmita: 0 };
+
+    // Limpa a seleção visual dos cards
+    document.querySelectorAll('.complemento-card').forEach(card => card.classList.remove('selecionado'));
+
+    // Limpa a seleção de tamanho e observação
+    document.querySelectorAll('input[name="tamanho"]').forEach(i => i.checked = false);
     document.querySelector('textarea[name="observacao"]').value = "";
-    const spanPreview = document.getElementById("valorTotal");
-    if (spanPreview) spanPreview.innerText = "0.00";
+    
+    // Atualiza o preview do valor
+    atualizarValor();
   }
 
-  // carrinho e funções relacionadas
-  let carrinho = [];
+  // =================================================================================
+  // CARRINHO E FUNÇÕES RELACIONADAS (REVISADAS)
+  // =================================================================================
+
+  let carrinho = []; // Carrinho de pedidos finalizados
 
   function adicionarPedido() {
     const tipo = document.getElementById("tipoPedido").value;
     const tamanhoElem = document.querySelector('input[name="tamanho"]:checked');
+    
     if (!tipo || !tamanhoElem) {
       alert("Selecione o tipo e o tamanho antes de adicionar ao carrinho!");
       return;
     }
 
-    const complementos = Array.from(document.querySelectorAll(`#${tipo}Section input[name="complementos"]:checked`)).map(c => c.value);
-    const adicionaisElems = Array.from(document.querySelectorAll('input[name="adicionais"]:checked'));
+    // Os complementos e adicionais agora vêm do array pedidoAtual
+    const complementos = pedidoAtual.filter(item => item.tipo === 'complemento_gratis').map(item => item.nome);
+    const adicionais = pedidoAtual.filter(item => item.tipo === 'adicional_pago').map(item => item.nome);
+    
     const entrega = document.querySelector('select[name="entrega"]').value;
     const observacao = document.querySelector('textarea[name="observacao"]').value;
 
     let enderecoCompleto = null;
-    let cep = null; // <-- MUDANÇA AQUI: Variável para guardar o CEP
+    let cep = null; 
     if (entrega === 'Delivery') {
         const enderecoElem = document.querySelector('input[name="endereco_id"]:checked');
         if (enderecoElem) {
             enderecoCompleto = enderecoElem.parentElement.innerText.trim();
-            cep = enderecoElem.dataset.cep; // <-- MUDANÇA AQUI: Captura o CEP do data-attribute
+            cep = enderecoElem.dataset.cep; 
         } else {
             alert("Por favor, selecione um endereço para a entrega!");
             return;
         }
     }
 
-    let valorPedido = parseFloat(tamanhoElem.dataset.price || extrairPreco(tamanhoElem.value));
-    adicionaisElems.forEach(a => {
-      valorPedido += parseFloat(a.dataset.price || extrairPreco(a.value));
-    });
+    // Calcula o valor total do pedido atual
+    let valorPedido = parseFloat(document.getElementById("valorTotal").innerText.replace(',', '.'));
 
     const pedido = {
       tipo,
       tamanho: tamanhoElem.value,
       complementos,
-      adicionais: adicionaisElems.map(a => a.value),
+      adicionais: adicionais.map(a => a), // Mapeia apenas os nomes
       entrega,
       enderecoCompleto: enderecoCompleto,
-      cep: cep, // <-- MUDANÇA AQUI: Salva o CEP no objeto do pedido
+      cep: cep, 
       observacao,
       valor: Number(valorPedido.toFixed(2))
     };
@@ -119,7 +195,7 @@
       const div = document.createElement("div");
       div.innerHTML = `
         <b>Pedido ${index + 1}</b>:<br>
-        1x ${pedido.tipo} (${pedido.tamanho}) - R$ ${pedido.valor.toFixed(2)}<br>
+        1x ${pedido.tipo} (${pedido.tamanho}) - R$ ${pedido.valor.toFixed(2).replace('.', ',')}<br>
         Complementos: ${pedido.complementos.length ? pedido.complementos.join(", ") : "Nenhum"}<br>
         Adicionais: ${pedido.adicionais.length ? pedido.adicionais.join(", ") : "Nenhum"}<br>
         Entrega: ${pedido.entrega} | Observações: ${pedido.observacao || "Nenhuma"}
@@ -129,17 +205,25 @@
     });
 
     const spanTotalPagar = document.getElementById("valorTotalPagar");
-    if (spanTotalPagar) spanTotalPagar.innerText = total.toFixed(2);
+    if (spanTotalPagar) spanTotalPagar.innerText = total.toFixed(2).replace('.', ',');
   }
 
   function limparFormulario() {
     document.getElementById("tipoPedido").value = "";
     document.getElementById("copoSection").style.display = "none";
     document.getElementById("marmitaSection").style.display = "none";
-    document.querySelectorAll('#copoSection input, #marmitaSection input, input[name="adicionais"]').forEach(i => i.checked = false);
+    
+    // Limpa o pedido atual e a contagem de complementos grátis
+    pedidoAtual = [];
+    contagemComplementosGratis = { copo: 0, marmita: 0 };
+    document.querySelectorAll('.complemento-card').forEach(card => card.classList.remove('selecionado'));
+
+    // Limpa a seleção de tamanho e observação
+    document.querySelectorAll('input[name="tamanho"]').forEach(i => i.checked = false);
     document.querySelector('textarea[name="observacao"]').value = "";
-    const spanPreview = document.getElementById("valorTotal");
-    if (spanPreview) spanPreview.innerText = "0.00";
+    
+    // Limpa o preview do valor
+    atualizarValor();
   }
 
   function finalizarPedidos() {
@@ -185,7 +269,6 @@
                 mensagem += `- Adicionais: ${pedido.adicionais.join(", ")}\n`;
             }
             
-            // <-- MUDANÇA AQUI: Lógica para formatar a linha de entrega -->
             if (pedido.entrega === 'Delivery' && pedido.enderecoCompleto) {
                 mensagem += `- Entrega: *Endereço de Entrega:*\n${pedido.enderecoCompleto} - ${pedido.cep || ''}\n`;
             } else {
@@ -216,20 +299,21 @@
 
   // eventos iniciais
   document.addEventListener("DOMContentLoaded", () => {
-    document.querySelectorAll('input[name="tamanho"], input[name="adicionais"]').forEach(elem => {
+    // Eventos para Tamanho (Radio) - Apenas para atualizar o valor
+    document.querySelectorAll('input[name="tamanho"]').forEach(elem => {
       elem.addEventListener("change", atualizarValor);
     });
 
-    document.querySelectorAll('input[name="complementos"]').forEach(input => {
-      input.addEventListener("change", limitarComplementos);
-    });
+    // REMOVIDO: Eventos para Adicionais e Complementos (Checkbox)
+    // Eles agora são gerenciados pela função adicionarComplemento() e pelo botão '+'
 
-    if (document.getElementById("valorTotal")) document.getElementById("valorTotal").innerText = "0.00";
-    if (document.getElementById("valorTotalPagar")) document.getElementById("valorTotalPagar").innerText = "0.00";
+    if (document.getElementById("valorTotal")) document.getElementById("valorTotal").innerText = "0,00";
+    if (document.getElementById("valorTotalPagar")) document.getElementById("valorTotalPagar").innerText = "0,00";
 
     // expõe funções usadas por onclick inline
     window.toggleTipo = toggleTipo;
     window.adicionarPedido = adicionarPedido;
     window.finalizarPedidos = finalizarPedidos;
+    window.adicionarComplemento = adicionarComplemento; // Nova função exposta
   });
 })();

@@ -1,13 +1,13 @@
 <?php
-// 1. INICIAMOS A SESSÃO E CONECTAMOS AO BANCO
+
 session_start(); 
 include 'conexao.php';
 
-// 2. BUSCAMOS TODAS AS OPÇÕES DISPONÍVEIS NO BANCO
+
 $sql = "SELECT nome, preco, tipo FROM ingredientes WHERE em_estoque = TRUE ORDER BY nome ASC";
 $resultado = $conn->query($sql);
 
-// 3. SEPARAMOS OS INGREDIENTES EM ARRAYS PARA FACILITAR
+
 $tamanhos_copo = [];
 $tamanhos_marmita = [];
 $complementos = [];
@@ -36,8 +36,7 @@ $enderecos = [];
 if (isset($_SESSION['id'])) {
     $usuario_id = $_SESSION['id'];
     
-    // Usando prepared statements para evitar injeção de SQL
-    // Linha 40 (aproximadamente)
+    
     $stmt = $conn->prepare("SELECT id, endereco, numero, bairro, cep FROM enderecos WHERE usuario_id = ?");
     $stmt->bind_param("i", $usuario_id);
     $stmt->execute();
@@ -48,7 +47,7 @@ if (isset($_SESSION['id'])) {
     }
     $stmt->close();
 }
-// --- NOVO CÓDIGO TERMINA AQUI ---
+
 
 $conn->close();
 ?>
@@ -114,34 +113,59 @@ $conn->close();
 
     <div id="copoSection" style="display:none;">
       <h3>Escolha o tamanho (Copo):</h3>
-      <?php foreach ($tamanhos_copo as $tamanho): ?>
-        <label>
-            <input type="radio" name="tamanho" value="<?php echo htmlspecialchars($tamanho['nome']); ?> (Copo)" data-price="<?php echo $tamanho['preco']; ?>">
-            <?php echo htmlspecialchars($tamanho['nome']); ?> - R$ <?php echo number_format($tamanho['preco'], 2, ',', '.'); ?>
-        </label><br>
-      <?php endforeach; ?>
+      <div class="tamanho-opcoes">
+    <?php foreach ($tamanhos_copo as $tamanho): ?>
+        <?php $tamanho_id = 'tamanho-copo-' . str_replace([' ', '(', ')', '-'], '', strtolower($tamanho['nome'])); ?>
+        <input type="radio" id="<?php echo $tamanho_id; ?>" name="tamanho" value="<?php echo htmlspecialchars($tamanho['nome']); ?> (Copo)" data-price="<?php echo $tamanho['preco']; ?>">
+        <label for="<?php echo $tamanho_id; ?>">
+            <?php echo htmlspecialchars($tamanho['nome']); ?>  
+
+            R$ <?php echo number_format($tamanho['preco'], 2, ',', '.'); ?>
+        </label>
+    <?php endforeach; ?>
+</div>
       <br>
       <h4>Escolha até 4 complementos grátis:</h4>
       <div class="complementos-gratis-copo">
         <?php foreach ($complementos as $item): ?>
-            <label><input type="checkbox" name="complementos" value="<?php echo htmlspecialchars($item['nome']); ?>"> <?php echo htmlspecialchars($item['nome']); ?></label><br>
+            <div class="complemento-card" data-nome="<?php echo htmlspecialchars($item['nome']); ?>" data-preco="0.00">
+                <div class="complemento-card-content">
+                    <img src="img/complementos/<?php echo urlencode($item['nome']); ?>.png" alt="<?php echo htmlspecialchars($item['nome']); ?>">
+                    <h4><?php echo htmlspecialchars($item['nome']); ?></h4>
+                    <p>Grátis</p>
+                </div>
+                <button class="btn-adicionar" type="button" onclick="adicionarComplemento('<?php echo htmlspecialchars($item['nome']); ?>', 0.00, 'complemento_gratis')">+</button>
+            </div>
         <?php endforeach; ?>
       </div>
     </div>
 
     <div id="marmitaSection" style="display:none;">
       <h3>Escolha o tamanho (Marmita):</h3>
-      <?php foreach ($tamanhos_marmita as $tamanho): ?>
-        <label>
-            <input type="radio" name="tamanho" value="<?php echo htmlspecialchars($tamanho['nome']); ?> (Marmita)" data-price="<?php echo $tamanho['preco']; ?>">
-            <?php echo htmlspecialchars($tamanho['nome']); ?> - R$ <?php echo number_format($tamanho['preco'], 2, ',', '.'); ?>
-        </label><br>
-      <?php endforeach; ?>
+      <div class="tamanho-opcoes">
+    <?php foreach ($tamanhos_marmita as $tamanho): ?>
+        <?php $tamanho_id = 'tamanho-marmita-' . str_replace([' ', '(', ')', '-'], '', strtolower($tamanho['nome'])); ?>
+        <input type="radio" id="<?php echo $tamanho_id; ?>" name="tamanho" value="<?php echo htmlspecialchars($tamanho['nome']); ?> (Marmita)" data-price="<?php echo $tamanho['preco']; ?>">
+        <label for="<?php echo $tamanho_id; ?>">
+            <?php echo htmlspecialchars($tamanho['nome']); ?>  
+
+            R$ <?php echo number_format($tamanho['preco'], 2, ',', '.'); ?>
+        </label>
+    <?php endforeach; ?>
+</div>
+
       <br>
       <h4>Escolha até 5 complementos grátis:</h4>
       <div class="complementos-gratis-marmita">
         <?php foreach ($complementos as $item): ?>
-            <label><input type="checkbox" name="complementos" value="<?php echo htmlspecialchars($item['nome']); ?>"> <?php echo htmlspecialchars($item['nome']); ?></label><br>
+            <div class="complemento-card" data-nome="<?php echo htmlspecialchars($item['nome']); ?>" data-preco="0.00">
+                <div class="complemento-card-content">
+                    <img src="img/complementos/<?php echo urlencode($item['nome']); ?>.png" alt="<?php echo htmlspecialchars($item['nome']); ?>">
+                    <h4><?php echo htmlspecialchars($item['nome']); ?></h4>
+                    <p>Grátis</p>
+                </div>
+                <button class="btn-adicionar" type="button" onclick="adicionarComplemento('<?php echo htmlspecialchars($item['nome']); ?>', 0.00, 'complemento_gratis')">+</button>
+            </div>
         <?php endforeach; ?>
       </div>
     </div>
@@ -149,10 +173,14 @@ $conn->close();
     <h3>Adicionais pagos:</h3>
     <div class="adicionais">
         <?php foreach ($adicionais as $item): ?>
-            <label>
-                <input type="checkbox" name="adicionais" value="<?php echo htmlspecialchars($item['nome']); ?>" data-price="<?php echo $item['preco']; ?>">
-                <?php echo htmlspecialchars($item['nome']); ?> - R$ <?php echo number_format($item['preco'], 2, ',', '.'); ?>
-            </label><br>
+            <div class="complemento-card" data-nome="<?php echo htmlspecialchars($item['nome']); ?>" data-preco="<?php echo $item['preco']; ?>">
+                <div class="complemento-card-content">
+                    <img src="img/complementos/<?php echo urlencode($item['nome']); ?>.png" alt="<?php echo htmlspecialchars($item['nome']); ?>">
+                    <h4><?php echo htmlspecialchars($item['nome']); ?></h4>
+                    <p>+ R$ <?php echo number_format($item['preco'], 2, ',', '.'); ?></p>
+                </div>
+                <button class="btn-adicionar" type="button" onclick="adicionarComplemento('<?php echo htmlspecialchars($item['nome']); ?>', <?php echo $item['preco']; ?>, 'adicional_pago')">+</button>
+            </div>
         <?php endforeach; ?>
     </div><br>
 

@@ -1,0 +1,197 @@
+/* ======= Estilo geral ======= */
+body {
+  background: linear-gradient(135deg, #bea0d3, #ece5f1);
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+  min-height: 100vh;
+}
+
+/* ======= Cabeçalho ======= */
+header {
+  background: #73076a;
+  padding: 15px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+header .logo-container {
+  display: flex;
+  align-items: center;
+}
+
+header .logo {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-right: 15px;
+  object-fit: cover;
+}
+
+header h1 {
+  font-size: 1.8rem;
+  margin: 0;
+  color: #fff;
+}
+
+header nav a {
+  background: #6a0dad;
+  color: #fff;
+  text-decoration: none;
+  padding: 8px 18px;
+  border-radius: 25px;
+  font-weight: 500;
+  transition: 0.3s;
+  margin-left: 10px;
+}
+
+header nav a:hover {
+  background: #290447;
+  transform: scale(1.05);
+}
+
+/* ======= Container principal ======= */
+main.container.my-5 {
+  max-width: 1300px;
+}
+
+/* ======= Cards ======= */
+.card {
+  border: none;
+  border-radius: 15px;
+  overflow: hidden;
+  background: #fff;
+  transition: all 0.3s ease;
+  min-height: 100%;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card-header {
+  background: linear-gradient(90deg, #7d16e4, #7804d8);
+  color: #fff;
+  padding: 12px 20px;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.card-header h3 {
+  margin: 0;
+  font-size: 1.1rem;
+   color: #000000;
+}
+
+.card-body {
+  padding: 25px;
+}
+
+/* ======= Botões ======= */
+.btn-primary {
+  background: #5a189a;
+  border: none;
+  border-radius: 25px;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.btn-primary:hover {
+  background: #7b2cbf;
+  transform: translateY(-2px);
+}
+
+.btn-success {
+  background: #2ecc71;
+  border: none;
+  border-radius: 25px;
+}
+
+.btn-success:hover {
+  background: #27ae60;
+  transform: translateY(-2px);
+}
+
+.btn-outline-primary,
+.btn-outline-danger {
+  border-radius: 25px;
+}
+
+/* ======= Lista de Endereços ======= */
+.list-group-item {
+  border: none;
+  border-bottom: 1px solid #eee;
+  padding: 15px 10px;
+}
+
+.list-group-item:last-child {
+  border-bottom: none;
+}
+
+/* ======= Modal ======= */
+.modal-content {
+  border-radius: 15px;
+  border: none;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+}
+
+.modal-header {
+  background: linear-gradient(90deg, #5a189a, #9d4edd);
+  color: #fff;
+  border-bottom: none;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.modal-footer button {
+  border-radius: 25px;
+}
+
+/* ======= Formulários ======= */
+.form-control {
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  padding: 10px;
+  transition: border-color 0.3s;
+}
+
+.form-control:focus {
+  border-color: #9d4edd;
+  box-shadow: 0 0 0 0.2rem rgba(157, 78, 221, 0.25);
+}
+
+/* ======= Alertas ======= */
+.alert {
+  border-radius: 25px;
+  font-weight: 500;
+}
+
+/* ======= Layout responsivo ======= */
+@media (max-width: 992px) {
+  .col-md-4 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .card {
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  header nav {
+    margin-top: 10px;
+  }
+
+  .card-header h3 {
+    font-size: 1rem;
+  }
+}

@@ -57,82 +57,93 @@ $conn->close();
             <div class="alert alert-danger text-center"><?php echo $_SESSION['mensagem_erro']; unset($_SESSION['mensagem_erro']); ?></div>
         <?php endif; ?>
 
-        <div class="row g-4">
-            <div class="col-lg-6">
-                <div class="card shadow-sm mb-4">
-                    <div class="card-header"><h3><i class="fas fa-envelope"></i> Alterar E-mail</h3></div>
-                    <div class="card-body">
-                        <form action="atualizar_perfil.php" method="POST">
-                            <input type="hidden" name="action" value="update_email">
-                            <div class="mb-3">
-                                <label for="email" class="form-label">Novo E-mail</label>
-                                <input type="email" class="form-control" id="email" name="email" value="<?php echo htmlspecialchars($usuario['email']); ?>" required>
-                            </div>
-                            <button type="submit" class="btn btn-primary w-100">Salvar Novo E-mail</button>
-                        </form>
+        <div class="row g-4 justify-content-center">
+    <!-- CARD: Alterar E-mail -->
+    <div class="col-md-4">
+        <div class="card shadow-sm mb-4">
+            <div class="card-header"><h3><i class="fas fa-envelope"></i> Alterar E-mail</h3></div>
+            <div class="card-body">
+                <form action="atualizar_perfil.php" method="POST">
+                    <input type="hidden" name="action" value="update_email">
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Novo E-mail</label>
+                        <input type="email" class="form-control" id="email" name="email"
+                               value="<?php echo htmlspecialchars($usuario['email']); ?>" required>
                     </div>
-                </div>
-
-                <div class="card shadow-sm">
-                    <div class="card-header"><h3><i class="fas fa-lock"></i> Alterar Senha</h3></div>
-                    <div class="card-body">
-                        <form action="atualizar_perfil.php" method="POST">
-                            <input type="hidden" name="action" value="update_password">
-                            <div class="mb-3">
-                                <label for="senha_atual" class="form-label">Senha Atual</label>
-                                <input type="password" class="form-control" id="senha_atual" name="senha_atual" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="nova_senha" class="form-label">Nova Senha</label>
-                                <input type="password" class="form-control" id="nova_senha" name="nova_senha" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="confirma_senha" class="form-label">Confirmar Nova Senha</label>
-                                <input type="password" class="form-control" id="confirma_senha" name="confirma_senha" required>
-                            </div>
-                            <button type="submit" class="btn btn-primary w-100">Salvar Nova Senha</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-6">
-                <div class="card shadow-sm">
-                    <div class="card-header d-flex justify-content-between align-items-center">
-                        <h3><i class="fas fa-map-marker-alt"></i> Meus Endereços</h3>
-                        <?php if (count($enderecos) < 5): ?>
-                            <button class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#modalEndereco">
-                                <i class="fas fa-plus"></i> Adicionar
-                            </button>
-                        <?php endif; ?>
-                    </div>
-                    <div class="card-body">
-                        <?php if (empty($enderecos)): ?>
-                            <p class="text-center">Nenhum endereço cadastrado.</p>
-                        <?php else: ?>
-                            <ul class="list-group">
-                                <?php foreach ($enderecos as $endereco): ?>
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        <div>
-                                            <strong><?php echo htmlspecialchars($endereco['endereco']); ?>, <?php echo htmlspecialchars($endereco['numero']); ?></strong><br>
-                                            <small><?php echo htmlspecialchars($endereco['cep']); ?> - <?php echo htmlspecialchars($endereco['bairro']); ?></small>
-                                        </div>
-                                        <div>
-                                            <button class="btn btn-outline-primary btn-sm me-2" onclick="editarEndereco(<?php echo htmlspecialchars(json_encode($endereco)); ?>)">
-                                                <i class="fas fa-pencil-alt"></i>
-                                            </button>
-                                            <a href="atualizar_perfil.php?action=delete_address&id=<?php echo $endereco['id']; ?>" class="btn btn-outline-danger btn-sm" onclick="return confirm('Tem certeza?');">
-                                                <i class="fas fa-trash"></i>
-                                            </a>
-                                        </div>
-                                    </li>
-                                <?php endforeach; ?>
-                            </ul>
-                        <?php endif; ?>
-                    </div>
-                </div>
+                    <button type="submit" class="btn btn-primary w-100">Salvar Novo E-mail</button>
+                </form>
             </div>
         </div>
+    </div>
+
+
+               <!-- CARD: Alterar Senha -->
+    <div class="col-md-4">
+        <div class="card shadow-sm">
+            <div class="card-header"><h3><i class="fas fa-lock"></i> Alterar Senha</h3></div>
+            <div class="card-body">
+                <form action="atualizar_perfil.php" method="POST">
+                    <input type="hidden" name="action" value="update_password">
+                    <div class="mb-3">
+                        <label for="senha_atual" class="form-label">Senha Atual</label>
+                        <input type="password" class="form-control" id="senha_atual" name="senha_atual" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="nova_senha" class="form-label">Nova Senha</label>
+                        <input type="password" class="form-control" id="nova_senha" name="nova_senha" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="confirma_senha" class="form-label">Confirmar Nova Senha</label>
+                        <input type="password" class="form-control" id="confirma_senha" name="confirma_senha" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Salvar Nova Senha</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+     <!-- CARD: Meus Endereços -->
+    <div class="col-md-4">
+        <div class="card shadow-sm">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h3><i class="fas fa-map-marker-alt"></i> Meus Endereços</h3>
+                <?php if (count($enderecos) < 5): ?>
+                    <button class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#modalEndereco">
+                        <i class="fas fa-plus"></i> Adicionar
+                    </button>
+                <?php endif; ?>
+            </div>
+            <div class="card-body">
+                <?php if (empty($enderecos)): ?>
+                    <p class="text-center">Nenhum endereço cadastrado.</p>
+                <?php else: ?>
+                    <ul class="list-group">
+                        <?php foreach ($enderecos as $endereco): ?>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <strong><?php echo htmlspecialchars($endereco['endereco']); ?>, <?php echo htmlspecialchars($endereco['numero']); ?></strong><br>
+                                    <small><?php echo htmlspecialchars($endereco['cep']); ?> - <?php echo htmlspecialchars($endereco['bairro']); ?></small>
+                                </div>
+                                <div>
+                                    <button class="btn btn-outline-primary btn-sm me-2"
+                                            onclick="editarEndereco(<?php echo htmlspecialchars(json_encode($endereco)); ?>)">
+                                        <i class="fas fa-pencil-alt"></i>
+                                    </button>
+                                    <a href="atualizar_perfil.php?action=delete_address&id=<?php echo $endereco['id']; ?>"
+                                       class="btn btn-outline-danger btn-sm"
+                                       onclick="return confirm('Tem certeza?');">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                </div>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
+</div>
+           
     </main>
 
     <div class="modal fade" id="modalEndereco" tabindex="-1" aria-labelledby="modalEnderecoLabel" aria-hidden="true">
