@@ -194,7 +194,70 @@ main h3 {
     margin-top: 25px;
 }
 
+/* Adicione estas regras ao seu cardapio.css */
 
+/* Centraliza e limita a largura do MAIN */
+main {
+    max-width: 1200px; /* Ajuste esse valor conforme necessário */
+    margin: 0 auto; /* Centraliza o conteúdo */
+    padding: 20px; /* Adiciona espaçamento interno */
+}
+
+/* Ajusta as seções de Copo e Marmita */
+#copoSection, #marmitaSection {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    background-color: #f9f9f9;
+    max-width: 100%; /* Usa toda a largura disponível do main */
+}
+
+/* Centraliza os grids de complementos */
+.complementos-gratis-copo,
+.complementos-gratis-marmita,
+.adicionais {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    margin-bottom: 30px;
+    padding: 10px;
+    max-width: 100%; /* Usa toda a largura do container pai */
+}
+
+/* OPÇÕES DE LARGURA - Escolha uma das opções abaixo: */
+
+/* OPÇÃO 1: Container médio (1200px) - RECOMENDADO */
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 40px;
+}
+
+/* OPÇÃO 2: Container pequeno (900px) - Mais compacto */
+/*
+main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px 40px;
+}
+*/
+
+/* OPÇÃO 3: Container grande (1400px) - Mais espaçoso */
+/*
+main {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px 40px;
+}
+*/
+
+/* Responsividade para telas menores */
+@media screen and (max-width: 768px) {
+    main {
+        padding: 20px 15px;
+    }
+}
 
 
 

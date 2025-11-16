@@ -1,199 +1,351 @@
-/* ======= Estilo geral ======= */
-body {
-  background: linear-gradient(135deg, #bea0d3, #ece5f1);
-  font-family: 'Poppins', sans-serif;
-  color: #333;
-  min-height: 100vh;
+/* ======= Reset e Base ======= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-/* ======= Cabeçalho ======= */
+body {
+    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    color: #2d3748;
+}
+
+/* ======= Header Moderno ======= */
 header {
-  background: #73076a;
-  padding: 15px 40px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: white;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0.95);
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 header .logo-container {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
 
 header .logo {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  margin-right: 15px;
-  object-fit: cover;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #667eea;
 }
 
-header h1 {
-  font-size: 1.8rem;
-  margin: 0;
-  color: #fff;
+header .logo-text h1 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #667eea;
+    margin: 0;
+    line-height: 1.2;
+}
+
+header nav {
+    display: flex;
+    gap: 12px;
 }
 
 header nav a {
-  background: #6a0dad;
-  color: #fff;
-  text-decoration: none;
-  padding: 8px 18px;
-  border-radius: 25px;
-  font-weight: 500;
-  transition: 0.3s;
-  margin-left: 10px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 24px;
+    border-radius: 50px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: transform 0.2s ease;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
 }
 
 header nav a:hover {
-  background: #290447;
-  transform: scale(1.05);
+    transform: translateY(-2px);
 }
 
-/* ======= Container principal ======= */
+/* ======= Container Principal ======= */
 main.container.my-5 {
-  max-width: 1300px;
+    max-width: 1400px;
+    padding: 40px 20px;
 }
 
-/* ======= Cards ======= */
+/* ======= Cards Modernos ======= */
 .card {
-  border: none;
-  border-radius: 15px;
-  overflow: hidden;
-  background: #fff;
-  transition: all 0.3s ease;
-  min-height: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
 }
 
 .card-header {
-  background: linear-gradient(90deg, #7d16e4, #7804d8);
-  color: #fff;
-  padding: 12px 20px;
-  font-size: 1.1rem;
-  font-weight: 600;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #fff;
+    padding: 18px 24px;
+    border-radius: 20px 20px 0 0;
+    border: none;
 }
 
 .card-header h3 {
-  margin: 0;
-  font-size: 1.1rem;
-   color: #000000;
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.card-header i {
+    font-size: 1.2rem;
 }
 
 .card-body {
-  padding: 25px;
+    padding: 28px 24px;
 }
 
-/* ======= Botões ======= */
+/* ======= Formulários Modernos ======= */
+.form-label {
+    font-weight: 600;
+    color: #4a5568;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+
+.form-control {
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 12px 16px;
+    font-size: 0.95rem;
+    transition: border-color 0.2s ease;
+    background: #fff;
+}
+
+.form-control:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    outline: none;
+}
+
+.form-control:read-only {
+    background: #f7fafc;
+    cursor: not-allowed;
+}
+
+/* ======= Botões Modernos ======= */
+.btn {
+    border-radius: 12px;
+    padding: 12px 24px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: transform 0.2s ease;
+    border: none;
+}
+
 .btn-primary {
-  background: #5a189a;
-  border: none;
-  border-radius: 25px;
-  font-weight: 500;
-  transition: 0.3s;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
 }
 
 .btn-primary:hover {
-  background: #7b2cbf;
-  transform: translateY(-2px);
+    transform: translateY(-2px);
 }
 
 .btn-success {
-  background: #2ecc71;
-  border: none;
-  border-radius: 25px;
+    background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(72, 187, 120, 0.3);
 }
 
 .btn-success:hover {
-  background: #27ae60;
-  transform: translateY(-2px);
+    transform: translateY(-2px);
 }
 
-.btn-outline-primary,
+.btn-outline-primary {
+    border: 2px solid #667eea;
+    color: #667eea;
+    background: transparent;
+}
+
+.btn-outline-primary:hover {
+    background: #667eea;
+    color: #fff;
+}
+
 .btn-outline-danger {
-  border-radius: 25px;
+    border: 2px solid #fc8181;
+    color: #fc8181;
+    background: transparent;
+}
+
+.btn-outline-danger:hover {
+    background: #fc8181;
+    color: #fff;
+}
+
+.btn-sm {
+    padding: 8px 16px;
+    font-size: 0.85rem;
 }
 
 /* ======= Lista de Endereços ======= */
 .list-group-item {
-  border: none;
-  border-bottom: 1px solid #eee;
-  padding: 15px 10px;
+    border: none;
+    border-bottom: 1px solid #e2e8f0;
+    padding: 16px 12px;
+    background: transparent;
+}
+
+.list-group-item:hover {
+    background: #f7fafc;
 }
 
 .list-group-item:last-child {
-  border-bottom: none;
+    border-bottom: none;
 }
 
-/* ======= Modal ======= */
+.list-group-item strong {
+    color: #2d3748;
+    font-size: 0.95rem;
+}
+
+.list-group-item small {
+    color: #718096;
+    font-size: 0.85rem;
+}
+
+/* ======= Alertas Modernos ======= */
+.alert {
+    border-radius: 16px;
+    border: none;
+    padding: 16px 20px;
+    font-weight: 500;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.alert-success {
+    background: linear-gradient(135deg, #c6f6d5 0%, #9ae6b4 100%);
+    color: #22543d;
+}
+
+.alert-danger {
+    background: linear-gradient(135deg, #fed7d7 0%, #fc8181 100%);
+    color: #742a2a;
+}
+
+/* ======= Modal Moderno ======= */
 .modal-content {
-  border-radius: 15px;
-  border: none;
-  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+    border: none;
+    border-radius: 24px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
 }
-
-/* ======= Cabeçalho do Modal ======= */
 
 .modal-header {
-  background: linear-gradient(90deg, #5a189a, #9d4edd);
-  color: #fff;
-  border-bottom: none;
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #fff;
+    border: none;
+    padding: 20px 28px;
 }
 
-.modal-footer button {
-  border-radius: 25px;
+.modal-title {
+    font-weight: 700;
+    font-size: 1.2rem;
 }
 
-/* ======= Formulários ======= */
-.form-control {
-  border-radius: 10px;
-  border: 1px solid #ddd;
-  padding: 10px;
-  transition: border-color 0.3s;
+.modal-body {
+    padding: 28px;
 }
 
-.form-control:focus {
-  border-color: #9d4edd;
-  box-shadow: 0 0 0 0.2rem rgba(157, 78, 221, 0.25);
+.modal-footer {
+    border-top: 1px solid #e2e8f0;
+    padding: 20px 28px;
 }
 
-/* ======= Alertas ======= */
-.alert {
-  border-radius: 25px;
-  font-weight: 500;
+.btn-close {
+    filter: brightness(0) invert(1);
+    opacity: 0.8;
 }
 
-/* ======= Layout responsivo ======= */
+.btn-close:hover {
+    opacity: 1;
+}
+
+/* ======= Feedback do CEP ======= */
+#cepFeedback {
+    font-size: 0.85rem;
+    margin-top: 6px;
+    font-weight: 500;
+}
+
+/* ======= Ajuste de Layout ======= */
+.row.g-4 {
+    gap: 24px;
+}
+
+.row.g-4.justify-content-center {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.col-md-4 {
+    flex: 0 0 auto;
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .col-md-4 {
+        width: calc(33.333% - 16px);
+        max-width: 450px;
+    }
+}
+
+/* ======= Responsividade ======= */
 @media (max-width: 992px) {
-  .col-md-4 {
-    flex: 0 0 100%;
-    max-width: 100%;
-  }
-
-  .card {
-    margin-bottom: 20px;
-  }
+    .row.g-4 {
+        row-gap: 24px !important;
+    }
 }
 
 @media (max-width: 768px) {
-  header {
-    flex-direction: column;
-    text-align: center;
-  }
+    header {
+        flex-direction: column;
+        gap: 16px;
+        padding: 20px;
+    }
 
-  header nav {
-    margin-top: 10px;
-  }
+    header nav {
+        width: 100%;
+        justify-content: center;
+    }
 
-  .card-header h3 {
-    font-size: 1rem;
-  }
+    main.container.my-5 {
+        padding: 24px 16px;
+    }
+
+    .card {
+        margin-bottom: 20px;
+    }
+
+    .card-header h3 {
+        font-size: 1rem;
+    }
+    
+    .col-md-4 {
+        width: 100%;
+        max-width: 100%;
+    }
 }
