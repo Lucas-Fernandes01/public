@@ -1,20 +1,110 @@
-.contato-page {
-  max-width: 1000px;
-  margin: 30px auto;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+/* ======== ESTILO GERAL ======== */
+body {
+  font-family: 'Montserrat', system-ui, sans-serif;
+  background: linear-gradient(180deg, #ffffff, #d6b0dbc0);
+  margin: 0;
+  padding: 0;
+  color: #333;
 }
 
+/* ======== CONTAINER PRINCIPAL ======== */
+ .contato-page {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 20px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  box-shadow: 0 8px 24px rgba(115, 7, 106, 0.25);
+  backdrop-filter: blur(8px);
+  animation: fadeIn 0.8s ease;
+}
+
+/* ======== SEÇÃO VALORES ======== */
+#valores {
+  text-align: left;
+  padding: 80px 20px;
+  background: linear-gradient(180deg, #e0b6e665 0%, #ffffff 100%);
+}
+
+.titulo-secao {
+  font-size: 2.2rem;
+  color: #73076a;
+  margin-bottom: 50px;
+  font-weight: 700;
+  position: relative;
+}
+
+.titulo-secao::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #73076a, #b83ebdc9);
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+.valores-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+  justify-items: center;
+}
+
+.valor-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 30px 20px;
+  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  max-width: 280px;
+}
+
+.valor-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(116, 3, 106, 0.349);
+}
+
+.valor-card img {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 15px;
+  transition: transform 0.3s ease;
+}
+
+.valor-card:hover img {
+  transform: scale(1.1);
+}
+
+.valor-card h3 {
+  color: #73076a;
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+}
+
+.valor-card p {
+  color: #555;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* ======== CABEÇALHO ======== */
 .contato-header {
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
 }
 
 .contato-header h1 {
-  color: #6f42c1;
-  font-size: 2rem;
+  color: #73076a;
+  font-size: 2.3rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  background: linear-gradient(90deg, #73076a, #b83ebdc9);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .contato-header p {
@@ -22,105 +112,226 @@
   font-size: 1.1rem;
 }
 
+/* ======== INFORMAÇÕES DE CONTATO ======== */
 .contato-info {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: space-between;
-  margin-bottom: 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 25px;
+  margin-bottom: 40px;
 }
 
 .info-item {
-  flex: 1 1 220px;
-  background-color: #f8f9fa;
-  border: 1px solid #dee2e6;
-  border-radius: 8px;
-  padding: 15px;
+  background: #fff;
+  border-radius: 15px;
+  padding: 25px;
+  text-align: center;
+  border: 1px solid #eee;
+  box-shadow: 0 6px 18px rgba(115, 7, 106, 0.1);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.info-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(115, 7, 106, 0.2);
 }
 
 .info-item h3 {
-  color: #6f42c1;
+  color: #73076a;
+  font-size: 1.3rem;
   margin-bottom: 8px;
 }
 
+.info-item p {
+  color: #555;
+  font-size: 0.98rem;
+}
+
+/* ======== FORMULÁRIO ======== */
 .contato-form {
-  margin-bottom: 30px;
+  margin-bottom: 40px;
 }
 
 .contato-form h2 {
-  color: #6f42c1;
+  color: #73076a;
   margin-bottom: 15px;
+  font-size: 1.6rem;
 }
 
 .form-box {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+  display: grid;
+  gap: 15px;
 }
 
 .form-box label {
   font-weight: 600;
-  color: #555;
+  color: #444;
 }
 
 .form-box input,
 .form-box textarea {
-  padding: 10px;
-  border: 1px solid #ced4da;
-  border-radius: 5px;
-  font-size: 14px;
+  padding: 12px 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  background: #f9f9f9;
+  transition: all 0.2s ease;
+}
+
+.form-box input:focus,
+.form-box textarea:focus {
+  border-color: #73076a;
+  background: #fff;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(115, 7, 106, 0.2);
+}
+
+.form-box textarea {
+  min-height: 100px;
+  resize: vertical;
 }
 
 .form-box button {
-  background-color: #6f42c1;
+  background: linear-gradient(90deg, #73076a, #b83ebdc9);
   color: white;
   padding: 12px;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   font-weight: 600;
+  font-size: 1rem;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: transform 0.3s ease, background 0.3s ease;
+  box-shadow: 0 4px 10px rgba(115, 7, 106, 0.2);
 }
 
 .form-box button:hover {
-  background-color: #5a379f;
+  transform: scale(1.05);
+  background: linear-gradient(90deg, #b83ebdc9, #73076a);
 }
 
+/* ======== MAPA ======== */
 .contato-mapa {
-  margin-bottom: 30px;
+  margin-bottom: 40px;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
 }
 
 .contato-mapa h2 {
-  color: #6f42c1;
+  color: #73076a;
   margin-bottom: 15px;
+  font-size: 1.6rem;
 }
 
+/* ======== REDES SOCIAIS ======== */
 .contato-redes {
   text-align: center;
+  margin-bottom: 20px;
 }
 
 .contato-redes h2 {
-  color: #6f42c1;
-  margin-bottom: 15px;
+  color: #73076a;
+  margin-bottom: 20px;
 }
 
 .redes-links {
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 15px;
   flex-wrap: wrap;
 }
 
 .redes-links a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   text-decoration: none;
-  color: #6f42c1;
-  border: 1px solid #6f42c1;
-  padding: 8px 16px;
-  border-radius: 25px;
-  transition: background-color 0.3s, color 0.3s;
+  color: #73076a;
+  border: 1px solid #73076a;
+  padding: 10px 18px;
+  border-radius: 30px;
+  font-weight: 600;
+  transition: all 0.3s ease;
 }
 
 .redes-links a:hover {
-  background-color: #6f42c1;
+  background: linear-gradient(90deg, #73076a, #b83ebdc9);
   color: #fff;
+  transform: scale(1.05);
+}
+
+/* ======== BLOCO DE LOGIN ======== */
+.login-necessario {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 60px 0;
+}
+
+.login-card {
+  background: #fff;
+  padding: 50px 60px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 420px;
+  transition: 0.3s ease;
+}
+
+.login-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(115, 7, 106, 0.15);
+}
+
+.login-card h2 {
+  font-size: 1.9rem;
+  color: #73076a;
+  margin-bottom: 10px;
+}
+
+.login-card p {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 25px;
+}
+
+.btn-login {
+  display: inline-block;
+  background: linear-gradient(90deg, #73076a, #b83ebdc9);
+  color: white;
+  padding: 12px 28px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.btn-login:hover {
+  transform: scale(1.05);
+  background: linear-gradient(90deg, #b83ebdc9, #73076a);
+}
+
+/* ======== ANIMAÇÃO ======== */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ======== RESPONSIVIDADE ======== */
+@media (max-width: 768px) {
+  .contato-page {
+    padding: 25px;
+    border-radius: 15px;
+  }
+
+  .contato-header h1 {
+    font-size: 1.8rem;
+  }
+
+  .info-item {
+    padding: 18px;
+  }
+
+  .login-card {
+    padding: 35px 25px;
+  }
 }

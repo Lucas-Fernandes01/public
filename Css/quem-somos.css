@@ -1,177 +1,261 @@
 main.quem-somos {
-  max-width: 1100px;
-  margin: 50px auto;
-  padding: 30px 20px;
-  background-color: #fff;
-  border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+  background-image: url('../img/fundo.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
   font-family: "Montserrat", sans-serif;
+  color: #fff; /* define cor padrão de texto */
 }
 
 /* Introdução */
 .intro {
-  text-align: center;
-  margin-bottom: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 50px; /* aumenta espaçamento para melhor respiro */
+  margin-bottom: 60px;
+  padding: 80px 20px;
+  background: rgba(0,0,0,0.4); /* leve overlay para destacar o texto sobre a imagem */
+  border-radius: 15px;
+}
+
+/* Texto */
+.intro .texto {
+  flex: 1 1 400px;
+  max-width: 600px;
 }
 
 .intro h1 {
-  font-size: 2.8rem;
-  color: #6a1b9a;
-  margin-bottom: 10px;
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 25px;
+  position: relative;
+  display: inline-block;
+}
+
+.intro h1::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  height: 5px;
+  width: 60%;
+  background: linear-gradient(90deg, #e9cb24e5, #FFA500); /* efeito gradiente no underline */
+  border-radius: 3px;
 }
 
 .intro p {
-  font-size: 1.1rem;
-  max-width: 700px;
-  margin: 0 auto;
-  color: #555;
-  line-height: 1.6;
+  font-size: 1.15rem;
+  line-height: 1.8;
+  margin-bottom: 20px;
+  color: #f1f1f1; /* contraste suave com background */
 }
 
-/* História */
-.historia {
-  margin-bottom: 50px;
-  background-color: #faf5ff;
-  padding: 30px 20px;
-  border-radius: 10px;
+/* Imagem */
+.intro img.imagem-principal {
+  flex: 1 1 300px;
+  max-width: 450px;
+  width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4); /* sombra mais elegante */
+  transition: transform 0.4s ease;
 }
 
-.historia h2 {
-  color: #6a1b9a;
-  margin-bottom: 15px;
-  font-size: 2rem;
-  text-align: center;
+.intro img.imagem-principal:hover {
+  transform: scale(1.05); /* leve zoom ao passar o mouse */
 }
 
-.historia p {
-  line-height: 1.7;
-  color: #555;
-  font-size: 1rem;
-  text-align: justify;
+/* Responsividade */
+@media (max-width: 768px) {
+  .intro {
+    flex-direction: column;
+    text-align: center;
+    padding: 50px 20px;
+  }
+
+  .intro img.imagem-principal {
+    max-width: 80%;
+  }
+
+  .intro h1 {
+    font-size: 2rem;
+  }
 }
 
-/* Missão Visão Valores */
+
+/* ==================================================================== */
+/* SEÇÃO MISSÃO, VISÃO E VALORES */
+/* ==================================================================== */
+
 .missao-visao-valores {
-  margin-bottom: 50px;
-  text-align: center;
+    padding: 60px 20px;
+    text-align: center;
 }
 
-.missao-visao-valores h2 {
-  color: #6a1b9a;
-  font-size: 2rem;
-  margin-bottom: 30px;
-}
-
-/* Cards */
 .mvv-cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 25px;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
 }
 
 .mvv-cards .card {
-  flex: 1 1 280px;
-  background-color: #ffffff;
-  border: 1px solid #e5d0f5;
-  border-radius: 12px;
-  padding: 30px 20px;
-  box-shadow: 0 4px 12px rgba(106, 27, 154, 0.1);
-  transition: transform 0.3s, box-shadow 0.3s;
-  text-align: center;
+    flex: 1;
+    min-width: 280px;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    border-bottom: 5px solid var(--cor-principal);
+}
+
+.mvv-cards .card:nth-child(2) {
+    border-bottom-color: var(--cor-secundaria);
+}
+
+.mvv-cards .card:nth-child(3) {
+    border-bottom-color: #ffc107; /* Amarelo/Laranja */
 }
 
 .mvv-cards .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 24px rgba(106, 27, 154, 0.15);
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
 }
 
 .mvv-cards .card i {
-  font-size: 2.5rem;
-  color: #8e24aa;
-  margin-bottom: 15px;
+    font-size: 3.5rem;
+    color: var(--cor-principal);
+    margin-bottom: 15px;
+    transition: color 0.3s;
+}
+
+.mvv-cards .card:hover i {
+    color: var(--cor-secundaria);
 }
 
 .mvv-cards .card h3 {
-  color: #6a1b9a;
-  margin-bottom: 12px;
-  font-size: 1.5rem;
+    font-size: 1.8rem;
+    color: var(--cor-texto);
+    margin-bottom: 10px;
 }
 
 .mvv-cards .card p {
-  color: #666;
-  font-size: 1rem;
-  line-height: 1.6;
+    font-size: 1rem;
+    line-height: 1.6;
 }
 
-/* Equipe */
+/* ==================================================================== */
+/* SEÇÃO EQUIPE */
+/* ==================================================================== */
+
 .equipe {
-  margin-bottom: 50px;
-  background-color: #faf5ff;
-  padding: 30px 20px;
-  border-radius: 10px;
-  text-align: center;
-}
-
-.equipe h2 {
-  color: #6a1b9a;
-  font-size: 2rem;
-  margin-bottom: 15px;
+    text-align: center;
+    padding: 60px 40px;
+    background-color: var(--cor-fundo); /* Fundo sutilmente diferente */
 }
 
 .equipe p {
-  max-width: 800px;
-  margin: 0 auto;
-  color: #555;
-  line-height: 1.7;
-  font-size: 1rem;
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    line-height: 1.7;
 }
 
-/* CTA */
+/* ==================================================================== */
+/* SEÇÃO CTA (CHAMADA PARA AÇÃO) */
+/* ==================================================================== */
+
 .cta {
-  text-align: center;
-  background: linear-gradient(135deg, #6a1b9a, #8e24aa);
-  color: #fff;
-  padding: 50px 30px;
-  border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(106, 27, 154, 0.3);
+    text-align: center;
+    background: linear-gradient(45deg, var(--cor-secundaria), #3d013a); /* Gradiente Verde */
+    color: var(--cor-texto-claro);
+    padding: 80px 30px;
+    box-shadow: 0 10px 30px rgba(175, 5, 56, 0.4);
 }
 
 .cta h2 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
+    color: var(--cor-texto-claro);
+    font-size: 3rem;
+}
+
+.cta h2::after {
+    background-color: var(--cor-principal); /* Linha roxa no CTA verde */
 }
 
 .cta p {
-  font-size: 1.1rem;
-  max-width: 700px;
-  margin: 0 auto 20px;
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto 30px;
 }
 
 .cta .btn {
-  display: inline-block;
-  padding: 12px 30px;
-  background-color: #fff;
-  color: #6a1b9a;
-  border-radius: 50px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: background-color 0.3s, color 0.3s;
+    display: inline-block;
+    padding: 15px 40px;
+    background-color: var(--cor-principal);
+    color: var(--cor-texto-claro);
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.3s, transform 0.3s;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .cta .btn:hover {
-  background-color: #f3e5f5;
-  color: #4a148c;
+    background-color: #8a4dcf;
+    transform: scale(1.05);
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .mvv-cards {
-    flex-direction: column;
-    align-items: center;
-  }
+/* ==================================================================== */
+/* RESPONSIVIDADE */
+/* ==================================================================== */
 
-  .intro h1, .historia h2, .missao-visao-valores h2, .equipe h2, .cta h2 {
-    font-size: 1.8rem;
-  }
+@media (max-width: 992px) {
+    .intro {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .intro img.imagem-principal {
+        margin-top: 30px;
+    }
+
+    .intro h1 {
+        font-size: 2.5rem;
+        border-left: none;
+        padding-left: 0;
+    }
+
+    .mvv-cards {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .mvv-cards .card {
+        min-width: 90%;
+    }
+}
+
+@media (max-width: 576px) {
+    main.quem-somos h2 {
+        font-size: 2rem;
+    }
+
+    .intro h1 {
+        font-size: 2rem;
+    }
+
+    .cta h2 {
+        font-size: 2.5rem;
+    }
+}
+
+
+/* Variáveis de Cores (para facilitar a manutenção) */
+:root {
+    --cor-principal: #6f42c1; /* Roxo */
+    --cor-secundaria: #560258; /* Verde */
+    --cor-fundo: #06061a;
+    --cor-texto: #333333;
+    --cor-texto-claro: #ffffff;
 }

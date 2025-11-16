@@ -1,0 +1,351 @@
+/* ======= Reset e Base ======= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    color: #2d3748;
+}
+
+/* ======= Header Moderno ======= */
+header {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header .logo-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+header .logo {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #667eea;
+}
+
+header .logo-text h1 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #667eea;
+    margin: 0;
+    line-height: 1.2;
+}
+
+header nav {
+    display: flex;
+    gap: 12px;
+}
+
+header nav a {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 24px;
+    border-radius: 50px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: transform 0.2s ease;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+header nav a:hover {
+    transform: translateY(-2px);
+}
+
+/* ======= Container Principal ======= */
+main.container.my-5 {
+    max-width: 1400px;
+    padding: 40px 20px;
+}
+
+/* ======= Cards Modernos ======= */
+.card {
+    background: rgba(255, 255, 255, 0.95);
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+}
+
+.card-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #fff;
+    padding: 18px 24px;
+    border-radius: 20px 20px 0 0;
+    border: none;
+}
+
+.card-header h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.card-header i {
+    font-size: 1.2rem;
+}
+
+.card-body {
+    padding: 28px 24px;
+}
+
+/* ======= Formulários Modernos ======= */
+.form-label {
+    font-weight: 600;
+    color: #4a5568;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+
+.form-control {
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 12px 16px;
+    font-size: 0.95rem;
+    transition: border-color 0.2s ease;
+    background: #fff;
+}
+
+.form-control:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    outline: none;
+}
+
+.form-control:read-only {
+    background: #f7fafc;
+    cursor: not-allowed;
+}
+
+/* ======= Botões Modernos ======= */
+.btn {
+    border-radius: 12px;
+    padding: 12px 24px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: transform 0.2s ease;
+    border: none;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+}
+
+.btn-success {
+    background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(72, 187, 120, 0.3);
+}
+
+.btn-success:hover {
+    transform: translateY(-2px);
+}
+
+.btn-outline-primary {
+    border: 2px solid #667eea;
+    color: #667eea;
+    background: transparent;
+}
+
+.btn-outline-primary:hover {
+    background: #667eea;
+    color: #fff;
+}
+
+.btn-outline-danger {
+    border: 2px solid #fc8181;
+    color: #fc8181;
+    background: transparent;
+}
+
+.btn-outline-danger:hover {
+    background: #fc8181;
+    color: #fff;
+}
+
+.btn-sm {
+    padding: 8px 16px;
+    font-size: 0.85rem;
+}
+
+/* ======= Lista de Endereços ======= */
+.list-group-item {
+    border: none;
+    border-bottom: 1px solid #e2e8f0;
+    padding: 16px 12px;
+    background: transparent;
+}
+
+.list-group-item:hover {
+    background: #f7fafc;
+}
+
+.list-group-item:last-child {
+    border-bottom: none;
+}
+
+.list-group-item strong {
+    color: #2d3748;
+    font-size: 0.95rem;
+}
+
+.list-group-item small {
+    color: #718096;
+    font-size: 0.85rem;
+}
+
+/* ======= Alertas Modernos ======= */
+.alert {
+    border-radius: 16px;
+    border: none;
+    padding: 16px 20px;
+    font-weight: 500;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.alert-success {
+    background: linear-gradient(135deg, #c6f6d5 0%, #9ae6b4 100%);
+    color: #22543d;
+}
+
+.alert-danger {
+    background: linear-gradient(135deg, #fed7d7 0%, #fc8181 100%);
+    color: #742a2a;
+}
+
+/* ======= Modal Moderno ======= */
+.modal-content {
+    border: none;
+    border-radius: 24px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+.modal-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #fff;
+    border: none;
+    padding: 20px 28px;
+}
+
+.modal-title {
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.modal-body {
+    padding: 28px;
+}
+
+.modal-footer {
+    border-top: 1px solid #e2e8f0;
+    padding: 20px 28px;
+}
+
+.btn-close {
+    filter: brightness(0) invert(1);
+    opacity: 0.8;
+}
+
+.btn-close:hover {
+    opacity: 1;
+}
+
+/* ======= Feedback do CEP ======= */
+#cepFeedback {
+    font-size: 0.85rem;
+    margin-top: 6px;
+    font-weight: 500;
+}
+
+/* ======= Ajuste de Layout ======= */
+.row.g-4 {
+    gap: 24px;
+}
+
+.row.g-4.justify-content-center {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.col-md-4 {
+    flex: 0 0 auto;
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .col-md-4 {
+        width: calc(33.333% - 16px);
+        max-width: 450px;
+    }
+}
+
+/* ======= Responsividade ======= */
+@media (max-width: 992px) {
+    .row.g-4 {
+        row-gap: 24px !important;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 16px;
+        padding: 20px;
+    }
+
+    header nav {
+        width: 100%;
+        justify-content: center;
+    }
+
+    main.container.my-5 {
+        padding: 24px 16px;
+    }
+
+    .card {
+        margin-bottom: 20px;
+    }
+
+    .card-header h3 {
+        font-size: 1rem;
+    }
+    
+    .col-md-4 {
+        width: 100%;
+        max-width: 100%;
+    }
+}

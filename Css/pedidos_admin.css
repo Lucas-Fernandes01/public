@@ -1,0 +1,106 @@
+/* Css/pedidos_admin.css */
+body {
+    background-color: #f4f0f7;
+}
+
+.pedidos-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.pedidos-header h2 {
+    color: #4b0055;
+    font-weight: 600;
+}
+
+#container-pedidos-admin {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.card-pedido-admin {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    margin-bottom: 25px;
+}
+
+.card-pedido-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.card-pedido-header h4 {
+    margin: 0;
+    color: #4b0055;
+}
+
+.card-pedido-header span {
+    font-size: 0.9em;
+    color: #6c757d;
+}
+
+.card-pedido-body {
+    padding: 20px;
+}
+
+.info-cliente {
+    background-color: #fdf5e6; /* Cor de pêssego claro */
+    padding: 10px 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border: 1px solid #fce3c6;
+}
+
+.info-cliente p {
+    margin: 0;
+    font-weight: 500;
+}
+
+.item-do-pedido {
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    border-bottom: 1px dashed #eee;
+}
+
+.item-do-pedido:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.item-titulo {
+    font-weight: 600;
+}
+
+.card-pedido-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #f8f9fa;
+    border-top: 1px solid #dee2e6;
+}
+
+.status-select-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.status-select {
+    padding: 5px 8px;
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    font-weight: 500;
+}
+
+.status-select:disabled {
+    background-color: #e9ecef;
+    cursor: not-allowed;
+    opacity: 0.8;
+}

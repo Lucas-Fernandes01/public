@@ -1,3 +1,7 @@
+<?php
+// Apenas iniciamos a sessão para verificar o status de login mais tarde
+session_start(); 
+?>
 
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -8,6 +12,8 @@
   <link rel="stylesheet" href="css/style.css" />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="css/quem-somos.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
@@ -23,12 +29,12 @@
 
     <script src="Js/script.js"></script>
 </head>
+
 <body>
+   
   <header>
-
-
     <div class="logo-container">
-      <img src="Img/Logo.png" alt="Açaí da Suíça Logo" class="logo">
+      <img src="Img/logo2.jpeg" alt="Açaí da Suíça Logo" class="logo">
       <div class="logo-text">
         <h1>Sabor que conquista</h1>
       </div>
@@ -36,49 +42,56 @@
 
   <nav>
     <div class="nav-links">
-      <a href="index.html">Início</a>
-      <a href="cardapio.html">Cardápio</a>
-      <a href="quem-somos.html" class="active">Quem Somos</a>
-      <a href="contato.html">Contato</a>
+      <a href="index.php">Início</a>
+      <a href="cardapio.php">Cardápio</a>
+      <a href="quem_somos.php" class="active">Quem Somos</a>
+      <a href="contato.php">Contato</a>
     </div>
+
+      <?php if (isset($_SESSION['id'])): ?>
+        <a href="perfil.php" class="login-btn">Meu Perfil</a>
+      <?php else: ?>
+        <a href="login_form.php" class="login-btn">Fazer Login</a>
+      <?php endif; ?>
+
   </nav>
   </header>
 
   <main class="quem-somos">
-    <section class="intro">
-      <h1>Quem Somos</h1>
-      <p>Bem-vindo ao <strong>Açaí da Suíça</strong>! Somos apaixonados por oferecer a melhor experiência em açaí para nossos clientes. Desde nossa fundação, nosso objetivo é unir sabor, qualidade e atendimento de primeira.</p>
-    </section>
+<section class="intro">
+  <div>
+    <h1>Quem Somos</h1>
+    <p>Bem-vindo ao <strong>Açaí da Suíça!</strong>Nossa história começou em 27 de maio de 2023, quando nossa fundadora, enfrentando um momento de desemprego, decidiu transformar sua paixão por açaí em um sonho empreendedor. Com o apoio do marido, nasceu a ideia de levar sabor, qualidade e praticidade ao dia a dia dos nossos clientes.
 
-    <section class="historia">
-      <h2>Nossa História</h2>
-      <p> O Açaí da Suíça nasceu em 27 de maio de 2023 com o propósito de levar sabor, qualidade e praticidade para o dia a dia de nossos clientes. Desde o início, nossa missão sempre foi oferecer produtos diferenciados, feitos com carinho e ingredientes selecionados.
+Desde então, buscamos oferecer uma experiência única, com produtos diferenciados, preparados com carinho e ingredientes selecionados. Temos opções para todos os gostos: açaí no copo, marmitas, sorvetes e até fondue. Sempre inovando, sem abrir mão da qualidade e do atendimento excepcional.
 
-        Nossa fundadora transformou uma paixão por empreender em um negócio dedicado a atender quem valoriza o verdadeiro sabor do açaí. Hoje, trabalhamos com diversas opções para todos os gostos, como açaí no copo, marmitas, sorvetes e fondue, sempre buscando inovar e atender às necessidades dos nossos clientes com qualidade e bom atendimento.
-        
-        Acreditamos que o açaí é mais que um alimento: é uma experiência que une sabor, energia e alegria. Por isso, seguimos crescendo e nos aperfeiçoando, mantendo nosso compromisso com quem nos escolhe todos os dias.
-      </p>
-    </section>
+Acreditamos que o açaí vai além de um alimento. Para nós, é uma experiência que combina sabor, energia e alegria. Por isso, seguimos crescendo, nos aperfeiçoando e mantendo nosso compromisso com você, que nos escolhe todos os dias.</p>
+  </div>
+  <img src="img/açai-marmita.png" alt="Açaí" class="imagem-principal" />
+</section>
 
-    <section class="missao-visao-valores">
-      <h2>Missão, Visão e Valores</h2>
-      <div class="mvv-cards">
-        <div class="card">
-          <i class="ri-flag-fill"></i>
-          <h3>Missão</h3>
-          <p>Oferecer o melhor açaí, com qualidade e atendimento excepcional, promovendo momentos deliciosos para nossos clientes.</p>
-        </div>
-        <div class="card">
-          <h3>Visão</h3>
-          <p>Ser referência em açaí em Piracicaba e região, expandindo com qualidade e inovação.</p>
-        </div>
-        <div class="card">
-          <h3>Valores</h3>
-          <p>Qualidade, honestidade, inovação, respeito ao cliente e amor pelo que fazemos.</p>
-        
-        </div>
-      </div>
-    </section>
+
+      <section class="missao-visao-valores">
+      
+  <h2>Missão, Visão e Valores</h2>
+  <div class="mvv-cards">
+    <div class="card">
+      <i class="ri-flag-fill"></i>
+      <h3>Missão</h3>
+      <p>Oferecer o melhor açaí, com qualidade e atendimento excepcional, promovendo momentos deliciosos para nossos clientes.</p>
+    </div>
+    <div class="card">
+      <i class="ri-eye-fill"></i>
+      <h3>Visão</h3>
+      <p>Ser referência em açaí em Piracicaba e região, expandindo com qualidade e inovação.</p>
+    </div>
+    <div class="card">
+      <i class="ri-heart-fill"></i>
+      <h3>Valores</h3>
+      <p>Qualidade, honestidade, inovação, respeito ao cliente e amor pelo que fazemos.</p>
+    </div>
+  </div>
+</section>
 
     <section class="equipe">
       <h2>Nossa Equipe</h2>
@@ -88,14 +101,13 @@
     <section class="cta">
       <h2>Venha nos conhecer!</h2>
       <p>Faça seu pedido online ou venha até nossa loja. Vai ser um prazer te atender!</p>
-      <a href="contato.html" class="btn">Fale conosco</a>
+      <a href="contato.php" class="btn">Fale conosco</a>
     </section>
   </main>
 <footer class="footer-dark">
       <div class="container py-5">
         <div class="row">
-    
-          <!-- Sobre -->
+    <!-- Sobre -->
           <div class="col-md-3">
             <h5>Açaí da Suíça</h5>
             <p>Mais que sabor, uma experiência. Feito com carinho para conquistar você do seu jeito.</p>

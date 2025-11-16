@@ -1,5 +1,6 @@
-
-
+<?php
+session_start();
+?>
 
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -25,22 +26,28 @@
 
   <body>
      <header>
-      <div class="logo-container">
-        <img src="Img/Logo.png" alt="Açaí da Suíça Logo" class="logo" />
-        <div class="logo-text">
-          <h1>Sabor que conquista</h1>
-        </div>
+         <div class="logo-container">
+       <img src="Img/logo2.jpeg" alt="Açaí da Suíça Logo" class="logo">
+      <div class="logo-text">
+        <h1>Sabor que conquista</h1>
       </div>
+    </div>
+
 
       <nav>
         <div class="nav-links">
-          <a href="index.html" class="active">Início</a>
-          <a href="cardapio.html">Cardápio</a>
-          <a href="quem-somos.html">Quem Somos</a>
-          <a href="contato.html">Contato</a>
+          <a href="index.php" class="active">Início</a>
+          <a href="cardapio.php">Cardápio</a>
+          <a href="quem_somos.php">Quem Somos</a>
+          <a href="contato.php">Contato</a>
         </div>
 
-        <a href="login.html" class="login-btn">Fazer Login</a>
+      <?php if (isset($_SESSION['id'])): ?>
+        <a href="perfil.php" class="login-btn">Meu Perfil</a>
+      <?php else: ?>
+        <a href="login_form.php" class="login-btn">Fazer Login</a>
+      <?php endif; ?>
+
       </nav>
       
     </header>
@@ -49,15 +56,33 @@
       <div class="hero-image">
         <img src="Img/HEADER2.jpg" alt="Marmita Açaí da Suíça" />
 
-        <div class="hero-buttons">
-          <a href="contato.html" class="btn-primary">Entre em contato</a>
-          <a href="cardapio.html" class="btn-secondary">Ver cardápio</a>
-        </div>
-      </div>
+        
 
       <img src="Img/icon/grunge-divider-3.png" alt="" style="width:100%; display:block; margin-top: 0px;">
 
-      <!--VALORES-->
+
+<!-- QUEM SOMOS -->
+<section class="quem-somos">
+  <div class="quem-somos-container">
+    <div class="quem-somos-texto">
+      <h2>Quem é Açaí da Suíça?</h2>
+      <p>
+O Açaí da Suíça nasceu em 27 de maio de 2023 com um propósito simples: levar sabor, qualidade e praticidade ao dia a dia. Desde o início, nossa missão tem sido proporcionar experiências únicas por meio de produtos feitos com carinho e ingredientes selecionados com cuidado.
+
+O sonho de nossa fundadora de empreender com propósito transformou-se em um espaço para quem valoriza o verdadeiro sabor do açaí. Hoje, oferecemos diversas opções para todos os gostos: açaí no copo, marmitas, sorvetes e fondue, sempre buscando inovar e encantar em cada atendimento.
+
+Para nós, o açaí vai além de um alimento: é uma experiência que transmite energia, frescor e alegria. E é com esse espírito que seguimos crescendo, aprimorando cada detalhe e mantendo nosso compromisso com todos que fazem parte da nossa história.
+      </p>
+    </div>
+    <div class="quem-somos-imagem">
+      <img src="Img/Logo.jpg" alt="Açaí da Suíça">
+  
+    </div>
+  </div>
+  
+</section>
+
+ <!--VALORES-->
 
       <section id="valores">
   <h2 style=" padding: 30px; text-align:center; color:#4B0055;" data-aos="fade-up">NOSSOS VALORES</h2>
@@ -91,60 +116,42 @@
   </div>
 </section>
 
-<!-- QUEM SOMOS -->
-<section class="quem-somos">
-  <div class="quem-somos-container">
-    <div class="quem-somos-texto">
-      <h2>Quem é Açaí da Suíça?</h2>
-      <p>
-        O Açaí da Suíça nasceu em 27 de maio de 2023 com o propósito de levar sabor, qualidade e praticidade para o dia a dia de nossos clientes. Desde o início, nossa missão sempre foi oferecer produtos diferenciados, feitos com carinho e ingredientes selecionados.
-
-        Nossa fundadora transformou uma paixão por empreender em um negócio dedicado a atender quem valoriza o verdadeiro sabor do açaí. Hoje, trabalhamos com diversas opções para todos os gostos, como açaí no copo, marmitas, sorvetes e fondue, sempre buscando inovar e atender às necessidades dos nossos clientes com qualidade e bom atendimento.
-        
-        Acreditamos que o açaí é mais que um alimento: é uma experiência que une sabor, energia e alegria. Por isso, seguimos crescendo e nos aperfeiçoando, mantendo nosso compromisso com quem nos escolhe todos os dias.
-      </p>
-    </div>
-    <div class="quem-somos-imagem">
-      <img src="Img/Logo.jpg" alt="Açaí da Suíça">
-  
-    </div>
-  </div>
-  
-</section>
-
       
 
        <!-- DESTAQUES -->
-  <section class="destaques">
-    <div class="destaques-container">
-      <h2>Cardápios</h2>
-      <div class="destaques-cards">
-        <div class="card" data-aos="zoom-in-up" data-aos-delay="100">
-          <img src="Img/cardapio/copo.jpg" alt="Açaí no Copo">
-          <h3>Açaí no Copo</h3>
-          <p>Delicioso açaí servido no copo, perfeito para qualquer hora.</p>
-        </div>
-        <div class="card" data-aos="fade-up" data-aos-delay="200">
-          <img src="Img/cardapio/marmita.jpg" alt="Açaí na Marmita">
-          <h3>Açaí na Marmita</h3>
-          <p>Praticidade e sabor em uma marmita recheada de açaí.</p>
-        </div>
-        <div class="card" data-aos="fade-up" data-aos-delay="300">
-          <img src="Img/cardapio/combos.jpg" alt="Combos de Açaí">
-          <h3>Combos de Açaí</h3>
-          <p>Experimente nossos combos especiais com açaí.</p>
-        </div>
-        <div class="card" data-aos="fade-up" data-aos-delay="400">
-          <img src="Img/cardapio/fondue.jpg" alt="Fondue de Açaí">
-          <h3>Fondue de Açaí</h3>
-          <p>Uma experiência única com nosso fondue de açaí.</p>
-        </div>
+ <section class="destaques">
+  <div class="destaques-container">
+    <h2>Cardápios</h2>
 
+    <div class="destaques-cards">
+      
+      <div class="card" data-aos="zoom-in-up" data-aos-delay="100">
+        <img src="Img/cardapio/copo.jpg" alt="Açaí no Copo">
+        <h3>Açaí no Copo</h3>
+        <p>Delicioso açaí servido no copo, perfeito para qualquer hora.</p>
+      </div>
+      <div class="card" data-aos="fade-up" data-aos-delay="200">
+        <img src="Img/cardapio/marmita.jpg" alt="Açaí na Marmita">
+        <h3>Açaí na Marmita</h3>
+        <p>Praticidade e sabor em uma marmita recheada de açaí.</p>
+      </div>
+      <div class="card" data-aos="fade-up" data-aos-delay="300">
+        <img src="Img/cardapio/combos.jpg" alt="Combos de Açaí">
+        <h3>Combos de Açaí</h3>
+        <p>Experimente nossos combos especiais com açaí.</p>
+      </div>
+      <div class="card" data-aos="fade-up" data-aos-delay="400">
+        <img src="Img/cardapio/fondue.jpg" alt="Fondue de Açaí">
+        <h3>Fondue de Açaí</h3>
+        <p>Uma experiência única com nosso fondue de açaí.</p>
+      </div>
+    </div>
+
+    <br></br>
 
     <h2>Combos Especiais</h2>
-    <div class="cards">
-      <div class="card" data-aos="zoom-in-up" data-aos-delay="100">
-      
+
+    <div class="destaques-cards"> <div class="card" data-aos="zoom-in-up" data-aos-delay="100">
         <img src="Img/card/card1.jpg" alt="Combo 1">
         <h3>Combo Trufado</h3>
         <p>2 copos de 300ml com açai, leite condensado, leite em pó, creme de avelã e ovolmaltine</p>
@@ -170,50 +177,36 @@
         <p>2 copos de 300ml com açai, leite condensado, leite em pó, bis e granola.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
   
   <!-- Galeria de Fotos-->
-
- <section id="galeria-produtos" class="secao-padrao">
+<section id="galeria-produtos" class="secao-padrao">
   <div class="container">
     <h2 class="titulo-secao">Nossos Produtos</h2>
     <p class="subtitulo-secao">Confira um pouco do nosso cardápio!</p>
 
     <div class="galeria-grid">
       <div class="galeria-item">
-        <img src="Img/clientes/feedback_clientes1.jpg" alt="Açaí no copo">
+        <img src="Img/cardapio/galeria-1.jpg" alt="Açaí com morango">
       </div>
       <div class="galeria-item">
-        <img src="Img/clientes/feedback_clientes2.jpg" alt="Açaí na marmita">
+        <img src="Img/cardapio/galeria-2.jpg" alt="Açaí com leite condensado">
       </div>
       <div class="galeria-item">
-        <img src="Img/clientes/feedback_clientes3.jpg" alt="Sorvete">
+        <img src="Img/cardapio/galeria-3.jpg" alt="Açaí com granola">
       </div>
       <div class="galeria-item">
-        <img src="Img/clientes/feedback_clientes4.jpg" alt="Fondue">
-    
+        <img src="Img/cardapio/galeria-4.jpg" alt="Açaí com creme de avelã">
       </div>
       <div class="galeria-item">
-        <img src="Img/clientes/feedback_clientes5.jpg" alt="Açaí com frutas">
+        <img src="Img/cardapio/galeria-5.jpg" alt="Açaí com creme de ninho">
       </div>
-      <div class="galeria-item">
-        <img src="Img/clientes/feedback_clientes6.jpg" alt="Açaí com granola">
     </div>
-    <div class="galeria-item">
-        <img src="Img/clientes/feedback_clientes7.jpg" alt="Açaí com leite condensado">
-      </div>
-      <div class="galeria-item">
-        <img src="Img/clientes/feedback_clientes8.jpg" alt="Açaí com chocolate">
-      </div>
-      <div class="galeria-item">
-        <img src="Img/clientes/feedback_clientesFondue.jpg" alt="Açaí com morango">
   </div>
-    <div class="galeria-item">
-        <img src="Img/clientes/feedback_clientesBOLO.jpg" alt="Açaí com leite em pó">
-      </div>
-
 </section>
+
 
 
 <section class="feedbacks">
@@ -234,8 +227,8 @@
   </div>
 </section>
 
-<img src="Img/icon/curva-footer.svg" alt="" style="width:100%; display:block; margin-top: 0px;">
     </main>
+    
 
     <footer class="footer-dark">
       <div class="container py-5">
@@ -245,7 +238,7 @@
           <div class="col-md-3">
             <h5>Açaí da Suíça</h5>
             <p>Mais que sabor, uma experiência. Feito com carinho para conquistar você do seu jeito.</p>
-            <a href="#" class="read-more">saiba mais →</a>
+            <a href="quem_somos.php" class="read-more">saiba mais →</a>
           </div>
     
           <!-- Contato -->
@@ -266,7 +259,7 @@
               <li>Domingo: 14h - 22h</li>
             </ul>
           </div>
-    
+    <!-- ========================== -->
           <!-- Mapa  e Social -->
 <div class="col-md-3">
   <h5>Encontre-nos</h5>
